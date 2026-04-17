@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e60f6a0639a81a34ca7e05f58a34a5fa
+timeCreated: 1535187749
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127154
+  packageName: Pixel Art Characters - People pack
+  packageVersion: 1.0
+  assetPath: Assets/Pixel_Art_Characters/People/TestAnimationPeople.controller
+  uploadId: 272791
