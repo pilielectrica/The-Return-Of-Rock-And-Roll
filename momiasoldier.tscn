@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://bj2n8hihah4c"]
+
+[ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="1_r23is"]
+[ext_resource type="Script" uid="uid://bqfnoxsmo2as6" path="res://enemy_mummy_soldier.gd" id="2_ejhjs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgwbi"]
+size = Vector2(24, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tinek"]
+atlas = ExtResource("1_r23is")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrtir"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adqpi"]
+atlas = ExtResource("1_r23is")
+region = Rect2(48, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r23is"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejhjs"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgwbi"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5fkb"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfka8"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l4yw"]
+atlas = ExtResource("1_r23is")
+region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pci8"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6xn"]
+atlas = ExtResource("1_r23is")
+region = Rect2(48, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcj2m"]
+atlas = ExtResource("1_r23is")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k86ll"]
+atlas = ExtResource("1_r23is")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cukv"]
+atlas = ExtResource("1_r23is")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5fkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tinek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrtir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adqpi")
+}],
+"loop": true,
+"name": &" walk left or right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r23is")
+}],
+"loop": true,
+"name": &"attack_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejhjs")
+}],
+"loop": true,
+"name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgwbi")
+}],
+"loop": true,
+"name": &"attack_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5fkb")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfka8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l4yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pci8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw6xn")
+}],
+"loop": true,
+"name": &"walk down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcj2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k86ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cukv")
+}],
+"loop": true,
+"name": &"walk up",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_ejhjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+shape = SubResource("RectangleShape2D_fgwbi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_y5fkb")
+animation = &"attack_up"

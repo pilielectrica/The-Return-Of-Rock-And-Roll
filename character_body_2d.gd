@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		if abs(direction.x) > abs(direction.y):
 			# Movimiento horizontal
 			sprite.play("run")
-			sprite.flip_h = direction.x < 0
+			sprite.flip_h = direction.x > 0
 		else:
 			# Movimiento vertical
 			if direction.y > 0:
