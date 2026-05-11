@@ -1,6 +1,4 @@
 extends CharacterBody2D
-
-
 @export var player: Node2D
 @export var SPEED: float = 160
 var direction
