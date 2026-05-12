@@ -1,7 +1,8 @@
 extends CharacterBody2D
-
+@onready var weapon = $Sprite2D
 @onready var sprite = $AnimatedSprite2D
 const SPEED = 200.0
+
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2(
@@ -29,3 +30,13 @@ func _physics_process(delta: float) -> void:
 		sprite.play("idle")
 
 	move_and_slide()
+	var mouse_pos = get_global_mouse_position()
+	var aim_dir = mouse_pos - global_position
+
+	weapon.rotation = aim_dir.angle()
+	if get_global_mouse_position().x < global_position.x:
+		weapon.flip_v = true
+	else:
+		weapon.flip_v = false
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -27541,6 +27541,7 @@ position = Vector2(154, -84)
 z_index = 8
 position = Vector2(-729, -179)
 player = NodePath("../CharacterBody2D2")
+SPEED = 80.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 visible = false

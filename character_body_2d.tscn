@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://ck5cxqenykbs6"]
+[gd_scene load_steps=39 format=3 uid="uid://ck5cxqenykbs6"]
 
 [ext_resource type="Script" uid="uid://ct2b5qucm1l2r" path="res://character_body_2d.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://bmmxshnyhdoec" path="res://Pixel_Art_Characters/People/NormalMan/idle down.png" id="3_1kp85"]
 [ext_resource type="Texture2D" uid="uid://ca4iahhq86br8" path="res://Pixel_Art_Characters/People/NormalMan/3 idle up last.png" id="4_qnedo"]
 [ext_resource type="Texture2D" uid="uid://cgvtymx1hkakj" path="res://Pixel_Art_Characters/People/NormalMan/NormalMan_ShotGunWalk.png" id="6_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://tht6gmvmsysm" path="res://player_full_animation.png" id="7_1kp85"]
+[ext_resource type="Texture2D" uid="uid://hlqbm7n2ehaa" path="res://Copilot_20251025_152244.png" id="7_4sjlk"]
 [ext_resource type="Texture2D" uid="uid://c1o4kdd28cx23" path="res://heroe/player_full_animation.png" id="8_qnedo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhvu3"]
@@ -269,3 +270,8 @@ position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_qp52p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_4sjlk")
+flip_h = true
