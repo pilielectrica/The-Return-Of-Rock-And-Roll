@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://meho3b10ksjs"]
+
+[ext_resource type="Script" uid="uid://dx2gol4wemcfg" path="res://bullet_manager.gd" id="1_laa2r"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_laa2r")

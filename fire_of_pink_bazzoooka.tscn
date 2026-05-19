@@ -99,7 +99,6 @@ scale = Vector2(0.3, 0.3)
 script = ExtResource("1_h31an")
 
 [node name="Fire" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_fxwjb")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]

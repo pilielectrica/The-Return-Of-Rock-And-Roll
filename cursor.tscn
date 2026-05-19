@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://goovue3nq0ok"]
+
+[ext_resource type="Texture2D" uid="uid://bbmsnr4wg23k7" path="res://mira roja.png" id="1_5l68f"]
+[ext_resource type="Script" uid="uid://c2bgb7e435kdh" path="res://cursor_mira.gd" id="1_fsq4c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l68f"]
+radius = 3.0
+
+[node name="cursor" type="Node2D"]
+script = ExtResource("1_fsq4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_5l68f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 9
+shape = SubResource("CircleShape2D_5l68f")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
