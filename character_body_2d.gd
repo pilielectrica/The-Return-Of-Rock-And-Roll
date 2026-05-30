@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var weapon = $Sprite2D
 @onready var sprite = $AnimatedSprite2D
 const SPEED = 200.0
+var weapon_flip = false
 
 
 func _physics_process(delta: float) -> void:
@@ -19,19 +20,28 @@ func _physics_process(delta: float) -> void:
 			# Movimiento horizontal
 			sprite.play("run")
 			sprite.flip_h = direction.x > 0
+
+			
+			weapon.z_index = 0
 		else:
 			# Movimiento vertical
 			if direction.y > 0:
 				sprite.play("walk down")
+				weapon.z_index = 0
+
 			else:
 				sprite.play("walk up")
+				weapon.z_index = -1
+
 	else:
 		velocity = Vector2.ZERO
 		sprite.play("idle")
+		weapon.z_index = 0
 
 	move_and_slide()
 	var mouse_pos = get_global_mouse_position()
 	var aim_dir = mouse_pos - global_position
+
 
 	weapon.rotation = aim_dir.angle()
 	if get_global_mouse_position().x < global_position.x:
