@@ -48,5 +48,10 @@ func _physics_process(delta: float) -> void:
 		weapon.flip_v = true
 	else:
 		weapon.flip_v = false
+		# cambiamos el flip del personaje seegun para donde esta apuntando el arma
+	if (get_global_mouse_position().x < position.x and direction.x > 0):
+		sprite.flip_h = false
+	elif (get_global_mouse_position().x > position.x and direction.x < 0):
+		sprite.flip_h = true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
