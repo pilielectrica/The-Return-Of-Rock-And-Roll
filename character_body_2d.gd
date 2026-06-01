@@ -1,8 +1,11 @@
 extends CharacterBody2D
-@onready var weapon = $Sprite2D
+@onready var weapon = $bazooka
 @onready var sprite = $AnimatedSprite2D
 const SPEED = 200.0
 var weapon_flip = false
+@export var cursor: Node2D
+var dir 
+var angle
 
 
 func _physics_process(delta: float) -> void:
@@ -10,7 +13,8 @@ func _physics_process(delta: float) -> void:
 		Input.get_axis("ui_left", "ui_right"),
 		Input.get_axis("ui_up", "ui_down")
 	)
-
+	dir = cursor.position - sprite.position
+	angle = rad_to_deg(dir.angle())
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
 		velocity = direction * SPEED
@@ -25,18 +29,45 @@ func _physics_process(delta: float) -> void:
 			weapon.z_index = 0
 		else:
 			# Movimiento vertical
-			if direction.y > 0:
+			if (direction.y > 0 and get_global_mouse_position().y > position.y or (get_global_mouse_position().y > position.y and direction.y < 0)):
 				sprite.play("walk down")
 				weapon.z_index = 0
+				if angle >= 57.5 and angle < 102.5:
+					weapon.play("down")
 
-			else:
+
+			elif(direction.y < 0 and get_global_mouse_position().y < position.y or (get_global_mouse_position().y < position.y and direction.y > 0)):
 				sprite.play("walk up")
 				weapon.z_index = -1
 
 	else:
+		var dx = cursor.position.x - sprite.position.x
+		var dy = cursor.position.y - sprite.position.y
 		velocity = Vector2.ZERO
-		sprite.play("idle")
-		weapon.z_index = 0
+		if abs(dx) > abs(dy):
+			if dx > 0:
+				sprite.play("idle right")
+				weapon.z_index = 0
+				weapon.play("default")
+
+			else:
+				sprite.play("idle left")
+				weapon.z_index = 0
+				weapon.play("default")
+
+		elif abs(dy) >= abs(dx):
+			if dy > 0:
+				sprite.play("idle down")
+				weapon.play("front")
+				weapon.z_index = 0
+
+				if angle >= 57.5 and angle < 102.5:
+					weapon.play("down")
+
+			else:
+				sprite.play("idle up")
+				weapon.z_index = -1
+
 
 	move_and_slide()
 	var mouse_pos = get_global_mouse_position()
@@ -53,5 +84,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 	elif (get_global_mouse_position().x > position.x and direction.x < 0):
 		sprite.flip_h = true
+	
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	weapon.play("default")

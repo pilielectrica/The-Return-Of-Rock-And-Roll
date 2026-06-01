@@ -1,16 +1,28 @@
-[gd_scene load_steps=39 format=3 uid="uid://ck5cxqenykbs6"]
+[gd_scene load_steps=45 format=3 uid="uid://ck5cxqenykbs6"]
 
 [ext_resource type="Script" uid="uid://ct2b5qucm1l2r" path="res://character_body_2d.gd" id="1_ij6vw"]
-[ext_resource type="Texture2D" uid="uid://bmmxshnyhdoec" path="res://Pixel_Art_Characters/People/NormalMan/idle down.png" id="3_1kp85"]
-[ext_resource type="Texture2D" uid="uid://ca4iahhq86br8" path="res://Pixel_Art_Characters/People/NormalMan/3 idle up last.png" id="4_qnedo"]
+[ext_resource type="Texture2D" uid="uid://gf4g2y1cgbol" path="res://heroesi.png" id="2_4sjlk"]
+[ext_resource type="Texture2D" uid="uid://dyv3nj02bsv1q" path="res://Copilot_20260601_153412.png" id="6_lhvu3"]
 [ext_resource type="Texture2D" uid="uid://cgvtymx1hkakj" path="res://Pixel_Art_Characters/People/NormalMan/NormalMan_ShotGunWalk.png" id="6_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://tht6gmvmsysm" path="res://player_full_animation.png" id="7_1kp85"]
 [ext_resource type="Texture2D" uid="uid://hlqbm7n2ehaa" path="res://Copilot_20251025_152244.png" id="7_4sjlk"]
 [ext_resource type="Texture2D" uid="uid://c1o4kdd28cx23" path="res://heroe/player_full_animation.png" id="8_qnedo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhvu3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_61y8d"]
+atlas = ExtResource("2_4sjlk")
+region = Rect2(63, 184, 44, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rslu"]
 atlas = ExtResource("7_1kp85")
-region = Rect2(0, 192, 40, 64)
+region = Rect2(40, 192, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uyxa"]
+atlas = ExtResource("7_1kp85")
+region = Rect2(160, 192, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd465"]
+atlas = ExtResource("7_1kp85")
+region = Rect2(80, 384, 40, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sjlk"]
 atlas = ExtResource("7_1kp85")
@@ -128,15 +140,7 @@ region = Rect2(200, 128, 40, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lhvu3")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_1kp85")
+"texture": SubResource("AtlasTexture_61y8d")
 }],
 "loop": true,
 "name": &"idle down",
@@ -144,7 +148,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_qnedo")
+"texture": SubResource("AtlasTexture_1rslu")
+}],
+"loop": true,
+"name": &"idle left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uyxa")
+}],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd465")
 }],
 "loop": true,
 "name": &"idle up",
@@ -258,12 +278,47 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp52p"]
 size = Vector2(26, 55.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8icv6"]
+atlas = ExtResource("6_lhvu3")
+region = Rect2(0, 304, 511, 381)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwn6v"]
+atlas = ExtResource("6_lhvu3")
+region = Rect2(511, 304, 511, 381)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4sjlk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8icv6")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwn6v")
+}],
+"loop": true,
+"name": &"down side",
+"speed": 5.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ij6vw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4sjlk")
-animation = &"run"
+animation = &"idle down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.25)
@@ -272,6 +327,13 @@ shape = SubResource("RectangleShape2D_qp52p")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_4sjlk")
+flip_h = true
+
+[node name="bazooka" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 4)
+scale = Vector2(0.045, 0.045)
+sprite_frames = SubResource("SpriteFrames_qp52p")
 flip_h = true
