@@ -2,6 +2,8 @@ extends Node2D
 
 @export var bullet_scene: PackedScene
 @export var player: CharacterBody2D
+var muzzle
+
 
 var bullet_pool = []
 
@@ -27,4 +29,5 @@ func _unhandled_input(event):
 			
 			if bullet:
 				var mouse_pos = get_global_mouse_position()
-				bullet.shoot(player.global_position, mouse_pos)
+				muzzle = player.get_child(4).get_child(0)
+				bullet.shoot(muzzle.global_position, mouse_pos)

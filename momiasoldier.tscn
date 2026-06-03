@@ -225,7 +225,7 @@ shape = SubResource("RectangleShape2D_fgwbi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_y5fkb")
-animation = &"walk down"
+animation = &"attack_down"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 

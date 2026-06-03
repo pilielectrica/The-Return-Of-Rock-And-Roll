@@ -13,7 +13,7 @@ var momia_eye_left =  false
 var momia_eye_right = false
 var momia_eye_down = false
 func _physics_process(delta):
-	var pos_dif = player.position - position
+	var pos_dif = player.global_position - global_position
 	if (moving):
 		direction = (player.position - position).normalized()
 		distance = position.distance_to(player.position)
@@ -63,7 +63,7 @@ func _atack():
 				momia_eyes.position.y = -4.33
 			else:
 				momia_eyes.position.y = -2.96
-		if (momia_eye_left):
+		elif (momia_eye_left):
 			momia_eye.play("default")
 			momia_eye.visible = true
 			momia_eye.position.x = -9.025
@@ -75,9 +75,7 @@ func _atack():
 			momia_eye.position.x = 7.265
 			momia_eye.flip_h = false
 			momia_eyes.visible = false
-		else:
-			momia_eye.visible = false
-			momia_eye.visible = false
+
 
 		moving = false
 
@@ -96,3 +94,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		moving = true
 		momia_eyes.visible = false
 		momia_eye.visible = false
+func _ready():
+		momia_eye.visible = false
+		momia_eyes.visible = false
