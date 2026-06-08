@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=4 uid="uid://cd7g7hug1qpqj"]
+[gd_scene load_steps=194 format=4 uid="uid://cd7g7hug1qpqj"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://ck5cxqenykbs6" path="res://character_body_2d.tscn" id="2_epypp"]
@@ -92,9 +92,11 @@
 [ext_resource type="Texture2D" uid="uid://0i0gxgdjv5u" path="res://momia/PNG/rock1.png" id="84_5cr6e"]
 [ext_resource type="Texture2D" uid="uid://bb30sp3dnsu65" path="res://momia/PNG/rock2.png" id="86_fm8k7"]
 [ext_resource type="PackedScene" uid="uid://bj2n8hihah4c" path="res://momiasoldier.tscn" id="92_fm8k7"]
+[ext_resource type="PackedScene" uid="uid://c8thglvk3sr6l" path="res://explosion.tscn" id="93_1aygh"]
 [ext_resource type="PackedScene" uid="uid://meho3b10ksjs" path="res://bullet_manager.tscn" id="93_n63ng"]
 [ext_resource type="PackedScene" uid="uid://bd34qcap3xx8x" path="res://fire_of_pink_bazzoooka.tscn" id="94_wnn4a"]
 [ext_resource type="PackedScene" uid="uid://goovue3nq0ok" path="res://cursor.tscn" id="95_wnn4a"]
+[ext_resource type="PackedScene" uid="uid://b88lbqlyhkrps" path="res://GameManager.tscn" id="97_td2a2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")
@@ -27541,11 +27543,13 @@ cursor = NodePath("../cursor")
 [node name="Area2D" parent="." instance=ExtResource("3_epypp")]
 position = Vector2(154, -84)
 
-[node name="MummySoldier1" parent="." node_paths=PackedStringArray("player") groups=["enemy"] instance=ExtResource("92_fm8k7")]
+[node name="MummySoldier1" parent="." node_paths=PackedStringArray("player", "game_manager") groups=["enemy"] instance=ExtResource("92_fm8k7")]
 z_index = 8
 position = Vector2(-729, -179)
 player = NodePath("../Player")
 SPEED = 80.0
+explosion_scene = ExtResource("93_1aygh")
+game_manager = NodePath("../GameManager")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 visible = false
@@ -27557,3 +27561,5 @@ player = NodePath("../Player")
 
 [node name="cursor" parent="." instance=ExtResource("95_wnn4a")]
 z_index = 9
+
+[node name="GameManager" parent="." instance=ExtResource("97_td2a2")]

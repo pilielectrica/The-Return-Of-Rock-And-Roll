@@ -9,9 +9,15 @@ var atack = false
 @onready var momia_power = $AnimatedSprite2D/Area2D/AnimatedSprite2D
 @onready var momia_eyes = $AnimatedSprite2D2
 @onready var momia_eye = $AnimatedSprite2D3
+@onready var health = $"Health Component"
+@onready var health_bar = $"Health Component/CanvasGroup/ProgressBar"
 var momia_eye_left =  false
 var momia_eye_right = false
 var momia_eye_down = false
+var life = 100
+@export var explosion_scene: PackedScene
+@export var game_manager: Node2D
+var dead_count = false
 func _physics_process(delta):
 	var pos_dif = player.global_position - global_position
 	if (moving):
@@ -50,6 +56,9 @@ func _physics_process(delta):
 				momia_eye_down = true
 				momia_eye_right = false
 				momia_eye_right = false
+	if (health.get_life() <= 0):
+		die()
+	
 func _atack():
 	if (atack ==true):
 		momia_power.visible = true
@@ -97,3 +106,18 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _ready():
 		momia_eye.visible = false
 		momia_eyes.visible = false
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet"):
+		health.get_hurt()
+		health_bar.value = health.get_life()
+func die():
+	var explosion = explosion_scene.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
+	anim.play("idle")
+	moving = false
+	if(dead_count != true):
+		game_manager.enemy_dies(1)
+		dead_count = true
+	await get_tree().create_timer(2.0).timeout
+	queue_free()

@@ -5,11 +5,11 @@ var SPEED = 500
 var active = false
 
 @onready var sprite_fire = $Fire
-@onready var sprite_explosion = $Explosion
+
 
 func _ready():
 	visible = false
-	sprite_explosion.visible = false
+
 
 func shoot(start_position: Vector2, target_position: Vector2):
 	global_position = start_position
@@ -20,7 +20,7 @@ func shoot(start_position: Vector2, target_position: Vector2):
 	active = true
 	visible = true
 	
-	sprite_explosion.visible = false
+
 	sprite_fire.visible = true
 	sprite_fire.play("default")
 	await get_tree().create_timer(1.0).timeout

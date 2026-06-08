@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bj2n8hihah4c"]
+[gd_scene load_steps=35 format=3 uid="uid://bj2n8hihah4c"]
 
 [ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="1_r23is"]
 [ext_resource type="Script" uid="uid://bqfnoxsmo2as6" path="res://enemy_mummy_soldier.gd" id="2_ejhjs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cucsj2sxoyade" path="res://momia/ojo solo 2.png" id="7_nfka8"]
 [ext_resource type="Texture2D" uid="uid://7biwkq1tjlg4" path="res://momia/ojo solo 1.png" id="8_1l4yw"]
 [ext_resource type="Texture2D" uid="uid://b8cg1kik71c4q" path="res://momia/radar/05.png" id="8_u0tva"]
+[ext_resource type="Script" uid="uid://3pyudddxuyq4" path="res://health_component.gd" id="9_1l4yw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgwbi"]
 size = Vector2(24, 50)
@@ -215,6 +216,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l4yw"]
+bg_color = Color(0.984314, 0.254902, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pci8"]
+bg_color = Color(0.250418, 0.860064, 0.131544, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("2_ejhjs")
 
@@ -225,7 +232,7 @@ shape = SubResource("RectangleShape2D_fgwbi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_y5fkb")
-animation = &"attack_down"
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -261,5 +268,24 @@ position = Vector2(7.265, -6)
 scale = Vector2(0.695, 0.695)
 sprite_frames = SubResource("SpriteFrames_7pci8")
 
+[node name="Health Component" type="Node2D" parent="."]
+script = ExtResource("9_1l4yw")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Health Component"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Health Component/CanvasGroup"]
+offset_left = -15.0
+offset_top = -20.0
+offset_right = -11.0
+offset_bottom = 7.0
+rotation = 3.14159
+scale = Vector2(-7.513, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_1l4yw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7pci8")
+value = 100.0
+show_percentage = false
+
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
