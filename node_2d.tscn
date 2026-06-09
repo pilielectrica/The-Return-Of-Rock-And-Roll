@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=4 uid="uid://cd7g7hug1qpqj"]
+[gd_scene load_steps=195 format=4 uid="uid://cd7g7hug1qpqj"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://ck5cxqenykbs6" path="res://character_body_2d.tscn" id="2_epypp"]
@@ -97,6 +97,7 @@
 [ext_resource type="PackedScene" uid="uid://bd34qcap3xx8x" path="res://fire_of_pink_bazzoooka.tscn" id="94_wnn4a"]
 [ext_resource type="PackedScene" uid="uid://goovue3nq0ok" path="res://cursor.tscn" id="95_wnn4a"]
 [ext_resource type="PackedScene" uid="uid://b88lbqlyhkrps" path="res://GameManager.tscn" id="97_td2a2"]
+[ext_resource type="PackedScene" uid="uid://bw50dw3xfci36" path="res://enemy_spawner.tscn" id="98_c6xte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")
@@ -27543,14 +27544,6 @@ cursor = NodePath("../cursor")
 [node name="Area2D" parent="." instance=ExtResource("3_epypp")]
 position = Vector2(154, -84)
 
-[node name="MummySoldier1" parent="." node_paths=PackedStringArray("player", "game_manager") groups=["enemy"] instance=ExtResource("92_fm8k7")]
-z_index = 8
-position = Vector2(-729, -179)
-player = NodePath("../Player")
-SPEED = 80.0
-explosion_scene = ExtResource("93_1aygh")
-game_manager = NodePath("../GameManager")
-
 [node name="Marker2D" type="Marker2D" parent="."]
 visible = false
 position = Vector2(-731, -182)
@@ -27563,3 +27556,40 @@ player = NodePath("../Player")
 z_index = 9
 
 [node name="GameManager" parent="." instance=ExtResource("97_td2a2")]
+
+[node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker_1", "marker_2") instance=ExtResource("98_c6xte")]
+marker_1 = NodePath("Marker2D3")
+marker_2 = NodePath("Marker2D4")
+
+[node name="Marker2D3" type="Marker2D" parent="Enemy_Spawner"]
+position = Vector2(-727, -169)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemy_Spawner"]
+position = Vector2(890, -169)
+
+[node name="CharacterBody2D" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="MummySoldier1" parent="Enemy_Spawner" node_paths=PackedStringArray("player", "game_manager") groups=["enemy"] instance=ExtResource("92_fm8k7")]
+visible = false
+z_index = 8
+position = Vector2(-729, -179)
+player = NodePath("../../Player")
+SPEED = 80.0
+explosion_scene = ExtResource("93_1aygh")
+game_manager = NodePath("../../GameManager")
+
+[node name="CharacterBody2D2" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D3" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D4" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D5" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D6" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D7" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D8" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
+
+[node name="CharacterBody2D9" parent="Enemy_Spawner" instance=ExtResource("92_fm8k7")]
