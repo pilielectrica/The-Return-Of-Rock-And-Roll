@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vef2f"]
 size = Vector2(23.0226, 20)
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Sprite2D" type="Sprite2D" groups=["house"]]
 texture = ExtResource("1_rmhk8")
 script = ExtResource("2_vbs1w")
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmy1cotww50ry"]
+
+[ext_resource type="Script" uid="uid://cyvq7maioelgm" path="res://jeroglifico.gd" id="2_8f4p2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f4p2"]
+size = Vector2(63.5294, 65.4608)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("2_8f4p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.999999, 0.999997)
+scale = Vector2(1.275, 1.275)
+shape = SubResource("RectangleShape2D_8f4p2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.21, 0.21)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

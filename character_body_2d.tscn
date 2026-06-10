@@ -244,7 +244,7 @@ script = ExtResource("1_ij6vw")
 sprite_frames = SubResource("SpriteFrames_4sjlk")
 animation = &"run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_qp52p")
 

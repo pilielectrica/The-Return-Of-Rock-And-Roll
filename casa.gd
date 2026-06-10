@@ -7,6 +7,7 @@ var destroy := 0
 @export var sprites: Array[AnimatedSprite2D]
 @export var markers: Array[Marker2D]
 @export var explosion: AnimatedSprite2D
+@export var jeroglifico: Sprite2D
 signal building_destroyed
 signal building_hit
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 		fire.stop()
 		explosion.visible = false
 		explosion.stop()
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		destroy += 1
@@ -37,5 +39,5 @@ func count_bullets():
 		building_destroyed.emit()
 		explosion.visible = true
 		explosion.play("default")
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		queue_free()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1rjs3ohdlnrf"]
+[gd_scene load_steps=6 format=3 uid="uid://b1rjs3ohdlnrf"]
 
+[ext_resource type="Script" uid="uid://blllqjryc22q7" path="res://canva_jeroglificos.gd" id="1_hsf04"]
 [ext_resource type="Texture2D" uid="uid://c1o0o7u7ycwd7" path="res://momia/sol musical jeroglifico.png" id="1_okfhe"]
 [ext_resource type="Texture2D" uid="uid://mdccfnleyusa" path="res://momia/serpiente musical jeroglifico.png" id="2_hsf04"]
 [ext_resource type="Texture2D" uid="uid://cwm31p0jb6i0o" path="res://momia/ojo musical jeroglifico.png" id="3_ldp51"]
 [ext_resource type="Texture2D" uid="uid://cmg5ilhdap3la" path="res://momia/guitarra musical jeroglifico.png" id="4_to8ft"]
 
 [node name="CanvasGroup" type="CanvasGroup"]
+script = ExtResource("1_hsf04")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -63,12 +65,12 @@ offset_bottom = 380.0
 scale = Vector2(0.0243158, 0.0209344)
 texture_normal = ExtResource("2_hsf04")
 
-[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control"]
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control/Button2"]
 layout_mode = 0
-offset_left = 0.320684
-offset_top = 10.7964
-offset_right = 40.3207
-offset_bottom = 50.7964
+offset_left = 0.106895
+offset_top = -0.106899
+offset_right = 40.1069
+offset_bottom = 39.8931
 scale = Vector2(0.207502, 0.207969)
 
 [node name="Button3" type="Button" parent="CanvasLayer/Control"]
