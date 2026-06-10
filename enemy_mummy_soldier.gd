@@ -18,13 +18,25 @@ var life = 100
 @export var explosion_scene: PackedScene
 @export var game_manager: Node2D
 var dead_count = false
+var change_dir := false
+var avoid_direction := Vector2.ZERO
+var avoid_time := 0.0
 func _physics_process(delta):
 	var pos_dif = player.global_position - global_position
 	if (moving):
-		direction = (player.position - position).normalized()
-		distance = position.distance_to(player.position)
+		if change_dir:
+			avoid_time -= delta
+			direction = avoid_direction
+
+			if avoid_time <= 0:
+				change_dir = false
+		else:
+			direction = (player.global_position - global_position).normalized()
+
 		velocity = direction * SPEED
 		move_and_slide()
+		distance = position.distance_to(player.position)
+
 		if (distance < 5):
 			moving = false
 			velocity = Vector2.ZERO
@@ -58,6 +70,7 @@ func _physics_process(delta):
 				momia_eye_right = false
 	if (health.get_life() <= 0):
 		die()
+
 	
 func _atack():
 	if (atack ==true):
@@ -93,7 +106,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		atack = true
 		_atack()
-		
+		$Area2D/CollisionShape2D.disabled = false
+
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -103,6 +117,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		moving = true
 		momia_eyes.visible = false
 		momia_eye.visible = false
+		$Area2D/CollisionShape2D.disabled = true
+
 func _ready():
 		momia_eye.visible = false
 		momia_eyes.visible = false
@@ -110,6 +126,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		health.get_hurt()
 		health_bar.value = health.get_life()
+
 func die():
 	var explosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion)
@@ -120,4 +137,25 @@ func die():
 		game_manager.enemy_dies(1)
 		dead_count = true
 	await get_tree().create_timer(2.0).timeout
-	queue_free()
+	deactivate_enemy()
+func deactivate_enemy():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	visible = false
+	$CollisionShape2D.disabled = true
+func reset_enemy():
+	moving = true
+	atack = false
+	dead_count = false
+	health.reset_life()
+	health_bar.value = health.get_life()
+	$CollisionShape2D.disabled = false
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.is_in_group("arboles"):
+		change_dir = true
+		avoid_time = 0.6
+
+		if randi() % 2 == 0:
+			avoid_direction = Vector2.UP
+		else:
+			avoid_direction = Vector2.DOWN

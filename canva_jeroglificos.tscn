@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1rjs3ohdlnrf"]
+
+[ext_resource type="Texture2D" uid="uid://c1o0o7u7ycwd7" path="res://momia/sol musical jeroglifico.png" id="1_okfhe"]
+[ext_resource type="Texture2D" uid="uid://mdccfnleyusa" path="res://momia/serpiente musical jeroglifico.png" id="2_hsf04"]
+[ext_resource type="Texture2D" uid="uid://cwm31p0jb6i0o" path="res://momia/ojo musical jeroglifico.png" id="3_ldp51"]
+[ext_resource type="Texture2D" uid="uid://cmg5ilhdap3la" path="res://momia/guitarra musical jeroglifico.png" id="4_to8ft"]
+
+[node name="CanvasGroup" type="CanvasGroup"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(5.91, 5.91)
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.223111, 0.217522)
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control/Button"]
+layout_mode = 0
+offset_left = 0.213789
+offset_top = 0.641368
+offset_right = 416.214
+offset_bottom = 380.641
+scale = Vector2(0.0198626, 0.0216098)
+texture_normal = ExtResource("1_okfhe")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/Button"]
+layout_mode = 0
+offset_top = 0.962052
+offset_right = 40.0
+offset_bottom = 40.9621
+scale = Vector2(0.207502, 0.207969)
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 0.213789
+offset_top = 10.9033
+offset_right = 8.21379
+offset_bottom = 18.9033
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/Button2"]
+layout_mode = 0
+offset_left = 0.106895
+offset_top = -0.641368
+offset_right = 40.1069
+offset_bottom = 39.3586
+scale = Vector2(0.223111, 0.217522)
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Control/Button2"]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 380.0
+scale = Vector2(0.0243158, 0.0209344)
+texture_normal = ExtResource("2_hsf04")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 0.320684
+offset_top = 10.7964
+offset_right = 40.3207
+offset_bottom = 50.7964
+scale = Vector2(0.207502, 0.207969)
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 0.106895
+offset_top = 21.4858
+offset_right = 8.10689
+offset_bottom = 29.4858
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control/Button3"]
+layout_mode = 0
+offset_left = 0.106895
+offset_top = -1.38963
+offset_right = 40.1069
+offset_bottom = 38.6104
+scale = Vector2(0.223111, 0.217522)
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Control/Button3"]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 380.0
+scale = Vector2(0.0243158, 0.0209344)
+texture_normal = ExtResource("3_ldp51")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CanvasLayer/Control/Button3"]
+layout_mode = 0
+offset_left = 0.320684
+offset_top = -0.427578
+offset_right = 40.3207
+offset_bottom = 39.5724
+scale = Vector2(0.22033, 0.207969)
+
+[node name="Button4" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 0.213789
+offset_top = 31.1064
+offset_right = 8.21379
+offset_bottom = 39.1064
+
+[node name="PanelContainer4" type="PanelContainer" parent="CanvasLayer/Control/Button4"]
+layout_mode = 0
+offset_left = 0.320684
+offset_top = -0.641366
+offset_right = 40.3207
+offset_bottom = 39.3586
+scale = Vector2(0.223111, 0.217522)
+
+[node name="TextureButton4" type="TextureButton" parent="CanvasLayer/Control/Button4"]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 380.0
+scale = Vector2(0.0208757, 0.0231845)
+texture_normal = ExtResource("4_to8ft")
+
+[node name="PanelContainer5" type="PanelContainer" parent="CanvasLayer/Control/Button4"]
+layout_mode = 0
+offset_left = -0.320684
+offset_top = -0.213789
+offset_right = 39.6793
+offset_bottom = 39.7862
+scale = Vector2(0.22033, 0.229348)

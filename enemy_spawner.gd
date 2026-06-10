@@ -1,46 +1,47 @@
 extends Node2D
 
 @onready var timer = $Timer
-@onready var timer_2 = $Timer2
-@export var marker_1 : Marker2D
-@export var marker_2 : Marker2D
-var count_1 = 0
-var count_2 = 0
-var i = 0
-var j = 0
-@export var enemy :Array[CharacterBody2D]
-@export var enemy_2 :Array[CharacterBody2D]
+@export var marker: Marker2D
+@export var enemy: Array[CharacterBody2D]
+@export var spawn_wait_time := 5.0
+@export var building: Sprite2D
 
+func _ready():
+	building.building_hit.connect(_on_building_hit)
+	building.building_destroyed.connect(_on_building_destroyed)
+	for e in enemy:
+		disable_enemy(e)
 
+func _on_building_hit():
+	if timer.is_stopped():
+		timer.start()
 func _on_timer_timeout() -> void:
-	count_1 += 1
-func spawn_1():
-	if count_1 >= 5 and i < enemy.size():
-		enemy[i].visible = true
-		enemy[i].process_mode = Node.PROCESS_MODE_INHERIT
-		enemy[i].global_position = marker_1.global_position
-		count_1 = 0
-		i += 1
-func spawn_2():
-	if count_2 >= 7 and j < enemy_2.size():
-		enemy_2[j].visible = true
-		enemy_2[j].process_mode = Node.PROCESS_MODE_INHERIT
-		enemy_2[j].global_position = marker_2.global_position
-		count_2 = 0
-		j += 1
+	spawn_enemy()
 
-func _on_timer_2_timeout() -> void:
-	count_2 += 1
-func _ready() -> void:
-		enemy[0].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[0].visible = false
-		enemy[1].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[1].visible = false
-		enemy[2].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[2].visible = false
-		enemy[3].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[3].visible = false
-		enemy[4].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[4].visible = false
-		enemy[5].proces.mode = Node.PROCESS_MODE_DISABLED
-		enemy[5].visible = false
+func spawn_enemy():
+	var e = get_inactive_enemy()
+
+	if e == null:
+		return
+
+	e.global_position = marker.global_position
+	e.visible = true
+	e.process_mode = Node.PROCESS_MODE_INHERIT
+	e.get_node("CollisionShape2D").disabled = false
+
+	if e.has_method("reset_enemy"):
+		e.reset_enemy()
+
+func get_inactive_enemy():
+	for e in enemy:
+		if e.process_mode == Node.PROCESS_MODE_DISABLED:
+			return e
+
+	return null
+
+func disable_enemy(e):
+	e.process_mode = Node.PROCESS_MODE_DISABLED
+	e.visible = false
+	e.get_node("CollisionShape2D").disabled = true
+func _on_building_destroyed():
+	timer.stop()

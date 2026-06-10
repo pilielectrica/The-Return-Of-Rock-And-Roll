@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwgihlxmoq6dk"]
+
+[ext_resource type="Texture2D" uid="uid://8olwmmw78qil" path="res://explosion/ChatGPT Image 9 jun 2026, 07_03_52 p.m..png" id="1_2pqqt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ltu8"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(0, 213, 365, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6ecg"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(387, 213, 365, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icfi2"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(774, 213, 365, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo6dx"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(1161, 213, 365, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2yji"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(774, 213, 365, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjybw"]
+atlas = ExtResource("1_2pqqt")
+region = Rect2(387, 213, 365, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f37y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ltu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6ecg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icfi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo6dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2yji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjybw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.26, 0.26)
+sprite_frames = SubResource("SpriteFrames_f37y5")
+frame_progress = 0.922603

@@ -6,3 +6,5 @@ func get_hurt():
 	life -= 20
 func get_life():
 	return life
+func reset_life():
+	life = 100

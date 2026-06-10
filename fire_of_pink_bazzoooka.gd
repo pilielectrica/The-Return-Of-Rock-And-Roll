@@ -5,7 +5,7 @@ var SPEED = 500
 var active = false
 
 @onready var sprite_fire = $Fire
-
+@onready var collision = $CollisionShape2D
 
 func _ready():
 	visible = false
@@ -19,7 +19,7 @@ func shoot(start_position: Vector2, target_position: Vector2):
 	
 	active = true
 	visible = true
-	
+	collision.disabled = false
 
 	sprite_fire.visible = true
 	sprite_fire.play("default")
@@ -36,3 +36,14 @@ func deactivate():
 	active = false
 	visible = false
 	velocity = Vector2.ZERO
+	collision.disabled = true
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		deactivate()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("house"):
+		deactivate()
