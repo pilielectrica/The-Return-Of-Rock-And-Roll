@@ -4,6 +4,8 @@ extends Area2D
 @onready var sprite = $Sprite2D
 signal jeroglifico_taken
 @export var sprite_texture: Texture2D
+var jero_count = 0
+signal free_shooter_mummies
 func _ready() -> void:
 	visible = false
 	sprite.texture = sprite_texture
