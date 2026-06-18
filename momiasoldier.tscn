@@ -226,6 +226,7 @@ bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 script = ExtResource("2_ejhjs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 8)
 shape = SubResource("RectangleShape2D_fgwbi")
 

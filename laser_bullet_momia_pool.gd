@@ -21,10 +21,13 @@ func shoot(start_pos: Vector2, player: Node2D):
 	global_position = start_pos
 	target_position = player.global_position
 	direction = (target_position - global_position).normalized()
+
+	visible = true
+	sprite_bala.visible = true
 	anim.visible = false
+
 	active = true
 	exploding = false
-	sprite_bala.visible = true
 	collision.disabled = false
 	process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -49,6 +52,8 @@ func disable_bullet():
 	active = false
 	exploding = false
 	visible = false
+	sprite_bala.visible = false
+	anim.visible = false
 	collision.disabled = true
 	process_mode = Node.PROCESS_MODE_DISABLED
 

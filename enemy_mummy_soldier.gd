@@ -133,6 +133,7 @@ func die():
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = global_position
 	anim.play("idle")
+	atack = false 
 	moving = false
 	collision_attack.disabled = true
 	if(dead_count != true):
@@ -143,14 +144,14 @@ func die():
 func deactivate_enemy():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	visible = false
-	$CollisionShape2D.disabled = true
+	$Area2D/CollisionShape2D.disabled = true
 func reset_enemy():
 	moving = true
 	atack = false
 	dead_count = false
 	health.reset_life()
 	health_bar.value = health.get_life()
-	$CollisionShape2D.disabled = false
+	$Area2D/CollisionShape2D.disabled = false
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("arboles"):
