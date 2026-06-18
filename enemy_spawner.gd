@@ -10,12 +10,17 @@ func _ready():
 	timer.wait_time = spawn_wait_time
 	building.building_hit.connect(_on_building_hit)
 	building.building_destroyed.connect(_on_building_destroyed)
+	if (!building.house_2):
+		spawn_enemy()
+		if (timer.is_stopped()):
+			timer.start()
 	for e in enemy:
 		disable_enemy(e)
 func _on_building_hit():
-	if timer.is_stopped():
-		spawn_enemy()
-		timer.start()
+	if (building.house_2):
+		if timer.is_stopped():
+			spawn_enemy()
+			timer.start()
 func _on_timer_timeout() -> void:
 	spawn_enemy()
 func spawn_enemy():

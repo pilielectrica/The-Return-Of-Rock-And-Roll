@@ -11,6 +11,7 @@ var atack = false
 @onready var momia_eye = $AnimatedSprite2D3
 @onready var health = $"Health Component"
 @onready var health_bar = $"Health Component/CanvasGroup/ProgressBar"
+@onready var collision_attack = $AnimatedSprite2D/Area2D/CollisionShape2D
 var momia_eye_left =  false
 var momia_eye_right = false
 var momia_eye_down = false
@@ -133,6 +134,7 @@ func die():
 	explosion.global_position = global_position
 	anim.play("idle")
 	moving = false
+	collision_attack.disabled = true
 	if(dead_count != true):
 		game_manager.enemy_dies(1)
 		dead_count = true

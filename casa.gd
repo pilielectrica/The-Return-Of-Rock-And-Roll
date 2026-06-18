@@ -10,6 +10,8 @@ var destroy := 0
 @export var jeroglifico: Sprite2D
 signal building_destroyed
 signal building_hit
+signal free_shooter_mummies
+@export var house_2 = false
 func _ready() -> void:
 	for fire in sprites:
 		fire.visible = false
@@ -40,4 +42,6 @@ func count_bullets():
 		explosion.visible = true
 		explosion.play("default")
 		await get_tree().create_timer(2).timeout
+		if (house_2):
+			free_shooter_mummies.emit()
 		queue_free()
