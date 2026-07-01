@@ -6,10 +6,12 @@ extends Area2D
 @onready var sprite = $Sprite2D
 @export var building: Sprite2D
 @onready var timer_on = false
+@onready var signalrecieved = false
 func _ready() -> void:
 	building.free_shooter_mummies.connect(activate_mummies)
 
 func activate_mummies():
+	signalrecieved = true
 	if sprite.visible:
 		sprite.visible = false
 		timer.wait_time = 5
@@ -19,4 +21,5 @@ func activate_mummies():
 		timer.wait_time = 5
 
 func _on_timer_timeout():
+	if (signalrecieved):
 		activate_mummies()

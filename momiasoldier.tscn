@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bj2n8hihah4c"]
+[gd_scene load_steps=34 format=3 uid="uid://bj2n8hihah4c"]
 
 [ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="1_r23is"]
 [ext_resource type="Script" uid="uid://bqfnoxsmo2as6" path="res://enemy_mummy_soldier.gd" id="2_ejhjs"]
@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://7biwkq1tjlg4" path="res://momia/ojo solo 1.png" id="8_1l4yw"]
 [ext_resource type="Texture2D" uid="uid://b8cg1kik71c4q" path="res://momia/radar/05.png" id="8_u0tva"]
 [ext_resource type="Script" uid="uid://3pyudddxuyq4" path="res://health_component.gd" id="9_1l4yw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgwbi"]
-size = Vector2(24, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tinek"]
 atlas = ExtResource("1_r23is")
@@ -154,9 +151,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw7y4"]
-size = Vector2(49.5, 53)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_wynbq"]
 animations = [{
 "frames": [{
@@ -176,9 +170,6 @@ animations = [{
 "name": &"poder_momia",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r23is"]
-size = Vector2(78, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhfja"]
 atlas = ExtResource("6_nrtir")
@@ -222,39 +213,27 @@ bg_color = Color(0.984314, 0.254902, 0.180392, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pci8"]
 bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgwbi"]
+size = Vector2(79, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l4yw"]
+size = Vector2(29, 50)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_ejhjs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1, 8)
-shape = SubResource("RectangleShape2D_fgwbi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_y5fkb")
 animation = &" walk left or right"
 
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-visible = false
-position = Vector2(-0.25, -0.5)
-shape = SubResource("RectangleShape2D_hw7y4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
 z_index = -1
 scale = Vector2(0.185, 0.185)
 sprite_frames = SubResource("SpriteFrames_wynbq")
 animation = &"poder_momia"
 frame_progress = 0.385265
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_r23is")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2.96)
@@ -286,10 +265,17 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7pci8")
 value = 100.0
 show_percentage = false
 
-[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_exited"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, 6)
+shape = SubResource("RectangleShape2D_fgwbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 8)
+shape = SubResource("RectangleShape2D_1l4yw")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

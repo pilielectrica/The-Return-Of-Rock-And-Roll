@@ -6,12 +6,12 @@ var distance
 var moving = true
 var atack = false
 @onready var anim = $AnimatedSprite2D
-@onready var momia_power = $AnimatedSprite2D/Area2D/AnimatedSprite2D
+@onready var momia_power = $AnimatedSprite2D/AnimatedSprite2D
 @onready var momia_eyes = $AnimatedSprite2D2
 @onready var momia_eye = $AnimatedSprite2D3
 @onready var health = $"Health Component"
 @onready var health_bar = $"Health Component/CanvasGroup/ProgressBar"
-@onready var collision_attack = $AnimatedSprite2D/Area2D/CollisionShape2D
+@onready var collision_body = $CollisionShape2D
 var momia_eye_left =  false
 var momia_eye_right = false
 var momia_eye_down = false
@@ -107,7 +107,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		atack = true
 		_atack()
-		$Area2D/CollisionShape2D.disabled = false
+		collision_body.disabled = false
 
 
 
@@ -118,7 +118,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		moving = true
 		momia_eyes.visible = false
 		momia_eye.visible = false
-		$Area2D/CollisionShape2D.disabled = true
+		#collision_body.disabled = true
 
 func _ready():
 		momia_eye.visible = false
@@ -135,7 +135,7 @@ func die():
 	anim.play("idle")
 	atack = false 
 	moving = false
-	collision_attack.disabled = true
+	collision_body.disabled = true
 	if(dead_count != true):
 		game_manager.enemy_dies(1)
 		dead_count = true
@@ -144,14 +144,14 @@ func die():
 func deactivate_enemy():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	visible = false
-	$Area2D/CollisionShape2D.disabled = true
+	collision_body.disabled = true
 func reset_enemy():
 	moving = true
 	atack = false
 	dead_count = false
 	health.reset_life()
 	health_bar.value = health.get_life()
-	$Area2D/CollisionShape2D.disabled = false
+	collision_body.disabled = false
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("arboles"):
