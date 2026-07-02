@@ -12,6 +12,7 @@ signal building_destroyed
 signal building_hit
 signal free_shooter_mummies
 @export var house_2 = false
+@export var house_shooters = false
 func _ready() -> void:
 	for fire in sprites:
 		fire.visible = false

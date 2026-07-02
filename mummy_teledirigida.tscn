@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cagp7l5cis7d1"]
+[gd_scene load_steps=7 format=3 uid="uid://cagp7l5cis7d1"]
 
 [ext_resource type="Texture2D" uid="uid://ijonbqo4mp8j" path="res://momia/mummy_teledirigido.png" id="1_exmep"]
 [ext_resource type="Script" uid="uid://dlt5kg5p6jtdo" path="res://mummy_lanza_balas.gd" id="1_fxoxd"]
+[ext_resource type="Script" uid="uid://3pyudddxuyq4" path="res://health_component.gd" id="3_fxoxd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wlsc"]
+bg_color = Color(0.984314, 0.254902, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qbmf"]
+bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyuln"]
 
@@ -12,6 +19,23 @@ script = ExtResource("1_fxoxd")
 visible = false
 texture = ExtResource("1_exmep")
 
+[node name="Health Component" type="Node2D" parent="Sprite2D"]
+script = ExtResource("3_fxoxd")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Sprite2D/Health Component"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite2D/Health Component/CanvasGroup"]
+offset_left = -15.0
+offset_top = -20.0
+offset_right = -11.0
+offset_bottom = 7.0
+rotation = 3.14159
+scale = Vector2(-7.513, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_0wlsc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4qbmf")
+value = 100.0
+show_percentage = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cyuln")
 
@@ -19,4 +43,5 @@ shape = SubResource("RectangleShape2D_cyuln")
 wait_time = 5.0
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

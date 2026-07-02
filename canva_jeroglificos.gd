@@ -11,7 +11,7 @@ var count_jero = 0
 func _ready() -> void:
 	jeroglifico_1.jeroglifico_taken.connect(enable_jero_1)
 	jeroglifico_2.jeroglifico_taken.connect(enable_jero_2)
-	#jeroglifico_3.jeroglifico_taken.connect(enable_jero_3)
+	jeroglifico_3.jeroglifico_taken.connect(enable_jero_3)
 	#jeroglifico_4.jeroglifico_taken.connect(enable_jero_4)
 func enable_jero_1():
 	button_1.visible = false

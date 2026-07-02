@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://qlnfkjawe2xe"]
+
+[ext_resource type="Texture2D" uid="uid://khrokh6lng6u" path="res://momia/PNG/building_2.png" id="1_hasbi"]
+[ext_resource type="Script" uid="uid://2aa0dwyd5sdf" path="res://casa.gd" id="1_xwnpv"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_hasbi")
+script = ExtResource("1_xwnpv")
+
+[node name="Area2D" type="Area2D" parent="." groups=["house"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-291, 136)
+polygon = PackedVector2Array(560, 2, 559, -315, 90, -320, 82, -176, -4, -169, -6, 6, 84, 3)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
