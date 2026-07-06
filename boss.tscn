@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cf015ptmkhjd8"]
+[gd_scene load_steps=87 format=3 uid="uid://cf015ptmkhjd8"]
 
 [ext_resource type="Texture2D" uid="uid://felom36071a5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-1/Anubis Attack-1 Sprite-Sheet.png" id="1_ysc7m"]
 [ext_resource type="Texture2D" uid="uid://v80knkutwsp5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Anubis Attack-2 Sprite-Sheet.png" id="2_7ke2s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bt2ycyyq7ibol" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Idle/Anubis Idle Sprite-Sheet.png" id="5_rdfxm"]
 [ext_resource type="Texture2D" uid="uid://brvfga2ucamm5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Move/Anubis Move Sprite-Sheet.png" id="6_cm1kr"]
 [ext_resource type="Texture2D" uid="uid://keen2jhber8" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Spirit Anubis Attack-2 Sprite-Sheet.png" id="7_akhi5"]
+[ext_resource type="Script" uid="uid://u2atcm8us81w" path="res://bullet_boss.gd" id="8_7ke2s"]
 [ext_resource type="Texture2D" uid="uid://cd535e2ym6try" path="res://boss/explosion4/k2_0001.png" id="8_vwlhh"]
 [ext_resource type="Texture2D" uid="uid://mm4v1kl37hq8" path="res://boss/explosion4/k2_0002.png" id="9_xvkcc"]
 [ext_resource type="Texture2D" uid="uid://dpqust6oupuem" path="res://boss/explosion4/k2_0003.png" id="10_oehbi"]
@@ -574,6 +575,7 @@ frame = 2
 frame_progress = 1.0
 
 [node name="Bullet" type="Area2D" parent="."]
+script = ExtResource("8_7ke2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
 position = Vector2(2, -4.5)
@@ -585,3 +587,5 @@ sprite_frames = SubResource("SpriteFrames_h6occ")
 animation = &"move"
 frame = 6
 frame_progress = 0.39308
+
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_body_entered"]
