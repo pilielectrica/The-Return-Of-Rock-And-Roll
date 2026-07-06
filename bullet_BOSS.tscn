@@ -101,7 +101,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_m1fhb")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
@@ -161,8 +161,15 @@ position = Vector2(2, -4.5)
 shape = SubResource("RectangleShape2D_l0p7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.26, 0.26)
+position = Vector2(8, 2)
+scale = Vector2(2.35156, 2.14844)
 sprite_frames = SubResource("SpriteFrames_28fn7")
-animation = &"move"
+animation = &"hit"
+frame = 14
+frame_progress = 0.299119
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

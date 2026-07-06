@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://u202dr02xes1"]
+
+[ext_resource type="Script" uid="uid://cuhdfceyj2fd4" path="res://estatua.gd" id="1_r4e2q"]
+[ext_resource type="Texture2D" uid="uid://d11e0midt5voc" path="res://boss/estatua bloqueando.png" id="2_rkqxo"]
+[ext_resource type="Texture2D" uid="uid://dxbomkg05k57" path="res://boss/Egypt.png" id="3_ek27h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbxem"]
+size = Vector2(44, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdrk5"]
+atlas = ExtResource("2_rkqxo")
+region = Rect2(0, 0, 100, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8tgy"]
+atlas = ExtResource("3_ek27h")
+region = Rect2(256, 0, 61, 149)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmcpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdrk5")
+}],
+"loop": true,
+"name": &"block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8tgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_r4e2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 4.5)
+shape = SubResource("RectangleShape2D_hbxem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_dmcpr")
