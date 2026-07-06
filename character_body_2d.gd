@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 @onready var weapon = $bazooka
 @onready var sprite = $AnimatedSprite2D
+@export var camera_zoom: Vector2 = Vector2(1, 1)
 
-const SPEED = 200.0
+@onready var camera = $Camera2D
+@export var speed = 200.0
 
 @export var cursor: Node2D
 
@@ -13,6 +15,7 @@ var angle
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	weapon.play("default")
+	camera.zoom = camera_zoom
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2(
@@ -28,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
-		velocity = direction * SPEED
+		velocity = direction * speed
 
 		if abs(direction.x) > abs(direction.y):
 			sprite.play("run")
