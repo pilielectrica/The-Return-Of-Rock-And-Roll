@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bn72g58vchi0o"]
+[gd_scene load_steps=69 format=4 uid="uid://bn72g58vchi0o"]
 
 [ext_resource type="Texture2D" uid="uid://dxbomkg05k57" path="res://boss/Egypt.png" id="1_hmp44"]
 [ext_resource type="Texture2D" uid="uid://q1x0jocxve44" path="res://momia/PNG/Preview_2D_RPG_Desert_Tileset.png" id="2_cqxf2"]
@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://ck5cxqenykbs6" path="res://character_body_2d.tscn" id="30_gtimp"]
 [ext_resource type="PackedScene" uid="uid://goovue3nq0ok" path="res://cursor.tscn" id="31_6f0h7"]
 [ext_resource type="PackedScene" uid="uid://u202dr02xes1" path="res://estatua.tscn" id="32_6f0h7"]
+[ext_resource type="PackedScene" uid="uid://meho3b10ksjs" path="res://bullet_manager.tscn" id="33_pi3ny"]
+[ext_resource type="PackedScene" uid="uid://bd34qcap3xx8x" path="res://fire_of_pink_bazzoooka.tscn" id="34_kha6r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phv7"]
 texture = ExtResource("1_hmp44")
@@ -29831,3 +29833,10 @@ position = Vector2(894, -793)
 
 [node name="Target 2" type="Marker2D" parent="."]
 position = Vector2(909, -2956)
+
+[node name="Bullet Manager" parent="." node_paths=PackedStringArray("player", "cursor") instance=ExtResource("33_pi3ny")]
+position = Vector2(-37, 119)
+scale = Vector2(3, 3)
+bullet_scene = ExtResource("34_kha6r")
+player = NodePath("../Player")
+cursor = NodePath("../Player/cursor")
