@@ -29716,7 +29716,7 @@ size = Vector2(823, 91.625)
 size = Vector2(211, 247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi3ny"]
-size = Vector2(768, 73)
+size = Vector2(768, 31.2502)
 
 [node name="Node2D" type="Node2D"]
 
@@ -29807,13 +29807,14 @@ gravity_scale = 0.0
 collider = NodePath("../Collider Entrada")
 barrera = NodePath("../StaticBody2D/barrera")
 flip_h = true
+pos_offset = -20
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(31, 2404)
 scale = Vector2(3.605, 3.605)
 
 [node name="barrera" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-31.9001, -831.623)
+position = Vector2(-30.5132, -838.558)
 scale = Vector2(0.282615, 0.277393)
 shape = SubResource("RectangleShape2D_pi3ny")
 disabled = true
