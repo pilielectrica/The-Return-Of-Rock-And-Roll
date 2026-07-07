@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dxbomkg05k57" path="res://boss/Egypt.png" id="3_ek27h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbxem"]
-size = Vector2(44, 129)
+size = Vector2(359, 464)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdrk5"]
 atlas = ExtResource("2_rkqxo")
@@ -38,7 +38,7 @@ animations = [{
 script = ExtResource("1_r4e2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 4.5)
+position = Vector2(-62.5, 317)
 shape = SubResource("RectangleShape2D_hbxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

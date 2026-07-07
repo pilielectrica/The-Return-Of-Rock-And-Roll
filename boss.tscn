@@ -1,5 +1,6 @@
-[gd_scene load_steps=60 format=3 uid="uid://cf015ptmkhjd8"]
+[gd_scene load_steps=79 format=3 uid="uid://cf015ptmkhjd8"]
 
+[ext_resource type="Script" uid="uid://b3wse2vehb7s7" path="res://boss.gd" id="1_7ke2s"]
 [ext_resource type="Texture2D" uid="uid://felom36071a5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-1/Anubis Attack-1 Sprite-Sheet.png" id="1_ysc7m"]
 [ext_resource type="Texture2D" uid="uid://v80knkutwsp5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Anubis Attack-2 Sprite-Sheet.png" id="2_7ke2s"]
 [ext_resource type="Texture2D" uid="uid://bo8p15bm1x3u7" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Death/Anubis Death Sprite-Sheet.png" id="3_ppmbc"]
@@ -7,6 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://bt2ycyyq7ibol" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Idle/Anubis Idle Sprite-Sheet.png" id="5_rdfxm"]
 [ext_resource type="Texture2D" uid="uid://brvfga2ucamm5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Move/Anubis Move Sprite-Sheet.png" id="6_cm1kr"]
 [ext_resource type="Texture2D" uid="uid://keen2jhber8" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Spirit Anubis Attack-2 Sprite-Sheet.png" id="7_akhi5"]
+[ext_resource type="Texture2D" uid="uid://48i7l1ooteiu" path="res://boss/front_shield/a_0001.png" id="9_ppmbc"]
+[ext_resource type="Texture2D" uid="uid://b10dpqvxthu6v" path="res://boss/front_shield/a_0002.png" id="10_kw08n"]
+[ext_resource type="Texture2D" uid="uid://jklhf8bgtlb3" path="res://boss/front_shield/a_0003.png" id="11_rdfxm"]
+[ext_resource type="Texture2D" uid="uid://ckoxxhcmsxtlg" path="res://boss/front_shield/a_0004.png" id="12_cm1kr"]
+[ext_resource type="Texture2D" uid="uid://bqwjspqavoty" path="res://boss/front_shield/a_0005.png" id="13_akhi5"]
+[ext_resource type="Texture2D" uid="uid://d2gwf3oo4hrdl" path="res://boss/front_shield/a_0006.png" id="14_vwlhh"]
+[ext_resource type="Texture2D" uid="uid://ltowl5lfgybg" path="res://boss/front_shield/a_0007.png" id="15_xvkcc"]
+[ext_resource type="Texture2D" uid="uid://cs3kje5r2v2vx" path="res://boss/front_shield/a_0008.png" id="16_oehbi"]
+[ext_resource type="Texture2D" uid="uid://be7rt2huwgyi4" path="res://boss/front_shield/a_0009.png" id="17_b3701"]
+[ext_resource type="Texture2D" uid="uid://bg2gcu5mf83q6" path="res://boss/front_shield/a_0010.png" id="18_7b5wb"]
+[ext_resource type="Texture2D" uid="uid://c16p2v08403k8" path="res://boss/front_shield/a_0011.png" id="19_eeb72"]
+[ext_resource type="Texture2D" uid="uid://cp5ift6cvmewk" path="res://boss/front_shield/a_0012.png" id="20_fdn2a"]
+[ext_resource type="Texture2D" uid="uid://crk7xs6aiihxd" path="res://boss/front_shield/a_0013.png" id="21_vvoe5"]
+[ext_resource type="Texture2D" uid="uid://vum4ij4ks7fx" path="res://boss/front_shield/a_0014.png" id="22_x1mfc"]
+[ext_resource type="Texture2D" uid="uid://ckxjhq85rsi41" path="res://boss/front_shield/a_0015.png" id="23_vomys"]
+[ext_resource type="Texture2D" uid="uid://g0jvrhfsenfd" path="res://boss/front_shield/a_0016.png" id="24_cas4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c30dg"]
 size = Vector2(118, 74)
@@ -396,7 +413,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxe4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ppmbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kw08n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rdfxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cm1kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_akhi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vwlhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xvkcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_oehbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b3701")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7b5wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_eeb72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fdn2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vvoe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_x1mfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vomys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_cas4q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr5wv"]
+radius = 185.781
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_7ke2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12, 11)
@@ -424,3 +501,30 @@ animation = &"move"
 frame = 2
 frame_progress = 1.0
 flip_h = true
+
+[node name="Area_Escudo" type="Area2D" parent="."]
+
+[node name="Escudo" type="AnimatedSprite2D" parent="Area_Escudo"]
+position = Vector2(-30, 12)
+scale = Vector2(0.345, 0.345)
+sprite_frames = SubResource("SpriteFrames_vxe4g")
+frame = 10
+frame_progress = 0.0756454
+
+[node name="Escudo2" type="AnimatedSprite2D" parent="Area_Escudo"]
+position = Vector2(-31, 23)
+rotation = 3.14159
+scale = Vector2(0.345, 0.345)
+sprite_frames = SubResource("SpriteFrames_vxe4g")
+frame = 13
+frame_progress = 0.368673
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Escudo"]
+position = Vector2(-17, 16)
+scale = Vector2(0.430749, 0.432528)
+shape = SubResource("CircleShape2D_fr5wv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
