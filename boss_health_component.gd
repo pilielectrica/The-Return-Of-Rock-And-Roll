@@ -1,0 +1,21 @@
+extends Node2D
+@export var life = 100
+@export var damage = 10
+signal life_70
+signal life_50
+func get_hurt():
+	life -= damage
+func get_life():
+	return life
+func reset_life():
+	life = 100
+func _dog_power():
+		life_70.emit()
+func _process(delta: float) -> void:
+	if life <= 70:
+		_dog_power()
+	if life  <= 50:
+		_dog_power_2()
+		print ("segundo poder perro")
+func _dog_power_2():
+		life_50.emit()

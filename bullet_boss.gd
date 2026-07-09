@@ -10,7 +10,6 @@ extends Area2D
 @export var target : Marker2D
 @onready var timer = $Timer
 @export var wait_time := 5
-
 var active := false
 var exploding := false
 var direction := Vector2.ZERO
@@ -37,8 +36,7 @@ func shoot(start_pos: Vector2):
 	exploding = false
 	collision.disabled = false
 	set_physics_process(true)
-
-
+	
 func _physics_process(delta):
 	if not active or exploding:
 		return
@@ -46,7 +44,6 @@ func _physics_process(delta):
 	rotation += 10 * delta
 	if global_position.distance_to(target_position) <= explosion_distance:
 		explode()
-	print(timer.time_left)
 
 func explode():
 	anim_bala.visible = true
@@ -69,7 +66,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
-
+		print ("player tccado bala 1")
 		explode()
 
 func _on_animation_finished():

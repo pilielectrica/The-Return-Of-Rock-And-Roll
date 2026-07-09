@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfk3egbaap1hh"]
+
+[ext_resource type="Script" uid="uid://c6i1nxtwoapjl" path="res://dog_power_boss.gd" id="1_s140q"]
+[ext_resource type="Texture2D" uid="uid://keen2jhber8" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Spirit Anubis Attack-2 Sprite-Sheet.png" id="2_xx281"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nihiv"]
+size = Vector2(48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st0px"]
+atlas = ExtResource("2_xx281")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o8wj"]
+atlas = ExtResource("2_xx281")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia7v4"]
+atlas = ExtResource("2_xx281")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qfsy"]
+atlas = ExtResource("2_xx281")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldygg"]
+atlas = ExtResource("2_xx281")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6o4k"]
+atlas = ExtResource("2_xx281")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5apg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st0px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o8wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia7v4")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qfsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldygg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6o4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st0px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o8wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia7v4")
+}],
+"loop": false,
+"name": &"move",
+"speed": 15.0
+}]
+
+[node name="Perro Area 2D" type="Area2D"]
+script = ExtResource("1_s140q")
+
+[node name="CollisionShapePerro" type="CollisionShape2D" parent="."]
+position = Vector2(-35.265, 15)
+shape = SubResource("RectangleShape2D_nihiv")
+
+[node name="Perro" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_a5apg")
+animation = &"move"
+flip_h = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

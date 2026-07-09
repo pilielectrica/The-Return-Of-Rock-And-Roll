@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cf015ptmkhjd8"]
+[gd_scene load_steps=74 format=3 uid="uid://cf015ptmkhjd8"]
 
 [ext_resource type="Script" uid="uid://b3wse2vehb7s7" path="res://boss.gd" id="1_7ke2s"]
 [ext_resource type="Texture2D" uid="uid://felom36071a5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-1/Anubis Attack-1 Sprite-Sheet.png" id="1_ysc7m"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bsvm6olimoog7" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Hit/Anubis Hit Sprite-Sheet.png" id="4_kw08n"]
 [ext_resource type="Texture2D" uid="uid://bt2ycyyq7ibol" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Idle/Anubis Idle Sprite-Sheet.png" id="5_rdfxm"]
 [ext_resource type="Texture2D" uid="uid://brvfga2ucamm5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Move/Anubis Move Sprite-Sheet.png" id="6_cm1kr"]
-[ext_resource type="Texture2D" uid="uid://keen2jhber8" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Spirit Anubis Attack-2 Sprite-Sheet.png" id="7_akhi5"]
 [ext_resource type="Texture2D" uid="uid://48i7l1ooteiu" path="res://boss/front_shield/a_0001.png" id="9_ppmbc"]
 [ext_resource type="Texture2D" uid="uid://b10dpqvxthu6v" path="res://boss/front_shield/a_0002.png" id="10_kw08n"]
 [ext_resource type="Texture2D" uid="uid://jklhf8bgtlb3" path="res://boss/front_shield/a_0003.png" id="11_rdfxm"]
@@ -24,10 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://vum4ij4ks7fx" path="res://boss/front_shield/a_0014.png" id="22_x1mfc"]
 [ext_resource type="Texture2D" uid="uid://ckxjhq85rsi41" path="res://boss/front_shield/a_0015.png" id="23_vomys"]
 [ext_resource type="Texture2D" uid="uid://g0jvrhfsenfd" path="res://boss/front_shield/a_0016.png" id="24_cas4q"]
-[ext_resource type="Script" uid="uid://3pyudddxuyq4" path="res://health_component.gd" id="25_ppmbc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c30dg"]
-size = Vector2(79, 76)
+[ext_resource type="Script" uid="uid://c0y3osxa5g25e" path="res://boss_health_component.gd" id="26_rdfxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubnwj"]
 atlas = ExtResource("1_ysc7m")
@@ -356,64 +352,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_03wqa"]
-size = Vector2(48, 49)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_st0px"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(576, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7o8wj"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(768, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ia7v4"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(960, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qfsy"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(0, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ldygg"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(192, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6o4k"]
-atlas = ExtResource("7_akhi5")
-region = Rect2(384, 0, 192, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7cweu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_st0px")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7o8wj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ia7v4")
-}],
-"loop": true,
-"name": &"hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2qfsy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ldygg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h6o4k")
-}],
-"loop": false,
-"name": &"move",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxe4g"]
 animations = [{
 "frames": [{
@@ -479,34 +417,20 @@ bg_color = Color(0.984314, 0.254902, 0.180392, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdfxm"]
 bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c30dg"]
+size = Vector2(79, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ke2s"]
+size = Vector2(59, 67)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7ke2s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-31.5, 10)
-shape = SubResource("RectangleShape2D_c30dg")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-17.79, 8.23)
 sprite_frames = SubResource("SpriteFrames_p4vyx")
-animation = &"attack_1"
-frame = 1
-frame_progress = 0.562386
-flip_h = true
-
-[node name="Perro Area 2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShapePerro" type="CollisionShape2D" parent="Perro Area 2D"]
-position = Vector2(-56, 15)
-shape = SubResource("RectangleShape2D_03wqa")
-
-[node name="Perro" type="AnimatedSprite2D" parent="Perro Area 2D"]
-visible = false
-position = Vector2(0, 3)
-sprite_frames = SubResource("SpriteFrames_7cweu")
-animation = &"move"
-frame = 2
-frame_progress = 1.0
+animation = &"idle"
+frame_progress = 0.0447988
 flip_h = true
 
 [node name="Area_Escudo" type="Area2D" parent="."]
@@ -535,9 +459,7 @@ shape = SubResource("CircleShape2D_fr5wv")
 wait_time = 4.0
 
 [node name="Health Component" type="Node2D" parent="."]
-script = ExtResource("25_ppmbc")
-life = 120
-damage = 50
+script = ExtResource("26_rdfxm")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Health Component"]
 position = Vector2(-33, -20)
@@ -555,6 +477,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_rdfxm")
 value = 100.0
 show_percentage = false
 
-[connection signal="area_entered" from="Perro Area 2D" to="." method="_on_perro_area_2d_area_entered"]
-[connection signal="body_entered" from="Perro Area 2D" to="." method="_on_perro_area_2d_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-31.5, 10)
+shape = SubResource("RectangleShape2D_c30dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-33.5, 10.5)
+shape = SubResource("RectangleShape2D_7ke2s")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
