@@ -6,11 +6,11 @@ var target_position
 @export var target : Marker2D
 var direction  := Vector2.ZERO
 var active := false
-@export var speed := 250
+@export var speed := 300
 @export var damage := 30
 @export var life := 100
-@export var zigzag_strength := 120
-@export var zigzag_frequency := 0.05
+@export var zigzag_strength := 90
+@export var zigzag_frequency := 0.03
 var total_distance := 0.0
 var time_alive := 0.0
 var perpendicular: Vector2
@@ -24,7 +24,6 @@ func _ready() -> void:
 func dog_power():
 	set_physics_process(true)
 	set_deferred("monitoring", true)
-
 	start_pos = global_position
 	target_position = target.global_position
 
@@ -35,6 +34,7 @@ func dog_power():
 	total_distance = start_pos.distance_to(target_position)
 
 	anim.visible = true
+	visible =true
 	active = true
 	collision.disabled = false
 
@@ -67,11 +67,13 @@ func _on_body_entered(body):
 		return
 	if body.is_in_group("player"):
 		print("player tocado")
-		anim.play("hit")
+		anim.play("move")
+		active = false
+		collision.disabled = true
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 func _on_animation_finished():
-	if anim.animation == "hit":
+	if anim.animation == "move":
 		disable_bullet()
 		print ("animacion hit terminada")
 		power_finished.emit()

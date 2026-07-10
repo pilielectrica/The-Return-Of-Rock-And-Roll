@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dkx4s28pruw1u" path="res://boss/explosion4/k2_0015.png" id="16_m1fhb"]
 [ext_resource type="Texture2D" uid="uid://iv41512q7qqu" path="res://boss/723.png" id="17_gkuoj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0p7j"]
-size = Vector2(52, 61)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ud1ga"]
+radius = 54.0833
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6mff"]
 atlas = ExtResource("17_gkuoj")
@@ -157,16 +157,15 @@ animations = [{
 script = ExtResource("1_ud1ga")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -4.5)
-shape = SubResource("RectangleShape2D_l0p7j")
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_ud1ga")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 2)
 scale = Vector2(2.35156, 2.14844)
 sprite_frames = SubResource("SpriteFrames_28fn7")
-animation = &"hit"
-frame = 14
-frame_progress = 0.299119
+animation = &"move"
+frame_progress = 0.0880286
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

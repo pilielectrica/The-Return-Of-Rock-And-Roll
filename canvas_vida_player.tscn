@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmtlvotwdnlms"]
+
+[ext_resource type="Script" uid="uid://bvfkynprgfxps" path="res://canva_principal.gd" id="1_m153h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2423i"]
+bg_color = Color(0.984314, 0.254902, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0owl0"]
+bg_color = Color(0.250418, 0.860064, 0.131544, 1)
+
+[node name="CanvasGroup" type="CanvasGroup"]
+script = ExtResource("1_m153h")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 150.0
+offset_bottom = 27.0
+rotation = 3.14159
+scale = Vector2(-7.513, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_2423i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0owl0")
+step = 1.0
+value = 100.0
+show_percentage = false

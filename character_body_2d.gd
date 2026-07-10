@@ -3,9 +3,9 @@ extends CharacterBody2D
 @onready var weapon = $bazooka
 @onready var sprite = $AnimatedSprite2D
 @export var camera_zoom: Vector2 = Vector2(1, 1)
-
 @onready var camera = $Camera2D
 @export var speed = 200.0
+@onready var health_component = $CanvasGroup
 
 @export var cursor: Node2D
 
@@ -93,3 +93,6 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	elif sprite.animation == "idle right" or sprite.animation == "idle left":
 		sprite.flip_h = false
+
+func take_damage(damage):
+	health_component.take_damage(damage)

@@ -7,7 +7,7 @@ extends Area2D
 @export var explosion_distance := 8.0
 @export var collider : Area2D
 @export var marker_start : Marker2D
-@export var target : Marker2D
+@export var target : Array[Marker2D]
 @onready var timer = $Timer
 @export var wait_time := 5
 var active := false
@@ -25,7 +25,8 @@ func _ready():
 
 func shoot(start_pos: Vector2):
 	global_position = start_pos
-	target_position = target.global_position
+	var selected_target: Marker2D = target.pick_random()
+	target_position = selected_target.global_position
 	direction = (target_position - global_position).normalized()
 
 	visible = true

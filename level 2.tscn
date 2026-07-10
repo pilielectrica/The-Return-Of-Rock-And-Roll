@@ -29769,7 +29769,7 @@ position = Vector2(-701, -1529)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
 marker_start = NodePath("../start point bullet boss")
-target = NodePath("../Player/player marker")
+target = [NodePath("../Player/player marker")]
 wait_time = 10
 
 [node name="Bullet boss2" parent="." node_paths=PackedStringArray("collider", "marker_start", "target") instance=ExtResource("29_g3ujs")]
@@ -29777,7 +29777,7 @@ position = Vector2(-856, -1164)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
 marker_start = NodePath("../start point bullet boss")
-target = NodePath("../Target 2")
+target = [NodePath("../Target 2"), NodePath("../Target 3"), NodePath("../Target 4"), NodePath("../Target 8"), NodePath("../Target 9"), NodePath("../Target 12")]
 wait_time = 10
 
 [node name="Bullet boss3" parent="." node_paths=PackedStringArray("collider", "marker_start", "target") instance=ExtResource("29_g3ujs")]
@@ -29785,7 +29785,7 @@ position = Vector2(-856, -1366)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
 marker_start = NodePath("../start point bullet boss")
-target = NodePath("../Target 1")
+target = [NodePath("../Target 1"), NodePath("../Target 6"), NodePath("../Target 5"), NodePath("../Target 7"), NodePath("../Target 10"), NodePath("../Target 11")]
 wait_time = 10
 
 [node name="start point bullet boss" type="Marker2D" parent="."]
@@ -29834,10 +29834,40 @@ shape = SubResource("RectangleShape2D_pi3ny")
 disabled = true
 
 [node name="Target 1" type="Marker2D" parent="."]
-position = Vector2(894, -793)
+position = Vector2(1132, -953)
 
 [node name="Target 2" type="Marker2D" parent="."]
 position = Vector2(909, -2956)
+
+[node name="Target 3" type="Marker2D" parent="."]
+position = Vector2(1129, -2736)
+
+[node name="Target 4" type="Marker2D" parent="."]
+position = Vector2(1141, -3152)
+
+[node name="Target 5" type="Marker2D" parent="."]
+position = Vector2(872, -1147)
+
+[node name="Target 6" type="Marker2D" parent="."]
+position = Vector2(1135, -1373)
+
+[node name="Target 7" type="Marker2D" parent="."]
+position = Vector2(-1462, -1129)
+
+[node name="Target 8" type="Marker2D" parent="."]
+position = Vector2(-1173, -3097)
+
+[node name="Target 9" type="Marker2D" parent="."]
+position = Vector2(-255, -3252)
+
+[node name="Target 10" type="Marker2D" parent="."]
+position = Vector2(-151, -1668)
+
+[node name="Target 11" type="Marker2D" parent="."]
+position = Vector2(-114, -2008)
+
+[node name="Target 12" type="Marker2D" parent="."]
+position = Vector2(-121, -2445)
 
 [node name="Bullet Manager" parent="." node_paths=PackedStringArray("player", "cursor") instance=ExtResource("33_pi3ny")]
 position = Vector2(-37, 119)
@@ -29849,8 +29879,12 @@ cursor = NodePath("../Player/cursor")
 [node name="Game Manager" parent="." node_paths=PackedStringArray("boss_bullets", "dog_power") instance=ExtResource("35_kha6r")]
 boss_bullets = [NodePath("../Bullet boss"), NodePath("../Bullet boss2"), NodePath("../Bullet boss3")]
 dog_power = NodePath("../Perro Poder")
+speed_increase_bullets = 50
 
 [node name="Perro Poder" parent="." node_paths=PackedStringArray("target") instance=ExtResource("36_x0cf1")]
 position = Vector2(-1098, -1991)
 scale = Vector2(3, 3)
 target = NodePath("../Player/player marker")
+speed = 400
+zigzag_strength = 300
+zigzag_frequency = 0.02

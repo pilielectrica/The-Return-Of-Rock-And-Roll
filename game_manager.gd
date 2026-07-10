@@ -4,6 +4,9 @@ var killed_enemies = 0
 @export var shooter_mummies: Array[Area2D] 
 @export var boss_bullets: Array[Area2D]
 @export var dog_power: Area2D
+@export var speed_increase_bullets := 25
+@export var speed_increase_dog_power := 50
+@export var zigzag_increase_dog_power := 50
 var round_2 = false
 func enemy_dies(_killed):
 	killed_enemies += _killed
@@ -15,7 +18,8 @@ func _ready() -> void:
 			for m in shooter_mummies:
 				m.process_mode = Node.PROCESS_MODE_DISABLED
 				m.visible = false
-	dog_power.power_finished.connect(_on_dog_power_finished)
+	if dog_power != null:
+		dog_power.power_finished.connect(_on_dog_power_finished)
 	activate_mummies()
 func activate_mummies():
 	if (shooter_mummies != null):
@@ -33,7 +37,10 @@ func _on_dog_power_finished():
 	for m in boss_bullets:
 			m.process_mode = Node.PROCESS_MODE_INHERIT
 			m.visible = true
-			increase_bullets_speed()
+
 func increase_bullets_speed():
 	for m in boss_bullets:
-		m.speed += 75
+		m.speed += speed_increase_bullets
+func increase_dog_power_speed():
+	dog_power.speed += speed_increase_dog_power
+	dog_power.zigzag_strength += zigzag_increase_dog_power

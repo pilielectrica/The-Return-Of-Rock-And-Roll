@@ -22,6 +22,7 @@ var dead_count = false
 var change_dir := false
 var avoid_direction := Vector2.ZERO
 var avoid_time := 0.0
+var damage = false
 func _physics_process(delta):
 	var pos_dif = player.global_position - global_position
 	if (moving):
@@ -107,6 +108,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		atack = true
 		_atack()
+		if !damage:
+			if body.has_method("take_damage"):
+				body.take_damage(5)
+				damage = true
+				print ("aplicado el daño" + "vida es: " + str(body.get_child(6).life))
 		collision_body.disabled = false
 
 
@@ -118,6 +124,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		moving = true
 		momia_eyes.visible = false
 		momia_eye.visible = false
+		damage = false
 		#collision_body.disabled = true
 
 func _ready():

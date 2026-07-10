@@ -265,7 +265,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7pci8")
 value = 100.0
 show_percentage = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2.5, 6)

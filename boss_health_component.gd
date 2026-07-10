@@ -3,6 +3,7 @@ extends Node2D
 @export var damage = 10
 signal life_70
 signal life_50
+signal life_25
 func get_hurt():
 	life -= damage
 func get_life():
@@ -19,3 +20,5 @@ func _process(delta: float) -> void:
 		print ("segundo poder perro")
 func _dog_power_2():
 		life_50.emit()
+func _dog_power_3():
+		life_25.emit()

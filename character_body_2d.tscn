@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ck5cxqenykbs6"]
+[gd_scene load_steps=36 format=3 uid="uid://ck5cxqenykbs6"]
 
 [ext_resource type="Script" uid="uid://ct2b5qucm1l2r" path="res://character_body_2d.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://gf4g2y1cgbol" path="res://heroesi.png" id="2_4sjlk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyv3nj02bsv1q" path="res://Copilot_20260601_153412.png" id="6_lhvu3"]
 [ext_resource type="Texture2D" uid="uid://tht6gmvmsysm" path="res://player_full_animation.png" id="7_1kp85"]
 [ext_resource type="Texture2D" uid="uid://hlqbm7n2ehaa" path="res://Copilot_20251025_152244.png" id="7_4sjlk"]
+[ext_resource type="PackedScene" uid="uid://cmtlvotwdnlms" path="res://canvas_vida_player.tscn" id="7_qp52p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61y8d"]
 atlas = ExtResource("2_4sjlk")
@@ -237,6 +238,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhvu3"]
+size = Vector2(26, 60)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ij6vw")
 
@@ -264,3 +268,13 @@ flip_h = true
 
 [node name="muzzle_r" type="Marker2D" parent="bazooka"]
 position = Vector2(355.556, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, -1)
+shape = SubResource("RectangleShape2D_lhvu3")
+
+[node name="CanvasGroup" parent="." instance=ExtResource("7_qp52p")]
+position = Vector2(-562, 292)
+scale = Vector2(1, 2)
