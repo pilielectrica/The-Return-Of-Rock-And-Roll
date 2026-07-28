@@ -7,10 +7,9 @@ var destroy := 0
 @export var sprites: Array[AnimatedSprite2D]
 @export var markers: Array[Marker2D]
 @export var explosion: AnimatedSprite2D
-@export var jeroglifico: Sprite2D
 signal building_destroyed
 signal building_hit
-signal free_shooter_mummies
+signal free_shooter_mummy
 @export var house_2 = false
 @export var house_shooters = false
 func _ready() -> void:
@@ -44,5 +43,6 @@ func count_bullets():
 		explosion.play("default")
 		await get_tree().create_timer(2).timeout
 		if (house_2):
-			free_shooter_mummies.emit()
+			free_shooter_mummy.emit()
 		queue_free()
+	

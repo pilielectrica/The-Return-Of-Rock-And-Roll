@@ -27824,15 +27824,15 @@ bullet_scene = ExtResource("94_wnn4a")
 player = NodePath("../Player")
 cursor = NodePath("../Player/cursor")
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies") instance=ExtResource("97_td2a2")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1") instance=ExtResource("97_td2a2")]
 position = Vector2(-53, 140)
 building = NodePath("../House_2")
 shooter_mummies = [NodePath("../Shooter_Mummie"), NodePath("../Shooter_Mummy_2"), NodePath("../Shooter_Mummy_3"), NodePath("../Shooter_Mummy_4")]
+last_jero_level_1 = NodePath("../Jeroglifico_3")
 
-[node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("98_c6xte")]
+[node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "building") instance=ExtResource("98_c6xte")]
 position = Vector2(-83, 136)
 marker = NodePath("Marker2D3")
-enemy = [NodePath("CharacterBody2D"), NodePath("CharacterBody2D2"), NodePath("CharacterBody2D3"), NodePath("CharacterBody2D4"), NodePath("CharacterBody2D5")]
 spawn_wait_time = 10.0
 building = NodePath("../House_1")
 
@@ -27873,10 +27873,9 @@ SPEED = 200.0
 explosion_scene = ExtResource("93_1aygh")
 game_manager = NodePath("../../GameManager")
 
-[node name="Enemy_Spawner2" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("98_c6xte")]
+[node name="Enemy_Spawner2" parent="." node_paths=PackedStringArray("marker", "building") instance=ExtResource("98_c6xte")]
 position = Vector2(-149, 89)
 marker = NodePath("Marker2D4")
-enemy = [NodePath("CharacterBody2D6"), NodePath("CharacterBody2D7"), NodePath("CharacterBody2D8"), NodePath("CharacterBody2D9"), NodePath("CharacterBody2D10")]
 spawn_wait_time = 4.0
 building = NodePath("../House_2")
 
@@ -28037,12 +28036,12 @@ position = Vector2(877, -229)
 building = NodePath("../House_2")
 sprite_texture = ExtResource("105_wcv2n")
 
-[node name="Jeroglifico_3" parent="." node_paths=PackedStringArray("building") instance=ExtResource("103_sduiw")]
-position = Vector2(234, -657)
-building = NodePath("../Casona_Shooters")
+[node name="Jeroglifico_3" parent="." instance=ExtResource("103_sduiw")]
+position = Vector2(268, -472)
 sprite_texture = ExtResource("106_5mre3")
 
 [node name="Shooter_Mummie" parent="." node_paths=PackedStringArray("bullet_mummy", "marker", "player", "house_2", "house_actual") instance=ExtResource("106_xgqcr")]
+z_index = 2
 position = Vector2(-70, -639)
 scale = Vector2(2.265, 2.265)
 bullet_mummy = NodePath("Area2D2")
@@ -28060,6 +28059,7 @@ position = Vector2(4, 6)
 position = Vector2(4, 8)
 
 [node name="Shooter_Mummy_2" parent="." node_paths=PackedStringArray("bullet_mummy", "marker", "player", "house_2", "house_actual") instance=ExtResource("106_xgqcr")]
+z_index = 2
 position = Vector2(26, -635)
 scale = Vector2(2.265, 2.265)
 bullet_mummy = NodePath("Area2D2")
@@ -28077,6 +28077,7 @@ position = Vector2(0.883002, 4.415)
 position = Vector2(-3.53201, 2.95043e-06)
 
 [node name="Shooter_Mummy_3" parent="." node_paths=PackedStringArray("bullet_mummy", "marker", "player", "house_2", "house_actual") instance=ExtResource("106_xgqcr")]
+z_index = 2
 position = Vector2(123, -636)
 scale = Vector2(2.265, 2.265)
 bullet_mummy = NodePath("Area2D2")
@@ -28094,6 +28095,7 @@ position = Vector2(0.441502, 3.53205)
 position = Vector2(-3.53201, 2.95043e-06)
 
 [node name="Shooter_Mummy_4" parent="." node_paths=PackedStringArray("bullet_mummy", "marker", "player", "house_2", "house_actual") instance=ExtResource("106_xgqcr")]
+z_index = 2
 position = Vector2(224, -643)
 scale = Vector2(2.265, 2.265)
 bullet_mummy = NodePath("Area2D2")
@@ -28110,27 +28112,9 @@ position = Vector2(0.883007, 5.29805)
 [node name="Marker2D" type="Marker2D" parent="Shooter_Mummy_4"]
 position = Vector2(1.66893e-06, 0.441531)
 
-[node name="Casona_Shooters" parent="." node_paths=PackedStringArray("sprites", "markers", "explosion") instance=ExtResource("108_6jj3b")]
-z_index = -1
+[node name="Casona_Shooters" parent="." instance=ExtResource("108_6jj3b")]
+z_index = 1
 position = Vector2(36, -691)
-max_hits = 10
-hits_per_fire = 10
-sprites = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D4"), NodePath("AnimatedSprite2D3"), NodePath("AnimatedSprite2D5"), NodePath("AnimatedSprite2D6")]
-markers = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4"), NodePath("Marker2D5")]
-explosion = NodePath("AnimatedSprite2D2")
-house_shooters = true
-
-[node name="AnimatedSprite2D2" parent="Casona_Shooters" instance=ExtResource("102_r8aua")]
-
-[node name="AnimatedSprite2D" parent="Casona_Shooters" instance=ExtResource("101_j2pq0")]
-
-[node name="AnimatedSprite2D4" parent="Casona_Shooters" instance=ExtResource("101_j2pq0")]
-
-[node name="AnimatedSprite2D5" parent="Casona_Shooters" instance=ExtResource("101_j2pq0")]
-
-[node name="AnimatedSprite2D6" parent="Casona_Shooters" instance=ExtResource("101_j2pq0")]
-
-[node name="AnimatedSprite2D3" parent="Casona_Shooters" instance=ExtResource("101_j2pq0")]
 
 [node name="Marker2D" type="Marker2D" parent="Casona_Shooters"]
 position = Vector2(-2, -59)
@@ -28146,9 +28130,3 @@ position = Vector2(-80, -126)
 
 [node name="Marker2D5" type="Marker2D" parent="Casona_Shooters"]
 position = Vector2(167, -120)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Casona_Shooters"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Casona_Shooters/StaticBody2D"]
-position = Vector2(-291, 136)
-polygon = PackedVector2Array(560, 2, 558, -206, 87, -209, 82, -176, -4, -169, -6, 6, 84, 3)

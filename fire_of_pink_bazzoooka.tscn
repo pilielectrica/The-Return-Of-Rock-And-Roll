@@ -29,6 +29,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h31an"]
 
 [node name="Area2D" type="Area2D" groups=["bullet"]]
+z_index = 3
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_h31an")
 

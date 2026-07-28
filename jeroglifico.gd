@@ -9,14 +9,11 @@ signal free_shooter_mummies
 func _ready() -> void:
 	visible = false
 	sprite.texture = sprite_texture
-	building.building_destroyed.connect(set_jero_visible)
+	if (building != null):
+		building.building_destroyed.connect(set_jero_visible)
 func set_jero_visible():
 	visible = true
 	print("set jero visible llamado")
-
-
-
-
 func _on_body_entered(body: Node2D) -> void:
 	print ("algo entro")
 	if body.is_in_group("player"):
