@@ -165,7 +165,6 @@ position = Vector2(8, 2)
 scale = Vector2(2.35156, 2.14844)
 sprite_frames = SubResource("SpriteFrames_28fn7")
 animation = &"move"
-frame_progress = 0.0880286
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

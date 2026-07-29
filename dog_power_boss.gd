@@ -4,6 +4,7 @@ extends Area2D
 @export var start_pos = 0
 var target_position
 @export var target : Marker2D
+@export var start_marker : Marker2D
 var direction  := Vector2.ZERO
 var active := false
 @export var speed := 300
@@ -20,42 +21,40 @@ signal power_finished
 func _ready() -> void:
 	set_deferred("monitoring", false)
 	visible = false
-	anim.animation_finished.connect(_on_animation_finished)
-func dog_power():
-	set_physics_process(true)
-	set_deferred("monitoring", true)
-	start_pos = global_position
-	target_position = target.global_position
-
-	direction = (target_position - start_pos).normalized()
-	perpendicular = Vector2(-direction.y, direction.x)
-
+func dog_power() -> void:
+	start_pos = start_marker.global_position
 	distance_traveled = 0.0
-	total_distance = start_pos.distance_to(target_position)
 
 	anim.visible = true
-	visible =true
+	visible = true
 	active = true
-	collision.disabled = false
 
+	collision.set_deferred("disabled", false)
+	set_deferred("monitoring", true)
+	set_physics_process(true)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not active:
 		return
 
+	if not is_instance_valid(target):
+		disable_bullet()
+		return
+
+	direction = (target.global_position - global_position).normalized()
+	perpendicular = Vector2(-direction.y, direction.x)
+
 	distance_traveled += speed * delta
 
-	var base_position = start_pos + direction * distance_traveled
-	var side_offset = perpendicular * sin(distance_traveled * zigzag_frequency) * zigzag_strength
+	var forward_movement := direction * speed * delta
+	var side_movement := perpendicular * sin(
+		distance_traveled * zigzag_frequency
+	) * zigzag_strength * delta
 
-	global_position = base_position + side_offset
-
-	if distance_traveled >= total_distance:
-		active = false
-		visible = false
-		set_deferred("monitoring", false)
+	global_position += forward_movement + side_movement
 
 func disable_bullet():
+	
 	active = false
 	visible = false
 	anim.visible = false
@@ -72,11 +71,9 @@ func _on_body_entered(body):
 		collision.disabled = true
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
-func _on_animation_finished():
-	if anim.animation == "move":
-		disable_bullet()
-		print ("animacion hit terminada")
-		power_finished.emit()
+			power_finished.emit()
+			await get_tree().create_timer(2.0).timeout
+			disable_bullet()
 func take_damage():
 	life -= 20
 func _on_area_entered(area: Area2D) -> void:
@@ -84,4 +81,5 @@ func _on_area_entered(area: Area2D) -> void:
 		take_damage()
 		if life <= 0:
 			disable_bullet()
+			anim.stop()
 			power_finished.emit()

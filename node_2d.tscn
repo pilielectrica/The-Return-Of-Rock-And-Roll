@@ -27830,9 +27830,10 @@ building = NodePath("../House_2")
 shooter_mummies = [NodePath("../Shooter_Mummie"), NodePath("../Shooter_Mummy_2"), NodePath("../Shooter_Mummy_3"), NodePath("../Shooter_Mummy_4")]
 last_jero_level_1 = NodePath("../Jeroglifico_3")
 
-[node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "building") instance=ExtResource("98_c6xte")]
+[node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("98_c6xte")]
 position = Vector2(-83, 136)
 marker = NodePath("Marker2D3")
+enemy = [NodePath("CharacterBody2D"), NodePath("CharacterBody2D2"), NodePath("CharacterBody2D3"), NodePath("CharacterBody2D4"), NodePath("CharacterBody2D5")]
 spawn_wait_time = 10.0
 building = NodePath("../House_1")
 
@@ -27873,9 +27874,10 @@ SPEED = 200.0
 explosion_scene = ExtResource("93_1aygh")
 game_manager = NodePath("../../GameManager")
 
-[node name="Enemy_Spawner2" parent="." node_paths=PackedStringArray("marker", "building") instance=ExtResource("98_c6xte")]
+[node name="Enemy_Spawner2" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("98_c6xte")]
 position = Vector2(-149, 89)
 marker = NodePath("Marker2D4")
+enemy = [NodePath("CharacterBody2D6"), NodePath("CharacterBody2D7"), NodePath("CharacterBody2D8"), NodePath("CharacterBody2D9"), NodePath("CharacterBody2D10")]
 spawn_wait_time = 4.0
 building = NodePath("../House_2")
 

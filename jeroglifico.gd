@@ -9,9 +9,11 @@ signal free_shooter_mummies
 func _ready() -> void:
 	visible = false
 	sprite.texture = sprite_texture
+	collision.set_deferred("disabled", true)
 	if (building != null):
 		building.building_destroyed.connect(set_jero_visible)
 func set_jero_visible():
+	collision.set_deferred("disabled", false)
 	visible = true
 	print("set jero visible llamado")
 func _on_body_entered(body: Node2D) -> void:

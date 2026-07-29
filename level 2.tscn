@@ -29879,12 +29879,16 @@ cursor = NodePath("../Player/cursor")
 [node name="Game Manager" parent="." node_paths=PackedStringArray("boss_bullets", "dog_power") instance=ExtResource("35_kha6r")]
 boss_bullets = [NodePath("../Bullet boss"), NodePath("../Bullet boss2"), NodePath("../Bullet boss3")]
 dog_power = NodePath("../Perro Poder")
-speed_increase_bullets = 50
+speed_increase_bullets = 100
 
-[node name="Perro Poder" parent="." node_paths=PackedStringArray("target") instance=ExtResource("36_x0cf1")]
+[node name="Perro Poder" parent="." node_paths=PackedStringArray("target", "start_marker") instance=ExtResource("36_x0cf1")]
 position = Vector2(-1098, -1991)
 scale = Vector2(3, 3)
 target = NodePath("../Player/player marker")
+start_marker = NodePath("../Marker2D_Start_Pos")
 speed = 400
 zigzag_strength = 300
 zigzag_frequency = 0.02
+
+[node name="Marker2D_Start_Pos" type="Marker2D" parent="."]
+position = Vector2(-1226, -1951)

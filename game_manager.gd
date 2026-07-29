@@ -10,6 +10,7 @@ var killed_enemies = 0
 @export var last_jero_level_1 : Area2D
 var killed_shooters = 0
 var round_2 = false
+var done = false
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
@@ -20,6 +21,7 @@ func _ready() -> void:
 			for m in shooter_mummies:
 				m.process_mode = Node.PROCESS_MODE_DISABLED
 				m.visible = false
+				m.die.connect(check_last_jero_level_1)
 	if dog_power != null:
 		dog_power.power_finished.connect(_on_dog_power_finished)
 	activate_mummies()
@@ -47,8 +49,7 @@ func increase_dog_power_speed():
 	dog_power.speed += speed_increase_dog_power
 	dog_power.zigzag_strength += zigzag_increase_dog_power
 func check_last_jero_level_1():
-	for m in shooter_mummies:
-		if m.killed:
-			killed_shooters +1
-			if killed_shooters == 4:
-				last_jero_level_1.set_jero_visible()
+	killed_shooters += 1
+	if killed_shooters == 4:
+		last_jero_level_1.set_jero_visible()
+		return

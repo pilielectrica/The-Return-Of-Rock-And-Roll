@@ -14,8 +14,9 @@ extends Area2D
 @onready var health_bar = $"Sprite2D/Health Component/CanvasGroup/ProgressBar"
 @onready var collider = $CollisionShape2D
 var killed = false
+var done = false
 @onready var actual_house_destroyed = false
-@export var game_manager: Node2D
+signal die
 func _ready() -> void:
 	house_2.free_shooter_mummy.connect(activate_mummy)
 func activate_mummy():
@@ -35,13 +36,14 @@ func _on_timer_timeout():
 		activate_mummy()
 
 func _on_area_entered(area: Area2D) -> void:
-
 	if area.is_in_group("bullet"):
 		health.get_hurt()
 		health_bar.value = health.get_life()
 		if health.get_life() <= 0:
 			deactivate_mummy()
-			game_manager.check_last_jero_level_1()
+			if (!done):
+				die.emit()
+				done = true
 func deactivate_mummy():
 		process_mode = Node.PROCESS_MODE_DISABLED
 		sprite.visible = false
@@ -49,4 +51,4 @@ func deactivate_mummy():
 		bullet_mummy.visible = false
 		bullet_mummy.process_mode = Node.PROCESS_MODE_DISABLED
 		actual_house_destroyed = true
-		killed = true
+		
