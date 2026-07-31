@@ -16,8 +16,8 @@ var total_distance := 0.0
 var time_alive := 0.0
 var perpendicular: Vector2
 var distance_traveled := 0.0
-
 signal power_finished
+
 func _ready() -> void:
 	set_deferred("monitoring", false)
 	visible = false
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		disable_bullet()
 		return
 
-	direction = (target.global_position - global_position).normalized()
+	direction = (target.global_position - start_pos.global_position).normalized()
 	perpendicular = Vector2(-direction.y, direction.x)
 
 	distance_traveled += speed * delta

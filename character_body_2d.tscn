@@ -277,5 +277,6 @@ position = Vector2(3, -1)
 shape = SubResource("RectangleShape2D_lhvu3")
 
 [node name="CanvasGroup" parent="." instance=ExtResource("7_qp52p")]
+z_index = 10
 position = Vector2(-562, 292)
 scale = Vector2(1, 2)

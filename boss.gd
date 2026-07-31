@@ -18,6 +18,10 @@ var life_70 = false
 var life_50 = false
 var life_25 = true
 var hurt = false
+var direction : Vector2
+@export var speed := 500
+@export var player_marker : Marker2D
+@onready var start_position
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -28,6 +32,8 @@ func _ready() -> void:
 	life_component.life_70.connect(_on_life_70)
 	life_component.life_50.connect(_on_life_50)
 	life_component.life_25.connect(_on_life_25)
+	start_position = global_position
+
 func _on_shoot_done():
 	escudo_area.set_deferred("monitoring", false)
 	escudo_collision.set_deferred("disabled", true)
@@ -57,11 +63,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet") and !escudo_active:
 		if !hurt:
 			hurt = true
-
 			life_component.get_hurt()
 			life_bar.value = life_component.get_life()
 
-			await get_tree().create_timer(1.2).timeout
+			await get_tree().create_timer(5).timeout
 
 			hurt = false
 func _on_life_50():
@@ -76,3 +81,17 @@ func _on_life_25():
 		game_manager.increase_bullets_speed()
 		game_manager.increase_dog_power_speed()
 		life_25 = true
+func melee_attack():
+	direction = (player_marker.global_position - global_position).normalized()
+	direction = direction.normalized()
+	velocity = direction * speed
+	move_and_slide()
+	if global_position.distance_to(player_marker.global_position) <= 15:
+		velocity = Vector2.ZERO
+		anim_boss.play("attack_1")
+		await get_tree().create_timer(2.0).timeout
+		global_position = start_position
+		
+func _physics_process(delta: float) -> void:
+	if (hurt):
+		melee_attack()

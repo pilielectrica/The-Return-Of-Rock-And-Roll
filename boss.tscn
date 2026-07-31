@@ -429,8 +429,9 @@ script = ExtResource("1_7ke2s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17.79, 8.23)
 sprite_frames = SubResource("SpriteFrames_p4vyx")
-animation = &"idle"
-frame_progress = 0.0447988
+animation = &"attack_1"
+frame = 6
+frame_progress = 0.947575
 flip_h = true
 
 [node name="Area_Escudo" type="Area2D" parent="."]
