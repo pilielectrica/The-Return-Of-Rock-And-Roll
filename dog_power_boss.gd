@@ -1,7 +1,7 @@
 extends Area2D
 @onready var collision = $CollisionShapePerro
 @onready var anim = $Perro
-@export var start_pos = 0
+@export var start_pos :Vector2
 var target_position
 @export var target : Marker2D
 @export var start_marker : Marker2D
@@ -23,6 +23,7 @@ func _ready() -> void:
 	visible = false
 func dog_power() -> void:
 	start_pos = start_marker.global_position
+	global_position = start_pos
 	distance_traveled = 0.0
 
 	anim.visible = true
@@ -41,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		disable_bullet()
 		return
 
-	direction = (target.global_position - start_pos.global_position).normalized()
+	direction = (target.global_position - start_pos).normalized()
 	perpendicular = Vector2(-direction.y, direction.x)
 
 	distance_traveled += speed * delta
