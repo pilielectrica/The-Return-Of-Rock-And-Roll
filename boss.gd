@@ -19,6 +19,7 @@ var life_25 = true
 var hurt = false
 var direction : Vector2
 @export var speed := 500
+@export var speed_increasement := 100
 @export var player_marker : Marker2D
 @onready var start_position
 var calculation = false
@@ -73,7 +74,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		finish_melee_attack()
 func _on_life_50():
 	if (!life_50):
-
 		game_manager.increase_dog_power_speed()
 		life_50 = true
 func _on_life_25():
@@ -89,10 +89,10 @@ func melee_attack():
 		anim_boss.play("move")
 		calculation = true
 		attack = true
+
 func _physics_process(delta: float) -> void:
 	if (attack):
 		move_and_slide()
-
 func finish_melee_attack():
 		global_position = start_position
 		calculation = false
@@ -100,3 +100,10 @@ func finish_melee_attack():
 		anim_boss.play("idle")
 		dog_power.dog_power()
 		game_manager.increase_bullets_speed()
+		speed += speed_increasement
+		hurt = false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.take_damage(10)
