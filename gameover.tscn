@@ -1,0 +1,146 @@
+[gd_scene load_steps=23 format=3 uid="uid://d4liv6rlam7"]
+
+[ext_resource type="Texture2D" uid="uid://c1kh5xpujv4nw" path="res://player_full_animation - copia.png" id="1_kctv7"]
+[ext_resource type="Shader" uid="uid://dxiq288w8h0pp" path="res://player.tres" id="1_w3x71"]
+[ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="2_2nw6q"]
+[ext_resource type="Shader" uid="uid://i474125p75ho" path="res://shader_mummy.tres" id="2_w3x71"]
+[ext_resource type="Shader" uid="uid://dye4fbrnliguu" path="res://shader_game_over.tres" id="3_w3x71"]
+[ext_resource type="Texture2D" uid="uid://b3tni31ipst4e" path="res://game over.png" id="4_kctv7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g1o2j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn7gr"]
+shader = ExtResource("1_w3x71")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn7gr"]
+atlas = ExtResource("1_kctv7")
+region = Rect2(0, 320, 40, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7a41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn7gr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af4fq"]
+shader = ExtResource("2_w3x71")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nmon"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yximd"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh3sh"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(48, 64, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmx0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nmon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yximd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh3sh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3x71"]
+shader = ExtResource("2_w3x71")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y70k4"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7qqf"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hr8p"]
+atlas = ExtResource("2_2nw6q")
+region = Rect2(48, 32, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdlxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y70k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7qqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hr8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1o2j"]
+shader = ExtResource("2_w3x71")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nw6q"]
+shader = ExtResource("3_w3x71")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasGroup"]
+material = SubResource("CanvasItemMaterial_g1o2j")
+offset_right = 1172.0
+offset_bottom = 680.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_pn7gr")
+position = Vector2(565, 483)
+rotation = 1.5708
+scale = Vector2(3.62, 3.62)
+sprite_frames = SubResource("SpriteFrames_b7a41")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_af4fq")
+position = Vector2(572, 178)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_xmx0r")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_w3x71")
+position = Vector2(200, 360)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_mdlxv")
+autoplay = "default"
+frame_progress = 0.576725
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g1o2j")
+position = Vector2(933, 364)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_mdlxv")
+autoplay = "default"
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_2nw6q")
+position = Vector2(565.75, 379)
+scale = Vector2(1.61865, 1.67917)
+texture = ExtResource("4_kctv7")

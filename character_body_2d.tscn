@@ -201,7 +201,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp52p"]
-size = Vector2(26, 55.5)
+size = Vector2(35, 55.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8icv6"]
 atlas = ExtResource("6_lhvu3")
@@ -250,7 +250,7 @@ sprite_frames = SubResource("SpriteFrames_4sjlk")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(0, 1.25)
+position = Vector2(2.5, 1.25)
 shape = SubResource("RectangleShape2D_qp52p")
 
 [node name="Camera2D" type="Camera2D" parent="."]

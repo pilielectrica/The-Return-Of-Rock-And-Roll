@@ -11,7 +11,13 @@ extends CharacterBody2D
 
 var dir
 var angle
+@export var dash_speed := 1000.0
+@export var dash_duration := 0.20
+@export var dash_cooldown := 0.8
 
+var is_dashing := false
+var can_dash := true
+var dash_direction := Vector2.ZERO
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	weapon.play("default")
@@ -22,7 +28,13 @@ func _physics_process(delta: float) -> void:
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")
 	)
+	if Input.is_action_just_pressed("dash") and can_dash and direction != Vector2.ZERO:
+		start_dash(direction)
 
+	if is_dashing:
+		velocity = dash_direction * dash_speed
+		move_and_slide()
+		return
 	var aim_pos = cursor.global_position
 	var aim_dir = aim_pos - global_position
 
@@ -96,3 +108,13 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	health_component.take_damage(damage)
+func start_dash(direction: Vector2) -> void:
+	is_dashing = true
+	can_dash = false
+	dash_direction = direction.normalized()
+
+	await get_tree().create_timer(dash_duration).timeout
+	is_dashing = false
+
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true

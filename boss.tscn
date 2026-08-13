@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cf015ptmkhjd8"]
+[gd_scene load_steps=73 format=3 uid="uid://cf015ptmkhjd8"]
 
 [ext_resource type="Script" uid="uid://b3wse2vehb7s7" path="res://boss.gd" id="1_7ke2s"]
 [ext_resource type="Texture2D" uid="uid://felom36071a5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-1/Anubis Attack-1 Sprite-Sheet.png" id="1_ysc7m"]
@@ -418,10 +418,7 @@ bg_color = Color(0.984314, 0.254902, 0.180392, 1)
 bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c30dg"]
-size = Vector2(79, 76)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ke2s"]
-size = Vector2(59, 67)
+size = Vector2(94, 76)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7ke2s")
@@ -479,12 +476,8 @@ show_percentage = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-31.5, 10)
+position = Vector2(-24, 10)
 shape = SubResource("RectangleShape2D_c30dg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-33.5, 10.5)
-shape = SubResource("RectangleShape2D_7ke2s")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
