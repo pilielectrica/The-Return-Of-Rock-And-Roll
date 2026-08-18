@@ -8,6 +8,8 @@ var killed_enemies = 0
 @export var speed_increase_dog_power := 50
 @export var zigzag_increase_dog_power := 50
 @export var last_jero_level_1 : Area2D
+@export var guitar : StaticBody2D
+@export var boss: AnimatedSprite2D
 var killed_shooters = 0
 var round_2 = false
 var done = false
@@ -22,6 +24,7 @@ func _ready() -> void:
 				m.process_mode = Node.PROCESS_MODE_DISABLED
 				m.visible = false
 				m.die.connect(check_last_jero_level_1)
+	guitar.guitar_free_signal.connect(level_2_screen)
 	if dog_power != null:
 		dog_power.power_finished.connect(_on_dog_power_finished)
 	activate_mummies()
@@ -53,3 +56,8 @@ func check_last_jero_level_1():
 	if killed_shooters == 4:
 		last_jero_level_1.set_jero_visible()
 		return
+func level_2_screen():
+	boss.visible = true
+	boss.play("attack_2")
+	await get_tree().create_timer(2.0).timeout
+	guitar.visible = false

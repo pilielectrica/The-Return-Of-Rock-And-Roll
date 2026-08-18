@@ -18,12 +18,17 @@ var angle
 var is_dashing := false
 var can_dash := true
 var dash_direction := Vector2.ZERO
+
+var input_enabled := true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	weapon.play("default")
 	camera.zoom = camera_zoom
 
 func _physics_process(delta: float) -> void:
+	if not input_enabled:
+		velocity = Vector2.ZERO
+		return
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")

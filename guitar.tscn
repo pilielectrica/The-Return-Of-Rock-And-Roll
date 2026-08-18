@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6bd8cxw7wrn"]
+
+[ext_resource type="Script" uid="uid://bytwg3xhntq57" path="res://guitarra.gd" id="1_hn8ya"]
+[ext_resource type="Texture2D" uid="uid://o3brn3fk7i3x" path="res://guitarra 1.png" id="2_ltq5r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn8ya"]
+size = Vector2(751, 677)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry2o"]
+size = Vector2(468, 443)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_hn8ya")
+
+[node name="Sprite_Guitar_1" type="Sprite2D" parent="."]
+texture = ExtResource("2_ltq5r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, 2.5)
+shape = SubResource("RectangleShape2D_hn8ya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_kry2o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

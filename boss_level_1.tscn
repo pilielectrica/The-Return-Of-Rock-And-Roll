@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmqe6u8qu7e86"]
+
+[ext_resource type="Texture2D" uid="uid://v80knkutwsp5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Anubis Attack-2 Sprite-Sheet.png" id="1_vdtx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk42q"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tg4n"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00d47"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hry2y"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0g6e"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kldb7"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngjc0"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(1152, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hihu"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(1344, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cifbn"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(1536, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmxpp"]
+atlas = ExtResource("1_vdtx5")
+region = Rect2(1728, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnyv5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk42q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00d47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hry2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0g6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kldb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngjc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hihu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cifbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmxpp")
+}],
+"loop": false,
+"name": &"attack_2",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vnyv5")
+animation = &"attack_2"
+flip_h = true

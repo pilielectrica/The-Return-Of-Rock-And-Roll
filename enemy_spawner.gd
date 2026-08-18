@@ -7,6 +7,7 @@ extends Node2D
 @export var building: Sprite2D
 
 func _ready():
+	dummy_spawn()
 	timer.wait_time = spawn_wait_time
 	building.building_hit.connect(_on_building_hit)
 	building.building_destroyed.connect(_on_building_destroyed)
@@ -15,7 +16,6 @@ func _ready():
 		disable_enemy(e)
 
 	if !building.house_2:
-		spawn_enemy()
 		if timer.is_stopped():
 			timer.start()
 func _on_building_hit():
@@ -46,3 +46,6 @@ func disable_enemy(e):
 	#e.get_node("CollisionShape2D").disabled = true
 func _on_building_destroyed():
 	timer.stop()
+func dummy_spawn():
+	await get_tree().create_timer(10.0).timeout
+	spawn_enemy()
