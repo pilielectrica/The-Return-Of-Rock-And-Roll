@@ -23,6 +23,8 @@ func _on_building_hit():
 		if timer.is_stopped():
 			spawn_enemy()
 			timer.start()
+	else:
+		spawn_enemy()
 func _on_timer_timeout() -> void:
 	spawn_enemy()
 func spawn_enemy():
@@ -47,5 +49,5 @@ func disable_enemy(e):
 func _on_building_destroyed():
 	timer.stop()
 func dummy_spawn():
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	spawn_enemy()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=4 uid="uid://cd7g7hug1qpqj"]
+[gd_scene load_steps=210 format=4 uid="uid://cd7g7hug1qpqj"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://ck5cxqenykbs6" path="res://character_body_2d.tscn" id="2_epypp"]
@@ -111,6 +111,7 @@
 [ext_resource type="PackedScene" uid="uid://qlnfkjawe2xe" path="res://Casa_Grande_.tscn" id="108_6jj3b"]
 [ext_resource type="PackedScene" uid="uid://b6bd8cxw7wrn" path="res://guitar.tscn" id="110_oqqhv"]
 [ext_resource type="PackedScene" uid="uid://cmqe6u8qu7e86" path="res://boss_level_1.tscn" id="111_2l1wp"]
+[ext_resource type="PackedScene" uid="uid://d3g8tpffhbtck" path="res://efecto_Verde.tscn" id="112_bxemi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")
@@ -27826,13 +27827,14 @@ bullet_scene = ExtResource("94_wnn4a")
 player = NodePath("../Player")
 cursor = NodePath("../Player/cursor")
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss") instance=ExtResource("97_td2a2")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss", "green_effect") instance=ExtResource("97_td2a2")]
 position = Vector2(-53, 140)
 building = NodePath("../House_2")
 shooter_mummies = [NodePath("../Shooter_Mummie"), NodePath("../Shooter_Mummy_2"), NodePath("../Shooter_Mummy_3"), NodePath("../Shooter_Mummy_4")]
 last_jero_level_1 = NodePath("../Jeroglifico_3")
 guitar = NodePath("../Guitarra")
 boss = NodePath("../Boss")
+green_effect = NodePath("../Green Effect")
 
 [node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("98_c6xte")]
 position = Vector2(-83, 136)
@@ -28137,15 +28139,22 @@ position = Vector2(-80, -126)
 [node name="Marker2D5" type="Marker2D" parent="Casona_Shooters"]
 position = Vector2(167, -120)
 
-[node name="Guitarra" parent="." node_paths=PackedStringArray("jeroglifico_1", "jeroglifico_2", "jeroglifico_3", "player") instance=ExtResource("110_oqqhv")]
+[node name="Guitarra" parent="." node_paths=PackedStringArray("jeroglifico_1", "jeroglifico_2", "jeroglifico_3", "player", "green_effect") instance=ExtResource("110_oqqhv")]
 position = Vector2(-23, -95)
 scale = Vector2(0.215, 0.215)
 jeroglifico_1 = NodePath("../Jeroglifico_1")
 jeroglifico_2 = NodePath("../Jeroglifico_2")
 jeroglifico_3 = NodePath("../Jeroglifico_3")
 player = NodePath("../Player")
+green_effect = NodePath("../Green Effect")
 
 [node name="Boss" parent="." instance=ExtResource("111_2l1wp")]
 visible = false
 z_index = 3
 position = Vector2(-74, -89)
+
+[node name="Green Effect" parent="." instance=ExtResource("112_bxemi")]
+visible = false
+z_index = -1
+position = Vector2(-27, -107)
+scale = Vector2(2, 2)

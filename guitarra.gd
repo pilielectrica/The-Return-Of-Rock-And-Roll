@@ -7,6 +7,7 @@ extends StaticBody2D
 @export var jeroglifico_4: Area2D
 @onready var guitar_sprite = $Sprite_Guitar_1
 @export var player : CharacterBody2D
+@export var green_effect : AnimatedSprite2D
 var guitar_free = false
 signal guitar_free_signal
 func _ready() -> void:
@@ -26,8 +27,8 @@ func show_guitar_2():
 func show_guitar_3():
 	guitar_sprite.texture = preload("res://guitarra 4.png")
 	guitar_free = true
-
-
+	green_effect.visible = true
+	green_effect.play("default")
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if guitar_free:
 		guitar_free_signal.emit()

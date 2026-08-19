@@ -13,6 +13,7 @@ var killed_enemies = 0
 var killed_shooters = 0
 var round_2 = false
 var done = false
+@export var green_effect : AnimatedSprite2D
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
@@ -24,7 +25,8 @@ func _ready() -> void:
 				m.process_mode = Node.PROCESS_MODE_DISABLED
 				m.visible = false
 				m.die.connect(check_last_jero_level_1)
-	guitar.guitar_free_signal.connect(level_2_screen)
+	if (guitar != null):
+		guitar.guitar_free_signal.connect(level_2_screen)
 	if dog_power != null:
 		dog_power.power_finished.connect(_on_dog_power_finished)
 	activate_mummies()
@@ -61,3 +63,8 @@ func level_2_screen():
 	boss.play("attack_2")
 	await get_tree().create_timer(2.0).timeout
 	guitar.visible = false
+	guitar.process_mode = Node.PROCESS_MODE_DISABLED
+	green_effect.process_mode = Node.PROCESS_MODE_DISABLED
+	green_effect.visible = false
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://level 2.tscn")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmqe6u8qu7e86"]
+[gd_scene load_steps=23 format=3 uid="uid://cmqe6u8qu7e86"]
 
 [ext_resource type="Texture2D" uid="uid://v80knkutwsp5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-2/Anubis Attack-2 Sprite-Sheet.png" id="1_vdtx5"]
+[ext_resource type="Texture2D" uid="uid://felom36071a5" path="res://boss/[Kimbulworks] Enemy Collections #20 - Anubis/[Kimbulworks] Enemy Collections #20 - Anubis/Anubis/Attack-1/Anubis Attack-1 Sprite-Sheet.png" id="2_jk42q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk42q"]
 atlas = ExtResource("1_vdtx5")
@@ -78,9 +79,103 @@ animations = [{
 "loop": false,
 "name": &"attack_2",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubnwj"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjadb"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bqc8"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr7pa"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqge2"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un1ew"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6e5o"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(1152, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhrkw"]
+atlas = ExtResource("2_jk42q")
+region = Rect2(1344, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tg4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubnwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjadb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bqc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr7pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqge2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un1ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6e5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhrkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubnwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjadb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubnwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjadb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubnwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjadb")
+}],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_vnyv5")
-animation = &"attack_2"
+animation = &"idle"
+flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-17.79, 8.23)
+sprite_frames = SubResource("SpriteFrames_0tg4n")
+animation = &"attack_1"
+frame_progress = 0.643894
 flip_h = true
