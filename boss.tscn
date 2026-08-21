@@ -456,6 +456,7 @@ wait_time = 4.0
 
 [node name="Health Component" type="Node2D" parent="."]
 script = ExtResource("26_rdfxm")
+damage = 5
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Health Component"]
 position = Vector2(-33, -20)
@@ -481,4 +482,5 @@ shape = SubResource("RectangleShape2D_c30dg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

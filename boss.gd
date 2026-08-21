@@ -25,7 +25,10 @@ var direction : Vector2
 var calculation = false
 var attack = false
 var attacking = false
+var rounds_count = 0
+@export var bullet_manager : Node2D
 @export var target_pos : Area2D
+var dash_target := Vector2.ZERO
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -44,6 +47,7 @@ func _on_shoot_done():
 	escudo_anim_2.visible = false
 	escudo_active = false
 	timer.start()
+	rounds_count += 1
 func _on_timer_timeout() -> void:
 	escudo_area.set_deferred("monitoring", true)
 	escudo_anim_1.visible = true
@@ -62,16 +66,30 @@ func _on_life_70():
 			game_manager.deactivate_boss_bullets()
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet") and !escudo_active:
-		if !hurt:
-			life_component.get_hurt()
-			hurt = true
+		print("BALA IMPACTÓ: ", area.name)
+		print(
+	"BALA IMPACTÓ: ",
+	area.name,
+	" | path: ",
+	area.get_path(),
+	" | instance id: ",
+	area.get_instance_id()
+)
+		if !area.active:
+			return
+		life_component.get_hurt()
+		if area.has_method("deactivate"):
+			area.deactivate()
 		life_bar.value = life_component.get_life()
-		melee_attack()
+		if rounds_count >= 3:
+			dash_attack()
+
 	if area == target_pos:
 		velocity = Vector2.ZERO
 		anim_boss.play("attack_1")
 		await get_tree().create_timer(2.0).timeout
-		finish_melee_attack()
+		if rounds_count >= 3:
+			finish_dash_attack()
 func _on_life_50():
 	if (!life_50):
 		game_manager.increase_dog_power_speed()
@@ -80,20 +98,36 @@ func _on_life_25():
 	if !life_25:
 		game_manager.increase_dog_power_speed()
 		life_25 = true
-func melee_attack():
-	target_pos.global_position = player_marker.global_position
-	if !calculation:
-		direction = (player_marker.global_position - global_position).normalized()
-		direction = direction.normalized()
-		velocity = direction * speed
-		anim_boss.play("move")
-		calculation = true
-		attack = true
+
+
+func dash_attack():
+	if calculation:
+		return
+
+	dash_target = player_marker.global_position
+
+	direction = (dash_target - global_position).normalized()
+	velocity = direction * speed
+
+	anim_boss.play("move")
+
+	calculation = true
+	attack = true
 
 func _physics_process(delta: float) -> void:
-	if (attack):
+	if attack:
 		move_and_slide()
-func finish_melee_attack():
+
+		if global_position.distance_to(dash_target) <= 15.0:
+			velocity = Vector2.ZERO
+			attack = false
+
+			anim_boss.play("attack_1")
+
+			await get_tree().create_timer(2.0).timeout
+
+			finish_dash_attack()
+func finish_dash_attack():
 		global_position = start_position
 		calculation = false
 		attack = false

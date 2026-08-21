@@ -19,7 +19,8 @@ func shoot(start_position: Vector2, target_position: Vector2):
 	
 	active = true
 	visible = true
-	collision.disabled = false
+	set_deferred("monitoring", true)
+	collision.set_deferred("disabled", false)
 
 	sprite_fire.visible = true
 	sprite_fire.play("default")
@@ -36,7 +37,8 @@ func deactivate():
 	active = false
 	visible = false
 	velocity = Vector2.ZERO
-	collision.disabled = true
+	set_deferred("monitoring", false)
+	collision.set_deferred("disabled", true)
 
 
 func _on_body_entered(body: Node2D) -> void:

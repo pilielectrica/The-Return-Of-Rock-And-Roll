@@ -1,11 +1,13 @@
 extends Node2D
 @export var life = 100
-@export var damage = 5
+@export var damage = 10
 signal life_70
 signal life_50
 signal life_25
 func get_hurt():
+	print("GET HURT llamado - vida antes: ", life)
 	life -= damage
+	print("vida después: ", life)
 func get_life():
 	return life
 func reset_life():
