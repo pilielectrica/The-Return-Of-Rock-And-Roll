@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://csk0hc3c201c0"]
+
+[ext_resource type="Script" uid="uid://c5cr2nlutltqq" path="res://loading_screen.gd" id="1_swxse"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_swxse"]
+font_size = 34
+font_color = Color(0.286275, 1, 1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_swxse")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 1
+offset_left = 500.0
+offset_top = 300.0
+offset_right = 658.0
+offset_bottom = 347.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_swxse")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 1154.0
+offset_bottom = 654.0
+pivot_offset = Vector2(550, 300)
+color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 573.0
+offset_top = 460.0
+offset_right = 577.0
+offset_bottom = 487.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

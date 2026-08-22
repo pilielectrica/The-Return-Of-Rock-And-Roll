@@ -29,6 +29,7 @@ var rounds_count = 0
 @export var bullet_manager : Node2D
 @export var target_pos : Area2D
 var dash_target := Vector2.ZERO
+var collision = get_slide_collision(0)
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -40,6 +41,7 @@ func _ready() -> void:
 	life_component.life_50.connect(_on_life_50)
 	life_component.life_25.connect(_on_life_25)
 	start_position = global_position
+	anim_boss.animation_finished.connect(_on_attack_anim_finished)
 func _on_shoot_done():
 	escudo_area.set_deferred("monitoring", false)
 	escudo_collision.set_deferred("disabled", true)
@@ -48,6 +50,7 @@ func _on_shoot_done():
 	escudo_active = false
 	timer.start()
 	rounds_count += 1
+
 func _on_timer_timeout() -> void:
 	escudo_area.set_deferred("monitoring", true)
 	escudo_anim_1.visible = true
@@ -78,18 +81,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if !area.active:
 			return
 		life_component.get_hurt()
+		dash_attack()
 		if area.has_method("deactivate"):
 			area.deactivate()
 		life_bar.value = life_component.get_life()
-		if rounds_count >= 3:
-			dash_attack()
-
-	if area == target_pos:
-		velocity = Vector2.ZERO
-		anim_boss.play("attack_1")
-		await get_tree().create_timer(2.0).timeout
-		if rounds_count >= 3:
-			finish_dash_attack()
 func _on_life_50():
 	if (!life_50):
 		game_manager.increase_dog_power_speed()
@@ -116,17 +111,21 @@ func dash_attack():
 
 func _physics_process(delta: float) -> void:
 	if attack:
+		print(global_position.distance_to(dash_target))
 		move_and_slide()
+		
+		var collision = null
 
-		if global_position.distance_to(dash_target) <= 15.0:
+		if get_slide_collision_count() > 0:
+			collision = get_slide_collision(0)
+
+		if global_position.distance_to(dash_target) <= 500.0:
+			anim_boss.play("attack_1")
+
+		if collision != null and not collision.get_collider() is CharacterBody2D:
 			velocity = Vector2.ZERO
 			attack = false
 
-			anim_boss.play("attack_1")
-
-			await get_tree().create_timer(2.0).timeout
-
-			finish_dash_attack()
 func finish_dash_attack():
 		global_position = start_position
 		calculation = false
@@ -142,3 +141,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.take_damage(10)
 		print ("enemy toco a player")
+		velocity = Vector2.ZERO
+		attack = false
+
+
+
+func _on_attack_anim_finished():
+	if anim_boss.animation == "attack_1":
+		anim_boss.play("idle")
+		await get_tree().create_timer(2.0).timeout
+		finish_dash_attack()

@@ -67,4 +67,7 @@ func level_2_screen():
 	green_effect.process_mode = Node.PROCESS_MODE_DISABLED
 	green_effect.visible = false
 	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://level 2.tscn")
+	go_to_level_2()
+func go_to_level_2():
+	Global.next_scene = "res://level 2.tscn"
+	get_tree().change_scene_to_file("res://loadingscreen.tscn")

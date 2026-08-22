@@ -1,6 +1,6 @@
 extends Node2D
 @export var life = 100
-@export var damage = 10
+var damage = 1
 signal life_70
 signal life_50
 signal life_25

@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://u202dr02xes1"]
 
 [ext_resource type="Script" uid="uid://cuhdfceyj2fd4" path="res://estatua.gd" id="1_r4e2q"]
-[ext_resource type="Texture2D" uid="uid://d11e0midt5voc" path="res://boss/estatua bloqueando.png" id="2_rkqxo"]
+[ext_resource type="Texture2D" uid="uid://bjmio654ehiah" path="res://boss/Egypt_2_estatua_brazo_levantado.png" id="2_r4e2q"]
 [ext_resource type="Texture2D" uid="uid://dxbomkg05k57" path="res://boss/Egypt.png" id="3_ek27h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbxem"]
-size = Vector2(359, 464)
+size = Vector2(303, 464)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdrk5"]
-atlas = ExtResource("2_rkqxo")
-region = Rect2(0, 0, 100, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkqxo"]
+atlas = ExtResource("2_r4e2q")
+region = Rect2(256, 0, 128, 149)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8tgy"]
 atlas = ExtResource("3_ek27h")
@@ -19,7 +19,7 @@ region = Rect2(256, 0, 61, 149)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gdrk5")
+"texture": SubResource("AtlasTexture_rkqxo")
 }],
 "loop": true,
 "name": &"block",
@@ -38,7 +38,7 @@ animations = [{
 script = ExtResource("1_r4e2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-62.5, 317)
+position = Vector2(-51.5, 317)
 shape = SubResource("RectangleShape2D_hbxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

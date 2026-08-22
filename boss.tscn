@@ -220,9 +220,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xhrkw")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
-"speed": 5.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -420,26 +420,26 @@ bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c30dg"]
 size = Vector2(94, 76)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["boss"]]
 script = ExtResource("1_7ke2s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17.79, 8.23)
 sprite_frames = SubResource("SpriteFrames_p4vyx")
-animation = &"idle"
+animation = &"attack_1"
 flip_h = true
 
 [node name="Area_Escudo" type="Area2D" parent="."]
 
 [node name="Escudo" type="AnimatedSprite2D" parent="Area_Escudo"]
-position = Vector2(-30, 12)
+position = Vector2(-21.425, 12)
 scale = Vector2(0.345, 0.345)
 sprite_frames = SubResource("SpriteFrames_vxe4g")
 frame = 10
 frame_progress = 0.0756454
 
 [node name="Escudo2" type="AnimatedSprite2D" parent="Area_Escudo"]
-position = Vector2(-31, 23)
+position = Vector2(-21.425, 23)
 rotation = 3.14159
 scale = Vector2(0.345, 0.345)
 sprite_frames = SubResource("SpriteFrames_vxe4g")
@@ -456,7 +456,6 @@ wait_time = 4.0
 
 [node name="Health Component" type="Node2D" parent="."]
 script = ExtResource("26_rdfxm")
-damage = 5
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Health Component"]
 position = Vector2(-33, -20)
@@ -475,6 +474,7 @@ value = 100.0
 show_percentage = false
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-24, 10)

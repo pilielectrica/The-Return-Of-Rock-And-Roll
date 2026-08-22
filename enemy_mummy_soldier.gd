@@ -71,6 +71,7 @@ func _physics_process(delta):
 				momia_eye_right = false
 				momia_eye_right = false
 	if (health.get_life() <= 0):
+		
 		die()
 
 	
@@ -136,11 +137,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		health_bar.value = health.get_life()
 
 func die():
+	atack = false 
 	var explosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = global_position
 	anim.play("idle")
-	atack = false 
 	moving = false
 	collision_body.disabled = true
 	if(dead_count != true):

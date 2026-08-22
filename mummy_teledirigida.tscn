@@ -12,7 +12,7 @@ bg_color = Color(0.250418, 0.860064, 0.131544, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyuln"]
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_fxoxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

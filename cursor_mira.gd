@@ -60,7 +60,7 @@ func check_target():
 	for hit in result:
 		var collider = hit.collider
 
-		if collider.is_in_group("enemy") or collider.is_in_group("house"):
+		if collider.is_in_group("enemy") or collider.is_in_group("boss") or collider.is_in_group("house"):
 			enemy_found = true
 			break
 
