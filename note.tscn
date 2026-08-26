@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1fqfh4e5vnqu"]
+
+[ext_resource type="Script" uid="uid://cfhmwl0ff1aqg" path="res://note.gd" id="1_eo7dk"]
+[ext_resource type="Texture2D" uid="uid://dmjqumilf0t8v" path="res://flecha arriba (2).png" id="2_4lyw1"]
+[ext_resource type="Texture2D" uid="uid://c3edhutwdchv8" path="res://felcha abajo.png" id="3_7dxni"]
+[ext_resource type="Texture2D" uid="uid://b7fsdwhfjeuw1" path="res://flecha izquierda.png" id="4_n6aen"]
+[ext_resource type="Texture2D" uid="uid://2bherh1x8svg" path="res://flecha derecha.png" id="5_4lyw1"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.14, 0.14)
+script = ExtResource("1_eo7dk")
+
+[node name="FlechaIzquierda" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_n6aen")
+
+[node name="FlechaAbajo" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_7dxni")
+
+[node name="FlechaArriba" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_4lyw1")
+
+[node name="FlechaDerecha" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_4lyw1")

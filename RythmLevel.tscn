@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://drtia26j6lgaj"]
+
+[ext_resource type="Script" uid="uid://b8gbb50cyohfc" path="res://rythm_manager.gd" id="1_gs50x"]
+[ext_resource type="Texture2D" uid="uid://dmjqumilf0t8v" path="res://flecha arriba (2).png" id="1_xx2a8"]
+[ext_resource type="Texture2D" uid="uid://c3edhutwdchv8" path="res://felcha abajo.png" id="2_8k5rm"]
+[ext_resource type="PackedScene" uid="uid://c1fqfh4e5vnqu" path="res://note.tscn" id="2_ejrrd"]
+[ext_resource type="Texture2D" uid="uid://b7fsdwhfjeuw1" path="res://flecha izquierda.png" id="3_q1ucm"]
+[ext_resource type="Texture2D" uid="uid://2bherh1x8svg" path="res://flecha derecha.png" id="4_2bcqs"]
+[ext_resource type="Texture2D" uid="uid://dh8rd5aj8lgsx" path="res://Perfect.png" id="7_7vv2m"]
+[ext_resource type="Texture2D" uid="uid://dlsvlhfiq2uka" path="res://great.png" id="8_yb8ls"]
+[ext_resource type="Texture2D" uid="uid://voabltap0cwb" path="res://good.png" id="9_pxq1i"]
+[ext_resource type="Texture2D" uid="uid://c1okvmsfl8rym" path="res://miss.png" id="10_2lomv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasGroup"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/Node2D"]
+position = Vector2(100, 554.52)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("3_q1ucm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup/Node2D"]
+position = Vector2(400, 554.52)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_8k5rm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasGroup/Node2D"]
+position = Vector2(700, 554.52)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_xx2a8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasGroup/Node2D"]
+position = Vector2(1000, 554.52)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_2bcqs")
+
+[node name="Notes" type="Node2D" parent="CanvasGroup"]
+
+[node name="Rythm Manager" type="Node2D" parent="." node_paths=PackedStringArray("notes_container", "perfect_sprite", "great_sprite", "good_sprite", "miss_sprite")]
+script = ExtResource("1_gs50x")
+note_scene = ExtResource("2_ejrrd")
+notes_container = NodePath("../CanvasGroup/Notes")
+perfect_sprite = NodePath("../Feedback/Sprite2D")
+great_sprite = NodePath("../Feedback/Sprite2D2")
+good_sprite = NodePath("../Feedback/Sprite2D3")
+miss_sprite = NodePath("../Feedback/Sprite2D4")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="Rythm Manager"]
+event_name = "event:/Music LV 3"
+event_guid = "{4fb1e179-52f5-41d5-a05b-52886b6d0b1e}"
+autoplay = true
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Rythm Manager"]
+position = Vector2(581, 309)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="Rythm Manager"]
+bank_paths = ["res://Desktop/Music.bank", "res://Desktop/Master.strings.bank", "res://Desktop/Master.bank"]
+
+[node name="Feedback" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Feedback"]
+position = Vector2(588.5, 280.5)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("7_7vv2m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Feedback"]
+position = Vector2(588.5, 280.5)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("8_yb8ls")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Feedback"]
+position = Vector2(588.5, 280.5)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("9_pxq1i")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Feedback"]
+position = Vector2(588.5, 280.5)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("10_2lomv")
+
+[connection signal="timeline_beat" from="Rythm Manager/FmodEventEmitter2D" to="Rythm Manager" method="_on_fmod_event_emitter_2d_timeline_beat"]
