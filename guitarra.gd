@@ -17,15 +17,15 @@ func _ready() -> void:
 #	jeroglifico_4.jeroglifico_taken.connect(show_guitar_4)
 func show_guitar_1():
 	player.input_enabled = false
-	guitar_sprite.texture = preload("res://guitarra 2.png")
+	guitar_sprite.texture = preload("res://synth 2.png")
 	player.get_child(2).global_position = global_position
 	await get_tree().create_timer(2.0).timeout
 	player.get_child(2).global_position = player.global_position
 	player.input_enabled = true
 func show_guitar_2():
-	guitar_sprite.texture = preload("res://guitarra 3.png")
+	guitar_sprite.texture = preload("res://sunth 3.png")
 func show_guitar_3():
-	guitar_sprite.texture = preload("res://guitarra 4.png")
+	guitar_sprite.texture = preload("res://synth 4.png")
 	guitar_free = true
 	green_effect.visible = true
 	green_effect.play("default")

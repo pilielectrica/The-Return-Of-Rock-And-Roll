@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxyr0psjl0m8o"]
+
+[ext_resource type="Texture2D" uid="uid://c577tr51hl3fs" path="res://titulo new.png" id="2_cm65u"]
+[ext_resource type="Texture2D" uid="uid://bhshapasunwua" path="res://play button.png" id="3_rld62"]
+[ext_resource type="Texture2D" uid="uid://dwifardsouyvx" path="res://exit button.png" id="4_54ced"]
+[ext_resource type="Script" uid="uid://xchwkb1cio24" path="res://parallax.gd" id="5_vlt20"]
+[ext_resource type="Texture2D" uid="uid://oxlcd3gxdomk" path="res://1.png" id="6_4mkge"]
+[ext_resource type="Texture2D" uid="uid://rfonvpuvo44m" path="res://ChatGPT Image 25 ago 2026, 06_14_08 p.m..png" id="6_bvbl2"]
+[ext_resource type="Texture2D" uid="uid://b0i2178jhxaxc" path="res://2.png" id="7_g1gem"]
+[ext_resource type="Texture2D" uid="uid://b2l73k2bmf0km" path="res://3.png" id="8_ykus6"]
+[ext_resource type="Texture2D" uid="uid://c64jjvnee3uii" path="res://play hovered.png" id="9_cm65u"]
+[ext_resource type="Texture2D" uid="uid://o0qinn1iig71" path="res://4.png" id="9_va5hy"]
+[ext_resource type="Texture2D" uid="uid://bhd87kcqtbly0" path="res://play pressed.png" id="9_vlt20"]
+[ext_resource type="Texture2D" uid="uid://dhtdrmpuvk6yr" path="res://exit pressed.png" id="12_4mkge"]
+[ext_resource type="Texture2D" uid="uid://b03xji6p8rqh0" path="res://exit hovered.png" id="13_g1gem"]
+
+[node name="CanvasGroup" type="CanvasGroup"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("5_vlt20")
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_4mkge")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Parallax2D2"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_g1gem")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/Parallax2D3"]
+scale = Vector2(2, 2)
+texture = ExtResource("8_ykus6")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/Parallax2D4"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_va5hy")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_bvbl2")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -4.0
+offset_top = 6.0
+offset_right = 2168.0
+offset_bottom = 730.0
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("2_cm65u")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 479.0
+offset_top = 530.0
+offset_right = 2015.0
+offset_bottom = 1056.0
+scale = Vector2(0.115, 0.115)
+texture_normal = ExtResource("3_rld62")
+texture_pressed = ExtResource("9_vlt20")
+texture_hover = ExtResource("9_cm65u")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 479.0
+offset_top = 581.0
+offset_right = 2015.0
+offset_bottom = 1122.0
+scale = Vector2(0.115, 0.115)
+texture_normal = ExtResource("4_54ced")
+texture_pressed = ExtResource("12_4mkge")
+texture_hover = ExtResource("13_g1gem")

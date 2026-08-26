@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6bd8cxw7wrn"]
 
 [ext_resource type="Script" uid="uid://bytwg3xhntq57" path="res://guitarra.gd" id="1_hn8ya"]
-[ext_resource type="Texture2D" uid="uid://o3brn3fk7i3x" path="res://guitarra 1.png" id="2_ltq5r"]
+[ext_resource type="Texture2D" uid="uid://b11l7bkqd0hct" path="res://synth 1.png" id="2_hn8ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn8ya"]
 size = Vector2(751, 677)
@@ -13,7 +13,8 @@ size = Vector2(468, 443)
 script = ExtResource("1_hn8ya")
 
 [node name="Sprite_Guitar_1" type="Sprite2D" parent="."]
-texture = ExtResource("2_ltq5r")
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_hn8ya")
 
 [node name="Area2D" type="Area2D" parent="."]
 
