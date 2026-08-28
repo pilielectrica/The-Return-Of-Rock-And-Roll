@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 		_dog_power()
 	if life <= 50:
 		_dog_power_2()
-		print ("segundo poder perro")
 	if life <= 25:
 		_dog_power_3()
 func _dog_power_2():

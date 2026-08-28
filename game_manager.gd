@@ -14,10 +14,13 @@ var killed_shooters = 0
 var round_2 = false
 var done = false
 @export var green_effect : AnimatedSprite2D
+@export var player : CharacterBody2D
+@export var game_over_screen : CanvasLayer
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
 func _ready() -> void:
+	player.game_over.connect(_game_over_screen)
 	if (building != null):
 		building.free_shooter_mummy.connect(activate_mummies)
 		if (shooter_mummies != null):
@@ -71,3 +74,6 @@ func level_2_screen():
 func go_to_level_2():
 	Global.next_scene = "res://level 2.tscn"
 	get_tree().change_scene_to_file("res://loadingscreen.tscn")
+func _game_over_screen():
+	game_over_screen.visible = true
+	print ("entro en la funcion game over screen")

@@ -1,0 +1,163 @@
+[gd_scene load_steps=25 format=3 uid="uid://buwbcabu44ir7"]
+
+[ext_resource type="Script" uid="uid://fq0bc1y1meq4" path="res://gameover.gd" id="1_sttw0"]
+[ext_resource type="Shader" uid="uid://dxiq288w8h0pp" path="res://player.tres" id="2_rcdas"]
+[ext_resource type="Texture2D" uid="uid://c1kh5xpujv4nw" path="res://player_full_animation - copia.png" id="3_j2e3a"]
+[ext_resource type="Shader" uid="uid://i474125p75ho" path="res://shader_mummy.tres" id="4_26l0i"]
+[ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="5_e1f37"]
+[ext_resource type="Shader" uid="uid://dye4fbrnliguu" path="res://shader_game_over.tres" id="6_u31jt"]
+[ext_resource type="Texture2D" uid="uid://b3tni31ipst4e" path="res://game over.png" id="7_jd1ll"]
+[ext_resource type="FontFile" uid="uid://c86iifatc2eil" path="res://minecraft/Minecraft.ttf" id="8_ps1j2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g1o2j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn7gr"]
+shader = ExtResource("2_rcdas")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn7gr"]
+atlas = ExtResource("3_j2e3a")
+region = Rect2(0, 320, 40, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7a41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn7gr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af4fq"]
+shader = ExtResource("4_26l0i")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nmon"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yximd"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh3sh"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(48, 64, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmx0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nmon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yximd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh3sh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3x71"]
+shader = ExtResource("4_26l0i")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y70k4"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7qqf"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hr8p"]
+atlas = ExtResource("5_e1f37")
+region = Rect2(48, 32, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdlxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y70k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7qqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hr8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1o2j"]
+shader = ExtResource("4_26l0i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nw6q"]
+shader = ExtResource("6_u31jt")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_sttw0")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Node2D"]
+
+[node name="Panel" type="Panel" parent="Node2D/CanvasGroup"]
+material = SubResource("CanvasItemMaterial_g1o2j")
+offset_right = 1172.0
+offset_bottom = 680.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_pn7gr")
+position = Vector2(565, 483)
+rotation = 1.5708
+scale = Vector2(3.62, 3.62)
+sprite_frames = SubResource("SpriteFrames_b7a41")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_af4fq")
+position = Vector2(572, 178)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_xmx0r")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_w3x71")
+position = Vector2(200, 360)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_mdlxv")
+autoplay = "default"
+frame_progress = 0.576725
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_g1o2j")
+position = Vector2(933, 364)
+scale = Vector2(12.0183, 11.5913)
+sprite_frames = SubResource("SpriteFrames_mdlxv")
+autoplay = "default"
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_2nw6q")
+position = Vector2(565.75, 379)
+scale = Vector2(1.61865, 1.67917)
+texture = ExtResource("7_jd1ll")
+
+[node name="Play_Again_Button" type="Button" parent="Node2D"]
+offset_left = 484.0
+offset_top = 558.0
+offset_right = 648.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("8_ps1j2")
+theme_override_font_sizes/font_size = 28
+text = "Play Again?"
+
+[connection signal="pressed" from="Node2D/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Node2D/Play_Again_Button" to="." method="_on_play_again_button_pressed"]

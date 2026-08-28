@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://bn72g58vchi0o"]
+[gd_scene load_steps=76 format=4 uid="uid://bn72g58vchi0o"]
 
 [ext_resource type="Texture2D" uid="uid://dxbomkg05k57" path="res://boss/Egypt.png" id="1_hmp44"]
 [ext_resource type="Texture2D" uid="uid://q1x0jocxve44" path="res://momia/PNG/Preview_2D_RPG_Desert_Tileset.png" id="2_cqxf2"]
@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://b88lbqlyhkrps" path="res://GameManager.tscn" id="35_kha6r"]
 [ext_resource type="PackedScene" uid="uid://cfk3egbaap1hh" path="res://dog_power.tscn" id="36_x0cf1"]
 [ext_resource type="PackedScene" uid="uid://d3g8tpffhbtck" path="res://efecto_Verde.tscn" id="37_7hgky"]
+[ext_resource type="Script" uid="uid://wuhbtnquqne0" path="res://next_level_manager.gd" id="38_1d6ee"]
+[ext_resource type="PackedScene" uid="uid://buwbcabu44ir7" path="res://gameover_level_2.tscn" id="39_etocp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phv7"]
 texture = ExtResource("1_hmp44")
@@ -29901,10 +29903,12 @@ bullet_scene = ExtResource("34_kha6r")
 player = NodePath("../Player")
 cursor = NodePath("../Player/cursor")
 
-[node name="Game Manager" parent="." node_paths=PackedStringArray("boss_bullets", "dog_power") instance=ExtResource("35_kha6r")]
+[node name="Game Manager" parent="." node_paths=PackedStringArray("boss_bullets", "dog_power", "player", "game_over_screen") instance=ExtResource("35_kha6r")]
 boss_bullets = [NodePath("../Bullet boss"), NodePath("../Bullet boss2"), NodePath("../Bullet boss3")]
 dog_power = NodePath("../Perro Poder")
 speed_increase_bullets = 100
+player = NodePath("../Player")
+game_over_screen = NodePath("../Node2D")
 
 [node name="Perro Poder" parent="." node_paths=PackedStringArray("target", "start_marker") groups=["boss"] instance=ExtResource("36_x0cf1")]
 position = Vector2(-1098, -1991)
@@ -29931,3 +29935,10 @@ z_index = 10
 position = Vector2(1155, -1872)
 rotation = 0.00342441
 scale = Vector2(4.57934, 4.27996)
+
+[node name="Next_Level_Manager" type="Node2D" parent="." node_paths=PackedStringArray("boss")]
+script = ExtResource("38_1d6ee")
+boss = NodePath("../BOSS")
+
+[node name="Node2D" parent="." instance=ExtResource("39_etocp")]
+visible = false

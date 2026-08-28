@@ -30,6 +30,7 @@ var rounds_count = 0
 @export var target_pos : Area2D
 var dash_target := Vector2.ZERO
 var collision = get_slide_collision(0)
+signal no_life
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -69,6 +70,14 @@ func _on_life_70():
 			game_manager.deactivate_boss_bullets()
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet") and !escudo_active:
+		if (life_component.life <= 0):
+			velocity = Vector2.ZERO
+			anim_boss.play("death")
+			escudo_anim_1.visible = false
+			escudo_anim_2.visible = false
+			escudo_active = false
+			await get_tree().create_timer(4.0).timeout
+			no_life.emit()
 		print("BALA IMPACTÓ: ", area.name)
 		print(
 	"BALA IMPACTÓ: ",
@@ -81,10 +90,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if !area.active:
 			return
 		life_component.get_hurt()
+
 		dash_attack()
 		if area.has_method("deactivate"):
 			area.deactivate()
 		life_bar.value = life_component.get_life()
+
 func _on_life_50():
 	if (!life_50):
 		game_manager.increase_dog_power_speed()
@@ -143,6 +154,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print ("enemy toco a player")
 		velocity = Vector2.ZERO
 		attack = false
+		anim_boss.play("attack_2")
 
 
 
@@ -151,3 +163,7 @@ func _on_attack_anim_finished():
 		anim_boss.play("idle")
 		await get_tree().create_timer(2.0).timeout
 		finish_dash_attack()
+	if anim_boss.animation == "attack_2":
+		anim_boss.play("idle")
+		if (global_position != start_position):
+			finish_dash_attack()

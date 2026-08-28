@@ -255,7 +255,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rdnqb")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
 "speed": 5.0
 }, {
@@ -278,9 +278,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ex6fr")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -426,7 +426,9 @@ script = ExtResource("1_7ke2s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17.79, 8.23)
 sprite_frames = SubResource("SpriteFrames_p4vyx")
-animation = &"attack_1"
+animation = &"attack_2"
+frame = 5
+frame_progress = 0.48609
 flip_h = true
 
 [node name="Area_Escudo" type="Area2D" parent="."]

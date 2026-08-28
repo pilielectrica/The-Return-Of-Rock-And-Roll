@@ -18,7 +18,7 @@ var angle
 var is_dashing := false
 var can_dash := true
 var dash_direction := Vector2.ZERO
-
+signal game_over
 var input_enabled := true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -113,6 +113,9 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	health_component.take_damage(damage)
+	if (health_component.life <= 0):
+		game_over.emit()
+		print ("señal game over emitida vida 0")
 func start_dash(direction: Vector2) -> void:
 	is_dashing = true
 	can_dash = false
