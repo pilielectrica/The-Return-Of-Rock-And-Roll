@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv874ncs2r47s"]
+[gd_scene load_steps=7 format=3 uid="uid://cv874ncs2r47s"]
 
 [ext_resource type="Script" uid="uid://xchwkb1cio24" path="res://parallax.gd" id="1_d0rhv"]
 [ext_resource type="Texture2D" uid="uid://oxlcd3gxdomk" path="res://1.png" id="2_d8xoo"]
 [ext_resource type="Texture2D" uid="uid://b0i2178jhxaxc" path="res://2.png" id="3_7kivd"]
+[ext_resource type="Texture2D" uid="uid://dy15sn6hfnf55" path="res://synth 4.png" id="4_d8xoo"]
 [ext_resource type="Texture2D" uid="uid://b2l73k2bmf0km" path="res://3.png" id="4_rryvm"]
 [ext_resource type="Texture2D" uid="uid://o0qinn1iig71" path="res://4.png" id="5_plps4"]
 
@@ -20,6 +21,7 @@ texture = ExtResource("2_d8xoo")
 centered = false
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-216, 8)
 repeat_size = Vector2(1152, 0)
 autoscroll = Vector2(2, 0)
 repeat_times = 3
@@ -29,7 +31,20 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_7kivd")
 centered = false
 
+[node name="Parallax2D5" type="Parallax2D" parent="."]
+repeat_size = Vector2(4000, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D5"]
+modulate = Color(0.184464, 0.0740446, 0.618552, 0.270588)
+position = Vector2(121, -25)
+scale = Vector2(1.28, 1.28)
+texture = ExtResource("4_d8xoo")
+centered = false
+
 [node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 47)
 repeat_size = Vector2(1152, 0)
 autoscroll = Vector2(2, 0)
 repeat_times = 3
@@ -40,6 +55,7 @@ texture = ExtResource("4_rryvm")
 centered = false
 
 [node name="Parallax2D4" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 53)
 repeat_size = Vector2(1152, 0)
 autoscroll = Vector2(2, 0)
 repeat_times = 3

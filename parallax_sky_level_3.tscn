@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://co43biicvgav1"]
+
+[ext_resource type="Script" uid="uid://xchwkb1cio24" path="res://parallax.gd" id="1_qb1qx"]
+[ext_resource type="Texture2D" uid="uid://b3poh7l7e1m3u" path="res://Clouds 7/1.png" id="2_qb1qx"]
+[ext_resource type="Texture2D" uid="uid://cduuik5l1jnwn" path="res://Clouds 7/2.png" id="3_jt3vt"]
+[ext_resource type="Texture2D" uid="uid://bs5ah1behdpfh" path="res://Clouds 7/3.png" id="4_f1tnj"]
+[ext_resource type="Texture2D" uid="uid://57w7tayg3q70" path="res://Clouds 7/4.png" id="5_86x2i"]
+[ext_resource type="Texture2D" uid="uid://dy15sn6hfnf55" path="res://synth 4.png" id="6_jt3vt"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qb1qx")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_qb1qx")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_jt3vt")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D3"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_f1tnj")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D4"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_86x2i")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+scale = Vector2(0.72, 0.72)
+repeat_size = Vector2(3197.21, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D5"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_jt3vt")
+centered = false

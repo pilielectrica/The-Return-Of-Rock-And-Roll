@@ -73,7 +73,7 @@ func level_2_screen():
 	go_to_level_2()
 func go_to_level_2():
 	Global.next_scene = "res://level 2.tscn"
-	get_tree().change_scene_to_file("res://loadingscreen.tscn")
+	get_tree().change_scene_to_file("res://loadingscreen_level_2.tscn")
 func _game_over_screen():
 	game_over_screen.visible = true
 	print ("entro en la funcion game over screen")

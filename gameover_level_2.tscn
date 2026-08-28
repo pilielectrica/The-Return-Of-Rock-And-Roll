@@ -159,5 +159,5 @@ theme_override_fonts/font = ExtResource("8_ps1j2")
 theme_override_font_sizes/font_size = 28
 text = "Play Again?"
 
-[connection signal="pressed" from="Node2D/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="Node2D/Play_Again_Button" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Node2D/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]

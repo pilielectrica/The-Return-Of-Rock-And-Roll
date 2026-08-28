@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://dxyr0psjl0m8o"]
 
 [ext_resource type="PackedScene" uid="uid://cv874ncs2r47s" path="res://parallax_sky.tscn" id="1_cm65u"]
-[ext_resource type="Texture2D" uid="uid://c577tr51hl3fs" path="res://titulo new.png" id="2_cm65u"]
-[ext_resource type="Texture2D" uid="uid://bhshapasunwua" path="res://play button.png" id="3_rld62"]
-[ext_resource type="Texture2D" uid="uid://dwifardsouyvx" path="res://exit button.png" id="4_54ced"]
+[ext_resource type="Texture2D" uid="uid://cvh07osrm6vco" path="res://photo_2026-08-28_17-54-48.png" id="3_pauny"]
+[ext_resource type="Texture2D" uid="uid://c5rqpvxyxknc4" path="res://thee synth thief titulo.png" id="4_rld62"]
+[ext_resource type="Texture2D" uid="uid://df7eg25s3muo0" path="res://exit.png" id="5_ua2e5"]
+[ext_resource type="Texture2D" uid="uid://sklmetlhqkiw" path="res://play.png" id="6_1x7fg"]
 [ext_resource type="Texture2D" uid="uid://rfonvpuvo44m" path="res://ChatGPT Image 25 ago 2026, 06_14_08 p.m..png" id="6_bvbl2"]
-[ext_resource type="Texture2D" uid="uid://dy15sn6hfnf55" path="res://synth 4.png" id="8_4mkge"]
+[ext_resource type="Script" uid="uid://bdwmh6yc4q6y1" path="res://button_play.gd" id="8_54ced"]
 [ext_resource type="Texture2D" uid="uid://c64jjvnee3uii" path="res://play hovered.png" id="9_cm65u"]
-[ext_resource type="Texture2D" uid="uid://bhd87kcqtbly0" path="res://play pressed.png" id="9_vlt20"]
-[ext_resource type="Texture2D" uid="uid://dhtdrmpuvk6yr" path="res://exit pressed.png" id="12_4mkge"]
+[ext_resource type="Script" uid="uid://bvig227pdsh7s" path="res://exit_button.gd" id="12_vlt20"]
 [ext_resource type="Texture2D" uid="uid://b03xji6p8rqh0" path="res://exit hovered.png" id="13_g1gem"]
 
 [node name="CanvasGroup" type="CanvasGroup"]
@@ -21,38 +21,52 @@ offset_bottom = 40.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_bvbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = -4.0
-offset_top = 6.0
-offset_right = 2168.0
-offset_bottom = 730.0
-scale = Vector2(0.205, 0.205)
-texture = ExtResource("2_cm65u")
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = -7.0
+offset_top = 50.0
+offset_right = 2165.0
+offset_bottom = 806.0
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("3_pauny")
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-modulate = Color(0.247059, 0.105882, 0.952941, 0.556863)
-offset_top = 90.0
-offset_right = 2172.0
-offset_bottom = 814.0
-scale = Vector2(0.205, 0.205)
-texture = ExtResource("8_4mkge")
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.537255)
+offset_left = -16.0
+offset_top = 57.0
+offset_right = 2156.0
+offset_bottom = 813.0
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("4_rld62")
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Music Menu"
+event_guid = "{75ab6985-32b5-41c4-a43a-d094af4fe4dc}"
+autoplay = true
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Desktop/Music.bank", "res://Desktop/Master.strings.bank", "res://Desktop/Master.bank"]
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 479.0
-offset_top = 530.0
-offset_right = 2015.0
-offset_bottom = 1056.0
-scale = Vector2(0.115, 0.115)
-texture_normal = ExtResource("3_rld62")
-texture_pressed = ExtResource("9_vlt20")
-texture_hover = ExtResource("9_cm65u")
+offset_left = 782.0
+offset_top = 557.0
+offset_right = 1150.0
+offset_bottom = 802.0
+scale = Vector2(0.225, 0.225)
+texture_normal = ExtResource("5_ua2e5")
+texture_hover = ExtResource("13_g1gem")
+script = ExtResource("12_vlt20")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
-offset_left = 479.0
-offset_top = 581.0
-offset_right = 2015.0
-offset_bottom = 1122.0
-scale = Vector2(0.115, 0.115)
-texture_normal = ExtResource("4_54ced")
-texture_pressed = ExtResource("12_4mkge")
-texture_hover = ExtResource("13_g1gem")
+offset_left = 263.0
+offset_top = 562.0
+offset_right = 799.0
+offset_bottom = 810.0
+scale = Vector2(0.225, 0.225)
+texture_normal = ExtResource("6_1x7fg")
+texture_hover = ExtResource("9_cm65u")
+script = ExtResource("8_54ced")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]

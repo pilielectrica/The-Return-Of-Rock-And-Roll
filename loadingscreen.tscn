@@ -1,10 +1,191 @@
-[gd_scene load_steps=3 format=3 uid="uid://csk0hc3c201c0"]
+[gd_scene load_steps=26 format=3 uid="uid://csk0hc3c201c0"]
 
 [ext_resource type="Script" uid="uid://c5cr2nlutltqq" path="res://loading_screen.gd" id="1_swxse"]
+[ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="2_k5ory"]
+[ext_resource type="Texture2D" uid="uid://cq6ka7r405t0b" path="res://momia/radar/04.png" id="3_uifsq"]
+[ext_resource type="Texture2D" uid="uid://b8cg1kik71c4q" path="res://momia/radar/05.png" id="4_1qepu"]
+[ext_resource type="Texture2D" uid="uid://bv771mx1tidas" path="res://momia/radar/03.png" id="5_ka76f"]
+[ext_resource type="Texture2D" uid="uid://cucsj2sxoyade" path="res://momia/ojo solo 2.png" id="6_hr30l"]
+[ext_resource type="Texture2D" uid="uid://7biwkq1tjlg4" path="res://momia/ojo solo 1.png" id="7_dwqaa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_swxse"]
 font_size = 34
 font_color = Color(0.286275, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tinek"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrtir"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adqpi"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(48, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r23is"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejhjs"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgwbi"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5fkb"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfka8"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l4yw"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pci8"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6xn"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(48, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcj2m"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k86ll"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cukv"]
+atlas = ExtResource("2_k5ory")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hx4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tinek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrtir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adqpi")
+}],
+"loop": true,
+"name": &" walk left or right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r23is")
+}],
+"loop": true,
+"name": &"attack_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejhjs")
+}],
+"loop": true,
+"name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgwbi")
+}],
+"loop": true,
+"name": &"attack_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5fkb")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfka8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l4yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pci8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw6xn")
+}],
+"loop": true,
+"name": &"walk down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcj2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k86ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cukv")
+}],
+"loop": true,
+"name": &"walk up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eucny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uifsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1qepu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uifsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ka76f")
+}],
+"loop": true,
+"name": &"poder_momia",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qthob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hr30l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dwqaa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -41,5 +222,33 @@ offset_bottom = 487.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.623529)
+position = Vector2(585, 302)
+scale = Vector2(7.745, 7.745)
+sprite_frames = SubResource("SpriteFrames_5hx4x")
+animation = &" walk left or right"
+autoplay = " walk left or right"
+frame = 2
+frame_progress = 0.481015
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(5.68108, -2.96966)
+scale = Vector2(0.185, 0.185)
+sprite_frames = SubResource("SpriteFrames_eucny")
+animation = &"poder_momia"
+autoplay = "poder_momia"
+frame = 3
+frame_progress = 0.430146
+flip_h = true
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.623529)
+position = Vector2(618, 278)
+scale = Vector2(3.98, 3.98)
+sprite_frames = SubResource("SpriteFrames_qthob")
+autoplay = "default"
+frame_progress = 0.947266
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

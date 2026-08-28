@@ -1,4 +1,4 @@
-[gd_scene load_steps=210 format=4 uid="uid://dp5uif2cwdsa"]
+[gd_scene load_steps=232 format=4 uid="uid://dp5uif2cwdsa"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_hd3q1"]
 [ext_resource type="Texture2D" uid="uid://dfph2r4568540" path="res://momia/PNG/bg.png" id="2_t1xbe"]
@@ -112,6 +112,27 @@
 [ext_resource type="PackedScene" uid="uid://b6bd8cxw7wrn" path="res://guitar.tscn" id="110_lco5u"]
 [ext_resource type="PackedScene" uid="uid://cmqe6u8qu7e86" path="res://boss_level_1.tscn" id="111_v43eo"]
 [ext_resource type="PackedScene" uid="uid://d3g8tpffhbtck" path="res://efecto_Verde.tscn" id="112_7guii"]
+[ext_resource type="PackedScene" uid="uid://ithiut4hin1r" path="res://gameover_level_1.tscn" id="113_t1xbe"]
+[ext_resource type="Texture2D" uid="uid://bub7jaw1xra5n" path="res://shield4/00.png" id="114_1yhjf"]
+[ext_resource type="Texture2D" uid="uid://dlc54gd3iw12l" path="res://shield4/01.png" id="115_gl4ox"]
+[ext_resource type="Texture2D" uid="uid://bfifudhdqes07" path="res://shield4/02.png" id="116_uxwy0"]
+[ext_resource type="Texture2D" uid="uid://r22dm0qx3gy5" path="res://shield4/03.png" id="117_iph10"]
+[ext_resource type="Texture2D" uid="uid://cad13y5wsjidf" path="res://shield4/04.png" id="118_hm70o"]
+[ext_resource type="Texture2D" uid="uid://bde6c2ujalvt8" path="res://shield4/05.png" id="119_8gcdi"]
+[ext_resource type="Texture2D" uid="uid://2im1h2h1few" path="res://shield4/06.png" id="120_4vjac"]
+[ext_resource type="Texture2D" uid="uid://b4qqj4q58mm0a" path="res://shield4/07.png" id="121_omwpp"]
+[ext_resource type="Texture2D" uid="uid://cdbc18ubr2dsi" path="res://shield4/08.png" id="122_ftblj"]
+[ext_resource type="Texture2D" uid="uid://chd4ea7ncvlxy" path="res://shield4/09.png" id="123_6veta"]
+[ext_resource type="Texture2D" uid="uid://b4wc3ydvdaltc" path="res://shield4/10.png" id="124_d0d2a"]
+[ext_resource type="Texture2D" uid="uid://bo5tjmrhh2lpf" path="res://shield4/11.png" id="125_yboe7"]
+[ext_resource type="Texture2D" uid="uid://dty5r3ny55828" path="res://shield4/12.png" id="126_4h3ck"]
+[ext_resource type="Texture2D" uid="uid://inf280q61gbn" path="res://shield4/13.png" id="127_jdpht"]
+[ext_resource type="Texture2D" uid="uid://qkmjyjebur5j" path="res://shield4/14.png" id="128_0xaxh"]
+[ext_resource type="Texture2D" uid="uid://bbomhkd1lu72d" path="res://shield4/15.png" id="129_0165k"]
+[ext_resource type="Texture2D" uid="uid://bgjcm1egagvvu" path="res://shield4/16.png" id="130_jmsbc"]
+[ext_resource type="Texture2D" uid="uid://bcenh6rtn4i22" path="res://shield4/17.png" id="131_4cbuc"]
+[ext_resource type="Texture2D" uid="uid://dcyfmaot65v33" path="res://shield4/18.png" id="132_lyar8"]
+[ext_resource type="Texture2D" uid="uid://dqxfswps3p5si" path="res://shield4/19.png" id="133_nexjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_hd3q1")
@@ -27769,6 +27790,74 @@ sources/62 = SubResource("TileSetAtlasSource_inwkr")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mre3"]
 size = Vector2(351.282, 576.923)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxwy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("114_1yhjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_gl4ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_uxwy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_iph10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_hm70o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_8gcdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_4vjac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_omwpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_ftblj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_6veta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_d0d2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_yboe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_4h3ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_jdpht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_0xaxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_0165k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_jmsbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_4cbuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_lyar8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_nexjd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-260.0]
 
@@ -27827,7 +27916,7 @@ bullet_scene = ExtResource("94_xb4pk")
 player = NodePath("../Player")
 cursor = NodePath("../Player/cursor")
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss", "green_effect") instance=ExtResource("95_skndc")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss", "green_effect", "player", "game_over_screen") instance=ExtResource("95_skndc")]
 position = Vector2(-53, 140)
 building = NodePath("../House_2")
 shooter_mummies = [NodePath("../Shooter_Mummie"), NodePath("../Shooter_Mummy_2"), NodePath("../Shooter_Mummy_3"), NodePath("../Shooter_Mummy_4")]
@@ -27835,6 +27924,8 @@ last_jero_level_1 = NodePath("../Jeroglifico_3")
 guitar = NodePath("../Guitarra")
 boss = NodePath("../Boss")
 green_effect = NodePath("../Green Effect")
+player = NodePath("../Player")
+game_over_screen = NodePath("../Game Over Canva")
 
 [node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("96_bkp2x")]
 position = Vector2(-83, 136)
@@ -28139,7 +28230,7 @@ position = Vector2(-80, -126)
 [node name="Marker2D5" type="Marker2D" parent="Casona_Shooters"]
 position = Vector2(167, -120)
 
-[node name="Guitarra" parent="." node_paths=PackedStringArray("jeroglifico_1", "jeroglifico_2", "jeroglifico_3", "player", "green_effect") instance=ExtResource("110_lco5u")]
+[node name="Guitarra" parent="." node_paths=PackedStringArray("jeroglifico_1", "jeroglifico_2", "jeroglifico_3", "player", "green_effect", "red_effect") instance=ExtResource("110_lco5u")]
 position = Vector2(-23, -95)
 scale = Vector2(0.215, 0.215)
 jeroglifico_1 = NodePath("../Jeroglifico_1")
@@ -28147,6 +28238,7 @@ jeroglifico_2 = NodePath("../Jeroglifico_2")
 jeroglifico_3 = NodePath("../Jeroglifico_3")
 player = NodePath("../Player")
 green_effect = NodePath("../Green Effect")
+red_effect = NodePath("../eFECT")
 
 [node name="Boss" parent="." instance=ExtResource("111_v43eo")]
 visible = false
@@ -28158,3 +28250,15 @@ visible = false
 z_index = -1
 position = Vector2(-27, -107)
 scale = Vector2(2, 2)
+
+[node name="Game Over Canva" parent="." instance=ExtResource("113_t1xbe")]
+visible = false
+
+[node name="eFECT" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(-25, -87)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_uxwy0")
+autoplay = "default"
+frame = 6
+frame_progress = 0.192755

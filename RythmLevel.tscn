@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://drtia26j6lgaj"]
+[gd_scene load_steps=15 format=3 uid="uid://drtia26j6lgaj"]
 
 [ext_resource type="Script" uid="uid://b8gbb50cyohfc" path="res://rythm_manager.gd" id="1_gs50x"]
-[ext_resource type="PackedScene" uid="uid://cv874ncs2r47s" path="res://parallax_sky.tscn" id="1_yb8ls"]
+[ext_resource type="PackedScene" uid="uid://co43biicvgav1" path="res://parallax_sky_level_3.tscn" id="1_ydtbd"]
 [ext_resource type="Texture2D" uid="uid://bfbrrqvpegd7x" path="res://receptor flecha izquierda.png" id="2_2lomv"]
 [ext_resource type="PackedScene" uid="uid://c1fqfh4e5vnqu" path="res://note.tscn" id="2_ejrrd"]
 [ext_resource type="Texture2D" uid="uid://3irf620x4lgk" path="res://receptor flecha abajo.png" id="3_ydtbd"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://voabltap0cwb" path="res://good.png" id="9_pxq1i"]
 [ext_resource type="Texture2D" uid="uid://c1okvmsfl8rym" path="res://miss.png" id="10_2lomv"]
 [ext_resource type="Script" uid="uid://c1plapbtsxdit" path="res://score_manager.gd" id="12_pxq1i"]
-[ext_resource type="Texture2D" uid="uid://dy15sn6hfnf55" path="res://synth 4.png" id="14_ydtbd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ydtbd"]
 font = ExtResource("9_2lomv")
@@ -22,7 +21,7 @@ font_color = Color(0.640953, 0.136131, 0.21079, 1)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Node2D" parent="." instance=ExtResource("1_yb8ls")]
+[node name="Node2D" parent="." instance=ExtResource("1_ydtbd")]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
@@ -75,10 +74,10 @@ bank_paths = ["res://Desktop/Music.bank", "res://Desktop/Master.strings.bank", "
 script = ExtResource("12_pxq1i")
 
 [node name="Score_Text" type="Label" parent="Rythm Manager/Score_Manager"]
-offset_left = 1071.0
+offset_left = 1054.0
 offset_top = 59.0
-offset_right = 1111.0
-offset_bottom = 82.0
+offset_right = 1094.0
+offset_bottom = 111.0
 label_settings = SubResource("LabelSettings_ydtbd")
 
 [node name="Feedback" type="Node2D" parent="."]
@@ -102,14 +101,5 @@ texture = ExtResource("9_pxq1i")
 position = Vector2(553.607, 282.482)
 scale = Vector2(0.185, 0.185)
 texture = ExtResource("10_2lomv")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.145098)
-offset_left = 38.0
-offset_top = -58.0
-offset_right = 819.0
-offset_bottom = 473.0
-scale = Vector2(1.375, 1.375)
-texture = ExtResource("14_ydtbd")
 
 [connection signal="timeline_beat" from="Rythm Manager/FmodEventEmitter2D" to="Rythm Manager" method="_on_fmod_event_emitter_2d_timeline_beat"]

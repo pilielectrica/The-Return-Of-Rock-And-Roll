@@ -4,9 +4,9 @@ extends Node2D
 @onready var clouds: Parallax2D = $Parallax2D2
 @onready var far: Parallax2D = $Parallax2D3
 @onready var near: Parallax2D = $Parallax2D4
-
+@onready var synth : Parallax2D = $Parallax2D5
 @export var sky_speed := 3.0
-@export var clouds_speed := 8.0
+@export var clouds_speed := 2.0
 @export var far_speed := 15.0
 @export var near_speed := 25.0
 
