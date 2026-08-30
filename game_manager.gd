@@ -16,6 +16,7 @@ var done = false
 @export var green_effect : AnimatedSprite2D
 @export var player : CharacterBody2D
 @export var game_over_screen : CanvasLayer
+@export var music_manager : Node2D
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
@@ -77,3 +78,6 @@ func go_to_level_2():
 func _game_over_screen():
 	game_over_screen.visible = true
 	print ("entro en la funcion game over screen")
+	print("escena actual: ", get_tree().current_scene.name)
+	if get_tree().current_scene.name == "level_1":
+		music_manager.play_Game_Over_Level_1()

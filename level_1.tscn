@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=4 uid="uid://dp5uif2cwdsa"]
+[gd_scene load_steps=233 format=4 uid="uid://dp5uif2cwdsa"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_hd3q1"]
 [ext_resource type="Texture2D" uid="uid://dfph2r4568540" path="res://momia/PNG/bg.png" id="2_t1xbe"]
@@ -133,6 +133,7 @@
 [ext_resource type="Texture2D" uid="uid://bcenh6rtn4i22" path="res://shield4/17.png" id="131_4cbuc"]
 [ext_resource type="Texture2D" uid="uid://dcyfmaot65v33" path="res://shield4/18.png" id="132_lyar8"]
 [ext_resource type="Texture2D" uid="uid://dqxfswps3p5si" path="res://shield4/19.png" id="133_nexjd"]
+[ext_resource type="Script" uid="uid://brfnhujn4nwjr" path="res://music_manager.gd" id="134_gl4ox"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_hd3q1")
@@ -27858,7 +27859,7 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="level_1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-260.0]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -27916,7 +27917,7 @@ bullet_scene = ExtResource("94_xb4pk")
 player = NodePath("../Player")
 cursor = NodePath("../Player/cursor")
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss", "green_effect", "player", "game_over_screen") instance=ExtResource("95_skndc")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("building", "shooter_mummies", "last_jero_level_1", "guitar", "boss", "green_effect", "player", "game_over_screen", "music_manager") instance=ExtResource("95_skndc")]
 position = Vector2(-53, 140)
 building = NodePath("../House_2")
 shooter_mummies = [NodePath("../Shooter_Mummie"), NodePath("../Shooter_Mummy_2"), NodePath("../Shooter_Mummy_3"), NodePath("../Shooter_Mummy_4")]
@@ -27926,6 +27927,7 @@ boss = NodePath("../Boss")
 green_effect = NodePath("../Green Effect")
 player = NodePath("../Player")
 game_over_screen = NodePath("../Game Over Canva")
+music_manager = NodePath("../Music Manager")
 
 [node name="Enemy_Spawner" parent="." node_paths=PackedStringArray("marker", "enemy", "building") instance=ExtResource("96_bkp2x")]
 position = Vector2(-83, 136)
@@ -28024,12 +28026,13 @@ jeroglifico_1 = NodePath("../Jeroglifico_1")
 jeroglifico_2 = NodePath("../Jeroglifico_2")
 jeroglifico_3 = NodePath("../Jeroglifico_3")
 
-[node name="House_1" parent="." node_paths=PackedStringArray("sprites", "markers", "explosion") instance=ExtResource("100_0j61c")]
+[node name="House_1" parent="." node_paths=PackedStringArray("sprites", "markers", "explosion", "music_manager") instance=ExtResource("100_0j61c")]
 position = Vector2(-758, -254)
 scale = Vector2(0.39, 0.39)
 sprites = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2"), NodePath("AnimatedSprite2D3"), NodePath("AnimatedSprite2D4"), NodePath("AnimatedSprite2D5")]
 markers = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4"), NodePath("Marker2D5")]
 explosion = NodePath("AnimatedSprite2D6")
+music_manager = NodePath("../Music Manager")
 
 [node name="AnimatedSprite2D" parent="House_1" instance=ExtResource("101_hq8w7")]
 position = Vector2(1520.51, 941.026)
@@ -28074,13 +28077,14 @@ position = Vector2(69.2308, 207.692)
 position = Vector2(19.2308, 8.9743)
 shape = SubResource("RectangleShape2D_5mre3")
 
-[node name="House_2" parent="." node_paths=PackedStringArray("sprites", "markers", "explosion") instance=ExtResource("100_0j61c")]
+[node name="House_2" parent="." node_paths=PackedStringArray("sprites", "markers", "explosion", "music_manager") instance=ExtResource("100_0j61c")]
 position = Vector2(863, -250)
 scale = Vector2(0.39, 0.39)
 sprites = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2"), NodePath("AnimatedSprite2D3"), NodePath("AnimatedSprite2D4"), NodePath("AnimatedSprite2D5")]
 markers = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4"), NodePath("Marker2D5")]
 explosion = NodePath("AnimatedSprite2D6")
 house_2 = true
+music_manager = NodePath("../Music Manager")
 
 [node name="AnimatedSprite2D" parent="House_2" instance=ExtResource("101_hq8w7")]
 position = Vector2(1943.59, 651.282)
@@ -28262,3 +28266,19 @@ sprite_frames = SubResource("SpriteFrames_uxwy0")
 autoplay = "default"
 frame = 6
 frame_progress = 0.192755
+
+[node name="Music Manager" type="Node2D" parent="."]
+script = ExtResource("134_gl4ox")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="Music Manager"]
+event_name = "event:/Level 1 Music"
+event_guid = "{3015e8b1-e391-43e1-83d9-7582e86407fe}"
+autoplay = true
+"fmod_parameters/Game Part/id" = -8608266125366862087
+"fmod_parameters/Game Part" = 0
+"fmod_parameters/Game Part/variant_type" = 2
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Music Manager"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="Music Manager"]
+bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank"]

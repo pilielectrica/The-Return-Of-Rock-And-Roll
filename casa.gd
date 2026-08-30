@@ -12,6 +12,7 @@ signal building_hit
 signal free_shooter_mummy
 @export var house_2 = false
 @export var house_shooters = false
+@export var music_manager : Node2D
 func _ready() -> void:
 	for fire in sprites:
 		fire.visible = false
@@ -28,6 +29,7 @@ func count_bullets():
 	var fire_count := destroy / hits_per_fire
 	if (destroy >=1):
 		building_hit.emit()
+		music_manager.play_Part_B_Level_1()
 	for i in range(sprites.size()):
 		if i < fire_count and i < markers.size():
 			sprites[i].visible = true
@@ -42,7 +44,9 @@ func count_bullets():
 		explosion.visible = true
 		explosion.play("default")
 		await get_tree().create_timer(2).timeout
+		music_manager.play_Part_C_Level_1()
 		if (house_2):
 			free_shooter_mummy.emit()
+			music_manager.play_Part_D_Level_1()
 		queue_free()
 	
