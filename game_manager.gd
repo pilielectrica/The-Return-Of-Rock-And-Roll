@@ -17,6 +17,7 @@ var done = false
 @export var player : CharacterBody2D
 @export var game_over_screen : CanvasLayer
 @export var music_manager : Node2D
+@export var music_manager_level_2 : Node2D
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
@@ -34,6 +35,7 @@ func _ready() -> void:
 	if dog_power != null:
 		dog_power.power_finished.connect(_on_dog_power_finished)
 	activate_mummies()
+
 func activate_mummies():
 	if (shooter_mummies != null):
 		for m in shooter_mummies:
@@ -80,4 +82,7 @@ func _game_over_screen():
 	print ("entro en la funcion game over screen")
 	print("escena actual: ", get_tree().current_scene.name)
 	if get_tree().current_scene.name == "level_1":
-		music_manager.play_Game_Over_Level_1()
+		if (music_manager != null):
+			music_manager.play_Game_Over_Level_1()
+	elif get_tree().current_scene.name == "level 2":
+			music_manager_level_2.play_Game_Over_Level_2()

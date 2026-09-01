@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://rc56yoj4tlux"]
+
+[ext_resource type="Script" uid="uid://cgnjpbd3jc2u5" path="res://pause.gd" id="1_45vjg"]
+[ext_resource type="FontFile" uid="uid://c86iifatc2eil" path="res://minecraft/Minecraft.ttf" id="2_aq7p1"]
+[ext_resource type="Script" uid="uid://bekdmkndjjixg" path="res://menu_button.gd" id="3_6eyaj"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_45vjg")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+modulate = Color(0.34902, 1, 1, 1)
+offset_left = -5.0
+offset_right = 35.0
+offset_bottom = 40.0
+scale = Vector2(29.43, 16.34)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+modulate = Color(0.0177324, 0.0177324, 0.0177324, 1)
+offset_left = 15.8342
+offset_top = 16.0343
+offset_right = 77.3692
+offset_bottom = 59.9793
+scale = Vector2(0.115, 0.2)
+theme_override_fonts/normal_font = ExtResource("2_aq7p1")
+theme_override_font_sizes/bold_italics_font_size = 8
+text = "Paused"
+tab_size = 2
+
+[node name="Menu Button" type="Button" parent="Panel"]
+modulate = Color(0.316956, 0.358408, 0.876417, 1)
+offset_left = 31.3626
+offset_top = 34.8837
+offset_right = 195.363
+offset_bottom = 70.8837
+scale = Vector2(0.045, 0.085)
+theme_override_fonts/font = ExtResource("2_aq7p1")
+theme_override_font_sizes/font_size = 28
+text = "Menu"
+script = ExtResource("3_6eyaj")
+
+[connection signal="pressed" from="Panel/Menu Button" to="Panel/Menu Button" method="_on_pressed"]

@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var flip_h := false
 @export var pos_offset := 40
 var done = false
+@export var music_manager : Node2D
 func _ready() -> void:
 	collider.body_entered.connect(_on_collider_enter)
 	anim.flip_h = flip_h
@@ -20,3 +21,4 @@ func _on_collider_enter(body):
 			position.x += pos_offset
 			barrera.set_deferred("disabled", false)
 			done = true
+			music_manager.play_Part_B_Level_2()

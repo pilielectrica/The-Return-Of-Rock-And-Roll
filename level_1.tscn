@@ -1,4 +1,4 @@
-[gd_scene load_steps=233 format=4 uid="uid://dp5uif2cwdsa"]
+[gd_scene load_steps=234 format=4 uid="uid://dp5uif2cwdsa"]
 
 [ext_resource type="Texture2D" uid="uid://clm0xj2hjwrro" path="res://indoors tileset.png" id="1_hd3q1"]
 [ext_resource type="Texture2D" uid="uid://dfph2r4568540" path="res://momia/PNG/bg.png" id="2_t1xbe"]
@@ -134,6 +134,7 @@
 [ext_resource type="Texture2D" uid="uid://dcyfmaot65v33" path="res://shield4/18.png" id="132_lyar8"]
 [ext_resource type="Texture2D" uid="uid://dqxfswps3p5si" path="res://shield4/19.png" id="133_nexjd"]
 [ext_resource type="Script" uid="uid://brfnhujn4nwjr" path="res://music_manager.gd" id="134_gl4ox"]
+[ext_resource type="PackedScene" uid="uid://rc56yoj4tlux" path="res://pause.tscn" id="135_uxwy0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_hd3q1")
@@ -28282,3 +28283,6 @@ autoplay = true
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Music Manager"]
 bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank"]
+
+[node name="Pause" parent="." node_paths=PackedStringArray("music") instance=ExtResource("135_uxwy0")]
+music = NodePath("../Music Manager/FmodEventEmitter2D")

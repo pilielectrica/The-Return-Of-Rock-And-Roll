@@ -31,6 +31,7 @@ var rounds_count = 0
 var dash_target := Vector2.ZERO
 var collision = get_slide_collision(0)
 signal no_life
+@export var music_manager : Node2D
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -100,11 +101,12 @@ func _on_life_50():
 	if (!life_50):
 		game_manager.increase_dog_power_speed()
 		life_50 = true
+	music_manager.play_Part_C_Level_2()
 func _on_life_25():
 	if !life_25:
 		game_manager.increase_dog_power_speed()
 		life_25 = true
-
+	music_manager.play_Part_D_Level_2()
 
 func dash_attack():
 	if calculation:
@@ -119,7 +121,7 @@ func dash_attack():
 
 	calculation = true
 	attack = true
-
+	music_manager.play_Dash_Level_2()
 func _physics_process(delta: float) -> void:
 	if attack:
 		print(global_position.distance_to(dash_target))
@@ -146,7 +148,6 @@ func finish_dash_attack():
 		game_manager.increase_bullets_speed()
 		speed += speed_increasement
 		hurt = false
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

@@ -464,12 +464,12 @@ position = Vector2(-33, -20)
 scale = Vector2(2, 2)
 
 [node name="ProgressBar" type="ProgressBar" parent="Health Component/CanvasGroup"]
-offset_left = -15.0
-offset_top = -20.0
-offset_right = -11.0
-offset_bottom = 7.0
+offset_left = -27.0
+offset_top = -11.5
+offset_right = -10.0
+offset_bottom = 31.5
 rotation = 3.14159
-scale = Vector2(-7.513, 0.1)
+scale = Vector2(-4.042, 0.053)
 theme_override_styles/background = SubResource("StyleBoxFlat_kw08n")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rdfxm")
 value = 100.0

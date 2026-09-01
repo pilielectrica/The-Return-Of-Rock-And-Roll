@@ -15,6 +15,7 @@ var exploding := false
 var direction := Vector2.ZERO
 var target_position
 signal shoot_done
+@export var music_manager : Node2D
 func _ready():
 	timer.wait_time = wait_time
 	body_entered.connect(_on_body_entered)
@@ -79,6 +80,7 @@ func _on_collider_entrada_body_enter(body):
 		timer.start()
 		print("colisionnnn")
 		collider.set_deferred("monitoring", false)
+		music_manager.play_Part_C_Level_2()
 func _on_timer_timeout():
 	shoot(marker_start.global_position)
 	print("dispara")

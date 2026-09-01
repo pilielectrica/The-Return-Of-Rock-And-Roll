@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://buwbcabu44ir7"]
+[gd_scene load_steps=26 format=3 uid="uid://buwbcabu44ir7"]
 
 [ext_resource type="Script" uid="uid://fq0bc1y1meq4" path="res://gameover.gd" id="1_sttw0"]
 [ext_resource type="Shader" uid="uid://dxiq288w8h0pp" path="res://player.tres" id="2_rcdas"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://dye4fbrnliguu" path="res://shader_game_over.tres" id="6_u31jt"]
 [ext_resource type="Texture2D" uid="uid://b3tni31ipst4e" path="res://game over.png" id="7_jd1ll"]
 [ext_resource type="FontFile" uid="uid://c86iifatc2eil" path="res://minecraft/Minecraft.ttf" id="8_ps1j2"]
+[ext_resource type="Script" uid="uid://bekdmkndjjixg" path="res://menu_button.gd" id="9_rcdas"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g1o2j"]
 
@@ -159,5 +160,17 @@ theme_override_fonts/font = ExtResource("8_ps1j2")
 theme_override_font_sizes/font_size = 28
 text = "Play Again?"
 
+[node name="Menu Button" type="Button" parent="."]
+modulate = Color(0.316956, 0.358408, 0.876417, 1)
+offset_left = 987.0
+offset_top = 602.0
+offset_right = 1151.0
+offset_bottom = 638.0
+theme_override_fonts/font = ExtResource("8_ps1j2")
+theme_override_font_sizes/font_size = 28
+text = "Menu"
+script = ExtResource("9_rcdas")
+
 [connection signal="pressed" from="Node2D/Play_Again_Button" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="Node2D/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Menu Button" to="Menu Button" method="_on_pressed"]

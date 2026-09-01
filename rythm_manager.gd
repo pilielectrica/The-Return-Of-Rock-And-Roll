@@ -38,7 +38,7 @@ var second_half := false
 @export var perfect_window := 0.05
 @export var great_window := 0.10
 @export var good_window := 0.16
-
+signal song_over
 
 # ============================================
 # PATRONES PRIMERA MITAD
@@ -151,7 +151,7 @@ func _process(delta: float) -> void:
 	update_notes()
 	check_input()
 	check_misses()
-
+	song_is_over()
 
 # ============================================
 # INPUT
@@ -418,3 +418,6 @@ func _on_fmod_event_emitter_2d_timeline_beat(
 		" Beat: ", params["beat"],
 		" Time: ", song_time
 	)
+func song_is_over():
+	if song_time >= song_duration :
+		song_over.emit()
