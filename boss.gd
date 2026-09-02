@@ -31,6 +31,7 @@ var rounds_count = 0
 var dash_target := Vector2.ZERO
 var collision = get_slide_collision(0)
 signal no_life
+var attack_sound_played = false
 @export var music_manager : Node2D
 func _ready() -> void:
 	life_bar.max_value = life
@@ -91,7 +92,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if !area.active:
 			return
 		life_component.get_hurt()
-
+		$Hit_Sound.play()
 		dash_attack()
 		if area.has_method("deactivate"):
 			area.deactivate()
@@ -111,7 +112,7 @@ func _on_life_25():
 func dash_attack():
 	if calculation:
 		return
-
+		$"dash sound".play()
 	dash_target = player_marker.global_position
 
 	direction = (dash_target - global_position).normalized()
@@ -134,7 +135,9 @@ func _physics_process(delta: float) -> void:
 
 		if global_position.distance_to(dash_target) <= 500.0:
 			anim_boss.play("attack_1")
-
+			if !attack_sound_played:
+				$"Attack sound".play()
+				attack_sound_played = true
 		if collision != null and not collision.get_collider() is CharacterBody2D:
 			velocity = Vector2.ZERO
 			attack = false
@@ -148,7 +151,7 @@ func finish_dash_attack():
 		game_manager.increase_bullets_speed()
 		speed += speed_increasement
 		hurt = false
-
+		attack_sound_played = false
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.take_damage(10)
@@ -156,7 +159,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		velocity = Vector2.ZERO
 		attack = false
 		anim_boss.play("attack_2")
-
+		$"Attack sound".play()
 
 
 func _on_attack_anim_finished():

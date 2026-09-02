@@ -18,6 +18,7 @@ var done = false
 @export var game_over_screen : CanvasLayer
 @export var music_manager : Node2D
 @export var music_manager_level_2 : Node2D
+
 func enemy_dies(_killed):
 	killed_enemies += _killed
 	print(killed_enemies)
@@ -77,6 +78,7 @@ func level_2_screen():
 func go_to_level_2():
 	Global.next_scene = "res://level 2.tscn"
 	get_tree().change_scene_to_file("res://loadingscreen_level_2.tscn")
+	SaveManager.save_level_1_complete()
 func _game_over_screen():
 	game_over_screen.visible = true
 	print ("entro en la funcion game over screen")

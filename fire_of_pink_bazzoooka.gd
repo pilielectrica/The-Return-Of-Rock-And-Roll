@@ -6,14 +6,14 @@ var active = false
 
 @onready var sprite_fire = $Fire
 @onready var collision = $CollisionShape2D
-
+@export var shoot_sound : FmodEventEmitter2D
 func _ready():
 	visible = false
 
 
 func shoot(start_position: Vector2, target_position: Vector2):
 	global_position = start_position
-	
+	shoot_sound.play()
 	var direction = (target_position - global_position).normalized()
 	velocity = direction * SPEED
 	
@@ -21,6 +21,7 @@ func shoot(start_position: Vector2, target_position: Vector2):
 	visible = true
 	set_deferred("monitoring", true)
 	collision.set_deferred("disabled", false)
+	
 
 	sprite_fire.visible = true
 	sprite_fire.play("default")

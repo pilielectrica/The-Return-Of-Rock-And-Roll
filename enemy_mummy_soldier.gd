@@ -23,6 +23,7 @@ var change_dir := false
 var avoid_direction := Vector2.ZERO
 var avoid_time := 0.0
 var damage = false
+var dead = false
 func _physics_process(delta):
 	var pos_dif = player.global_position - global_position
 	if (moving):
@@ -79,6 +80,7 @@ func _atack():
 	if (atack ==true):
 		momia_power.visible = true
 		momia_power.play("poder_momia")
+		$FmodEventEmitter2D.play()
 		anim.pause()
 		if (momia_eye_down):
 			momia_eyes.visible = true
@@ -139,6 +141,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func die():
 	atack = false 
 	var explosion = explosion_scene.instantiate()
+	if !dead:
+		$FmodEventEmitter2D2.play_one_shot()
+		dead = true
+
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = global_position
 	anim.play("idle")
@@ -153,6 +159,7 @@ func deactivate_enemy():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	visible = false
 	collision_body.disabled = true
+	dead = false
 func reset_enemy():
 	moving = true
 	atack = false

@@ -169,5 +169,13 @@ animation = &"move"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Boss_Bullets"
+event_guid = "{ffd1a1b6-1a0e-4f5d-9447-b4a12753d8dd}"
+
+[node name="FmodEventEmitter2D2" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Boss Bullet Explotion"
+event_guid = "{7eb8b387-4a27-40ec-ad25-e57e5b0d9457}"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

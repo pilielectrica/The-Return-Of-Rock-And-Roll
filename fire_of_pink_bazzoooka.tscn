@@ -28,10 +28,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h31an"]
 
-[node name="Area2D" type="Area2D" groups=["bullet"]]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("shoot_sound") groups=["bullet"]]
 z_index = 3
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_h31an")
+shoot_sound = NodePath("FmodEventEmitter2D")
 
 [node name="Fire" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fxwjb")
@@ -39,6 +40,10 @@ frame_progress = 0.279779
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h31an")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Shoot_Player"
+event_guid = "{e0724b0b-1dca-4032-bafc-4b25a783e322}"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

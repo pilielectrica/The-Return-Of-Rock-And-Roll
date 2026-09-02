@@ -6,6 +6,7 @@ signal jeroglifico_taken
 @export var sprite_texture: Texture2D
 var jero_count = 0
 signal free_shooter_mummies
+@export var jero_sound : FmodEventEmitter2D
 func _ready() -> void:
 	visible = false
 	sprite.texture = sprite_texture
@@ -21,4 +22,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print ("tocamos el jeroglifico")
 		jeroglifico_taken.emit()
+		jero_sound.play()
 		queue_free()

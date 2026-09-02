@@ -18,6 +18,7 @@ scale = Vector2(29.43, 16.34)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 modulate = Color(0.0177324, 0.0177324, 0.0177324, 1)
+layout_mode = 0
 offset_left = 15.8342
 offset_top = 16.0343
 offset_right = 77.3692
@@ -30,6 +31,7 @@ tab_size = 2
 
 [node name="Menu Button" type="Button" parent="Panel"]
 modulate = Color(0.316956, 0.358408, 0.876417, 1)
+layout_mode = 0
 offset_left = 31.3626
 offset_top = 34.8837
 offset_right = 195.363

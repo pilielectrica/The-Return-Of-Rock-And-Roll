@@ -482,6 +482,18 @@ collision_mask = 3
 position = Vector2(-24, 10)
 shape = SubResource("RectangleShape2D_c30dg")
 
+[node name="Hit_Sound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Boss_Hit"
+event_guid = "{ec050d62-a40a-4e06-bc24-d8e4ee26557d}"
+
+[node name="Attack sound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Melee_Attack_Boss"
+event_guid = "{0c2fed34-a56f-4edc-92bc-783b45639561}"
+
+[node name="dash sound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Boss_dash"
+event_guid = "{cb1ae5b2-114c-4c83-90ba-e85e30b65523}"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

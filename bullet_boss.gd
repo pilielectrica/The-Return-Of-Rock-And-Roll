@@ -38,7 +38,7 @@ func shoot(start_pos: Vector2):
 	exploding = false
 	collision.disabled = false
 	set_physics_process(true)
-	
+	$FmodEventEmitter2D.play()
 func _physics_process(delta):
 	if not active or exploding:
 		return
@@ -52,7 +52,7 @@ func explode():
 	exploding = true
 	collision.disabled = true
 	anim_bala.play("hit")
-
+	$FmodEventEmitter2D2.play()
 func disable_bullet():
 	active = false
 	exploding = false

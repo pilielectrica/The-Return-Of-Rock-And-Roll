@@ -17,4 +17,8 @@ position = Vector2(6, 0)
 scale = Vector2(14.16, 30.44)
 shape = SubResource("RectangleShape2D_vef2f")
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Fire"
+event_guid = "{ed1dd486-96ef-4a2a-b93d-6d526e3782d4}"
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

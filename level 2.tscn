@@ -29958,7 +29958,7 @@ script = ExtResource("40_s3qyi")
 [node name="FmodListener2D" type="FmodListener2D" parent="MUSIC MANAGER"]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="MUSIC MANAGER"]
-bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank"]
+bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank", "res://Desktop/SFX_LV_2.bank"]
 
 [node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="MUSIC MANAGER"]
 event_name = "event:/Music LV 2"

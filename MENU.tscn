@@ -1,15 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxyr0psjl0m8o"]
+[gd_scene load_steps=22 format=3 uid="uid://dxyr0psjl0m8o"]
 
 [ext_resource type="PackedScene" uid="uid://cv874ncs2r47s" path="res://parallax_sky.tscn" id="1_cm65u"]
 [ext_resource type="Texture2D" uid="uid://cvh07osrm6vco" path="res://photo_2026-08-28_17-54-48.png" id="3_pauny"]
 [ext_resource type="Texture2D" uid="uid://c5rqpvxyxknc4" path="res://thee synth thief titulo.png" id="4_rld62"]
+[ext_resource type="Texture2D" uid="uid://ntf25v2mu3r2" path="res://level 1.png" id="5_4mkge"]
 [ext_resource type="Texture2D" uid="uid://df7eg25s3muo0" path="res://exit.png" id="5_ua2e5"]
 [ext_resource type="Texture2D" uid="uid://sklmetlhqkiw" path="res://play.png" id="6_1x7fg"]
+[ext_resource type="Texture2D" uid="uid://cieoyfdwjpnsp" path="res://level 1 hovered.png" id="6_buaci"]
 [ext_resource type="Texture2D" uid="uid://rfonvpuvo44m" path="res://ChatGPT Image 25 ago 2026, 06_14_08 p.m..png" id="6_bvbl2"]
+[ext_resource type="Script" uid="uid://bvlqicpr1ppoq" path="res://level_1_button.gd" id="7_g1gem"]
 [ext_resource type="Script" uid="uid://bdwmh6yc4q6y1" path="res://button_play.gd" id="8_54ced"]
+[ext_resource type="Texture2D" uid="uid://bxi1v06knhhvb" path="res://level 2.png" id="8_ykus6"]
 [ext_resource type="Texture2D" uid="uid://c64jjvnee3uii" path="res://play hovered.png" id="9_cm65u"]
+[ext_resource type="Texture2D" uid="uid://c10u6ql4jxp5e" path="res://level 2 hovered.png" id="9_vpg8e"]
+[ext_resource type="Texture2D" uid="uid://j1mij17ea23c" path="res://level 3.png" id="10_va5hy"]
+[ext_resource type="Script" uid="uid://cw2lemj28jbsy" path="res://level_2_button.gd" id="10_ykus6"]
+[ext_resource type="Texture2D" uid="uid://csk5qancdpicd" path="res://level 3 hovered.png" id="12_2dhp5"]
+[ext_resource type="Script" uid="uid://bwulmddngbdrw" path="res://level_3_button_2.gd" id="12_va5hy"]
 [ext_resource type="Script" uid="uid://bvig227pdsh7s" path="res://exit_button.gd" id="12_vlt20"]
 [ext_resource type="Texture2D" uid="uid://b03xji6p8rqh0" path="res://exit hovered.png" id="13_g1gem"]
+[ext_resource type="FontFile" uid="uid://c86iifatc2eil" path="res://minecraft/Minecraft.ttf" id="14_2dhp5"]
+[ext_resource type="Script" uid="uid://ogrfcahbjcaj" path="res://back_button.gd" id="15_ar72c"]
 
 [node name="CanvasGroup" type="CanvasGroup"]
 
@@ -22,6 +33,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_bvbl2")
 
 [node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color(0.607615, 0.853757, 0.974305, 0.858824)
 offset_left = -7.0
 offset_top = 50.0
 offset_right = 2165.0
@@ -30,11 +42,11 @@ scale = Vector2(0.305, 0.305)
 texture = ExtResource("3_pauny")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.537255)
-offset_left = -16.0
-offset_top = 57.0
-offset_right = 2156.0
-offset_bottom = 813.0
+modulate = Color(0.514781, 0.694769, 0.930732, 0.878431)
+offset_left = -17.0
+offset_top = 56.0
+offset_right = 2155.0
+offset_bottom = 812.0
 scale = Vector2(0.305, 0.305)
 texture = ExtResource("4_rld62")
 
@@ -48,7 +60,52 @@ autoplay = true
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://Desktop/Music.bank", "res://Desktop/Master.strings.bank", "res://Desktop/Master.bank"]
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Levels Buttons" type="Node2D" parent="."]
+visible = false
+
+[node name="level 1 button" type="TextureButton" parent="Levels Buttons"]
+offset_left = 254.0
+offset_top = 559.0
+offset_right = 601.0
+offset_bottom = 693.0
+scale = Vector2(0.475, 0.475)
+texture_normal = ExtResource("5_4mkge")
+texture_hover = ExtResource("6_buaci")
+script = ExtResource("7_g1gem")
+
+[node name="level 2 button" type="TextureButton" parent="Levels Buttons"]
+offset_left = 495.0
+offset_top = 566.0
+offset_right = 889.0
+offset_bottom = 713.0
+scale = Vector2(0.39, 0.39)
+texture_normal = ExtResource("8_ykus6")
+texture_hover = ExtResource("9_vpg8e")
+script = ExtResource("10_ykus6")
+
+[node name="level 3 button2" type="TextureButton" parent="Levels Buttons"]
+offset_left = 761.0
+offset_top = 574.0
+offset_right = 1094.0
+offset_bottom = 690.0
+scale = Vector2(0.39, 0.39)
+texture_normal = ExtResource("10_va5hy")
+texture_hover = ExtResource("12_2dhp5")
+script = ExtResource("12_va5hy")
+
+[node name="Back button" type="Button" parent="Levels Buttons" node_paths=PackedStringArray("play_exit_buttons")]
+offset_left = 1052.0
+offset_top = 596.0
+offset_right = 1060.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("14_2dhp5")
+text = "BACK"
+script = ExtResource("15_ar72c")
+play_exit_buttons = NodePath("../../Play_Exit")
+
+[node name="Play_Exit" type="Node2D" parent="."]
+
+[node name="Exit Button" type="TextureButton" parent="Play_Exit"]
 offset_left = 782.0
 offset_top = 557.0
 offset_right = 1150.0
@@ -58,7 +115,7 @@ texture_normal = ExtResource("5_ua2e5")
 texture_hover = ExtResource("13_g1gem")
 script = ExtResource("12_vlt20")
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="Play Button" type="TextureButton" parent="Play_Exit" node_paths=PackedStringArray("level_buttons")]
 offset_left = 263.0
 offset_top = 562.0
 offset_right = 799.0
@@ -67,6 +124,12 @@ scale = Vector2(0.225, 0.225)
 texture_normal = ExtResource("6_1x7fg")
 texture_hover = ExtResource("9_cm65u")
 script = ExtResource("8_54ced")
+level_buttons = NodePath("../../Levels Buttons")
 
-[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
-[connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]
+[connection signal="pressed" from="Levels Buttons/level 1 button" to="Levels Buttons/level 1 button" method="_on_pressed"]
+[connection signal="pressed" from="Levels Buttons/level 2 button" to="Levels Buttons/level 2 button" method="_on_pressed"]
+[connection signal="pressed" from="Levels Buttons/level 3 button2" to="Levels Buttons/level 3 button2" method="_on_pressed"]
+[connection signal="pressed" from="Levels Buttons/Back button" to="Parallax" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Levels Buttons/Back button" to="Levels Buttons/Back button" method="_on_pressed"]
+[connection signal="pressed" from="Play_Exit/Exit Button" to="Play_Exit/Exit Button" method="_on_pressed"]
+[connection signal="pressed" from="Play_Exit/Play Button" to="Play_Exit/Play Button" method="_on_pressed"]

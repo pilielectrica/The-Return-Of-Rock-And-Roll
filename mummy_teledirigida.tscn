@@ -43,5 +43,9 @@ shape = SubResource("RectangleShape2D_cyuln")
 wait_time = 5.0
 autostart = true
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Mummy_teledirigida_shoot"
+event_guid = "{e509c029-b15d-4309-8191-215e3d7a4ed7}"
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

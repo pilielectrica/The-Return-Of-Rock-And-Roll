@@ -47,7 +47,7 @@ func explode():
 	collision.disabled = true
 	anim.play("default")
 	sprite_bala.visible = false
-
+	$FmodEventEmitter2D.play()
 func disable_bullet():
 	active = false
 	exploding = false

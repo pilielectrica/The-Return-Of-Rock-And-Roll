@@ -27905,6 +27905,9 @@ z_index = 9
 position = Vector2(409, 308)
 player = NodePath("..")
 
+[node name="FmodListener2D" type="FmodListener2D" parent="Player"]
+position = Vector2(462, 200)
+
 [node name="Area2D" parent="." instance=ExtResource("92_v7fbq")]
 position = Vector2(154, -84)
 
@@ -28130,19 +28133,22 @@ position = Vector2(69.2308, 207.692)
 position = Vector2(19.2308, 8.9743)
 shape = SubResource("RectangleShape2D_5mre3")
 
-[node name="Jeroglifico_1" parent="." node_paths=PackedStringArray("building") instance=ExtResource("103_vrkwo")]
+[node name="Jeroglifico_1" parent="." node_paths=PackedStringArray("building", "jero_sound") instance=ExtResource("103_vrkwo")]
 position = Vector2(-755, -243)
 building = NodePath("../House_1")
 sprite_texture = ExtResource("104_251lv")
+jero_sound = NodePath("../sfx/jero sound")
 
-[node name="Jeroglifico_2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("103_vrkwo")]
+[node name="Jeroglifico_2" parent="." node_paths=PackedStringArray("building", "jero_sound") instance=ExtResource("103_vrkwo")]
 position = Vector2(877, -229)
 building = NodePath("../House_2")
 sprite_texture = ExtResource("105_7l3e8")
+jero_sound = NodePath("../sfx/jero sound")
 
-[node name="Jeroglifico_3" parent="." instance=ExtResource("103_vrkwo")]
+[node name="Jeroglifico_3" parent="." node_paths=PackedStringArray("jero_sound") instance=ExtResource("103_vrkwo")]
 position = Vector2(268, -472)
 sprite_texture = ExtResource("106_xkvew")
+jero_sound = NodePath("../sfx/jero sound")
 
 [node name="Shooter_Mummie" parent="." node_paths=PackedStringArray("bullet_mummy", "marker", "player", "house_2", "house_actual") instance=ExtResource("107_rc8vc")]
 z_index = 2
@@ -28279,10 +28285,15 @@ autoplay = true
 "fmod_parameters/Game Part" = 0
 "fmod_parameters/Game Part/variant_type" = 2
 
-[node name="FmodListener2D" type="FmodListener2D" parent="Music Manager"]
-
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Music Manager"]
-bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank"]
+bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank", "res://Desktop/SFX_LV_1.bank"]
 
 [node name="Pause" parent="." node_paths=PackedStringArray("music") instance=ExtResource("135_uxwy0")]
 music = NodePath("../Music Manager/FmodEventEmitter2D")
+
+[node name="sfx" type="Node2D" parent="."]
+position = Vector2(-37, 119)
+
+[node name="jero sound" type="FmodEventEmitter2D" parent="sfx"]
+event_name = "event:/Take Jero"
+event_guid = "{be69710d-b6d2-46c4-b29d-67fcfa6252bc}"

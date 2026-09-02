@@ -276,6 +276,14 @@ shape = SubResource("RectangleShape2D_fgwbi")
 position = Vector2(4.5, 8)
 shape = SubResource("RectangleShape2D_1l4yw")
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Mummy_power"
+event_guid = "{7c6fbb33-f64e-413f-953d-8190e4df6784}"
+
+[node name="FmodEventEmitter2D2" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Mummy_explosion"
+event_guid = "{0c2a6706-e0b2-460d-9460-0f8dfc0e74c1}"
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

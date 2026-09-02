@@ -1,6 +1,7 @@
 extends TextureButton
 
+@export var level_buttons : Node2D
 
 func _on_pressed() -> void:
-	Global.next_scene = "res://level_1.tscn"
-	get_tree().change_scene_to_file("res://loadingscreen.tscn")
+	level_buttons.visible = true
+	get_parent().visible = false

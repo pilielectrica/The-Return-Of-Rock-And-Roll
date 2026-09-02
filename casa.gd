@@ -13,6 +13,7 @@ signal free_shooter_mummy
 @export var house_2 = false
 @export var house_shooters = false
 @export var music_manager : Node2D
+var sound_played = false
 func _ready() -> void:
 	for fire in sprites:
 		fire.visible = false
@@ -35,6 +36,9 @@ func count_bullets():
 			sprites[i].visible = true
 			sprites[i].global_position = markers[i].global_position
 			sprites[i].play("default")
+			if (!sound_played):
+				$FmodEventEmitter2D.play()
+				sound_played = true
 		else:
 			sprites[i].visible = false
 			sprites[i].stop()

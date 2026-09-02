@@ -28,6 +28,7 @@ func activate_mummy():
 	else:
 		sprite.visible = true
 		bullet_mummy.shoot(marker.global_position, player)
+		$FmodEventEmitter2D.play()
 		timer.wait_time = time_disappear
 		collider.disabled = false
 
