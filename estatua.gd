@@ -18,7 +18,7 @@ func _on_collider_enter(body):
 	if (!done):
 		if body.is_in_group("player"):
 			anim.play("block")
-			position.x += pos_offset
+			anim.position.x += pos_offset
 			barrera.set_deferred("disabled", false)
 			done = true
 			music_manager.play_Part_B_Level_2()

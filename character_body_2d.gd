@@ -20,6 +20,8 @@ var can_dash := true
 var dash_direction := Vector2.ZERO
 signal game_over
 var input_enabled := true
+
+var game_over_ = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	weapon.play("default")
@@ -113,9 +115,11 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	health_component.take_damage(damage)
+	$FmodEventEmitter2D.play()
 	if (health_component.life <= 0):
 		game_over.emit()
 		print ("señal game over emitida vida 0")
+		game_over_ = true
 func start_dash(direction: Vector2) -> void:
 	is_dashing = true
 	can_dash = false

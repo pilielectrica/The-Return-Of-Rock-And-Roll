@@ -28290,8 +28290,9 @@ process_mode = 3
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Music Manager"]
 bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank", "res://Desktop/SFX_LV_1.bank"]
 
-[node name="Pause" parent="." node_paths=PackedStringArray("music") instance=ExtResource("135_uxwy0")]
+[node name="Pause" parent="." node_paths=PackedStringArray("music", "player") instance=ExtResource("135_uxwy0")]
 music = NodePath("../Music Manager/FmodEventEmitter2D")
+player = NodePath("../Player")
 
 [node name="sfx" type="Node2D" parent="."]
 position = Vector2(-37, 119)

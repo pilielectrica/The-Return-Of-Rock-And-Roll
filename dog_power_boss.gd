@@ -22,9 +22,20 @@ func _ready() -> void:
 	set_deferred("monitoring", false)
 	visible = false
 func dog_power() -> void:
+	if active:
+		print("DOG POWER YA ESTABA ACTIVO")
+		return
+
+	anim.stop()
+	anim.animation = "default"
+	anim.frame = 0
+	anim.play("default")
+
 	start_pos = start_marker.global_position
 	global_position = start_pos
+
 	distance_traveled = 0.0
+	life = 100
 
 	anim.visible = true
 	visible = true
@@ -33,7 +44,6 @@ func dog_power() -> void:
 	collision.set_deferred("disabled", false)
 	set_deferred("monitoring", true)
 	set_physics_process(true)
-
 func _physics_process(delta: float) -> void:
 	if not active:
 		return
@@ -42,15 +52,29 @@ func _physics_process(delta: float) -> void:
 		disable_bullet()
 		return
 
-	direction = (target.global_position - start_pos).normalized()
-	perpendicular = Vector2(-direction.y, direction.x)
+	# Recalcula la dirección hacia el jugador EN CADA FRAME
+	direction = (
+		target.global_position - global_position
+	).normalized()
+
+	# Perpendicular a la dirección actual
+	perpendicular = Vector2(
+		-direction.y,
+		direction.x
+	)
 
 	distance_traveled += speed * delta
 
+	# Avance hacia el jugador
 	var forward_movement := direction * speed * delta
-	var side_movement := perpendicular * sin(
-		distance_traveled * zigzag_frequency
-	) * zigzag_strength * delta
+
+	# Zigzag
+	var side_movement := (
+		perpendicular
+		* sin(distance_traveled * zigzag_frequency)
+		* zigzag_strength
+		* delta
+	)
 
 	global_position += forward_movement + side_movement
 
@@ -72,11 +96,13 @@ func _on_body_entered(body):
 		collision.disabled = true
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+	
 			power_finished.emit()
 			await get_tree().create_timer(2.0).timeout
 			disable_bullet()
 func take_damage():
-	life -= 20
+	life -= 50
+	anim.play("hit")
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		take_damage()

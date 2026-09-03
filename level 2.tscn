@@ -29731,7 +29731,7 @@ size = Vector2(823, 91.625)
 size = Vector2(211, 247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi3ny"]
-size = Vector2(768, 31.2502)
+size = Vector2(1213.16, 57.6241)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0cf1"]
 size = Vector2(31.9008, 29.8077)
@@ -29794,6 +29794,7 @@ position = Vector2(489, -997)
 shape = SubResource("RectangleShape2D_8mnpt")
 
 [node name="Bullet boss" parent="." node_paths=PackedStringArray("collider", "marker_start", "target", "music_manager") instance=ExtResource("29_g3ujs")]
+visible = false
 position = Vector2(-701, -1529)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
@@ -29803,6 +29804,7 @@ wait_time = 10
 music_manager = NodePath("../MUSIC MANAGER")
 
 [node name="Bullet boss2" parent="." node_paths=PackedStringArray("collider", "marker_start", "target", "music_manager") instance=ExtResource("29_g3ujs")]
+visible = false
 position = Vector2(-856, -1164)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
@@ -29812,6 +29814,7 @@ wait_time = 10
 music_manager = NodePath("../MUSIC MANAGER")
 
 [node name="Bullet boss3" parent="." node_paths=PackedStringArray("collider", "marker_start", "target", "music_manager") instance=ExtResource("29_g3ujs")]
+visible = false
 position = Vector2(-856, -1366)
 speed = 350.0
 collider = NodePath("../Collider Inicio")
@@ -29842,20 +29845,17 @@ player = NodePath("..")
 
 [node name="Estatua izq" parent="." node_paths=PackedStringArray("collider", "barrera", "music_manager") instance=ExtResource("32_6f0h7")]
 position = Vector2(-435, -580)
-gravity_scale = 0.0
 collider = NodePath("../Collider Entrada")
 barrera = NodePath("../StaticBody2D/barrera")
-pos_offset = 130
+pos_offset = 100
 music_manager = NodePath("../MUSIC MANAGER")
 
 [node name="Estatua der" parent="." node_paths=PackedStringArray("collider", "barrera", "music_manager") instance=ExtResource("32_6f0h7")]
 position = Vector2(394, -581)
-mass = 0.001
-gravity_scale = 0.0
 collider = NodePath("../Collider Entrada")
 barrera = NodePath("../StaticBody2D/barrera")
 flip_h = true
-pos_offset = -130
+pos_offset = -100
 music_manager = NodePath("../MUSIC MANAGER")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -29863,7 +29863,7 @@ position = Vector2(31, 2404)
 scale = Vector2(3.605, 3.605)
 
 [node name="barrera" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-31.3454, -894.868)
+position = Vector2(-22.7462, -891.21)
 scale = Vector2(0.282615, 0.277393)
 shape = SubResource("RectangleShape2D_pi3ny")
 disabled = true
@@ -29925,8 +29925,7 @@ scale = Vector2(3, 3)
 target = NodePath("../Player/player marker")
 start_marker = NodePath("../Marker2D_Start_Pos")
 speed = 400
-zigzag_strength = 300
-zigzag_frequency = 0.02
+damage = 20
 
 [node name="Marker2D_Start_Pos" type="Marker2D" parent="."]
 position = Vector2(-1226, -1951)
@@ -29970,5 +29969,6 @@ autoplay = true
 "fmod_parameters/Level 2/variant_type" = 2
 process_mode = 3
 
-[node name="Pause" parent="." node_paths=PackedStringArray("music") instance=ExtResource("41_5mssu")]
+[node name="Pause" parent="." node_paths=PackedStringArray("music", "player") instance=ExtResource("41_5mssu")]
 music = NodePath("../MUSIC MANAGER/FmodEventEmitter2D")
+player = NodePath("../Player")

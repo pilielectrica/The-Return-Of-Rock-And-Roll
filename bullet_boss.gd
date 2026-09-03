@@ -21,7 +21,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	collider.body_entered.connect(_on_collider_entrada_body_enter)
 	timer.timeout.connect(_on_timer_timeout)
-	disable_bullet()
+	#disable_bullet()
 	anim_bala.animation_finished.connect(_on_animation_finished)
 
 func shoot(start_pos: Vector2):

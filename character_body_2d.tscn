@@ -280,3 +280,7 @@ shape = SubResource("RectangleShape2D_lhvu3")
 z_index = 10
 position = Vector2(-562, 292)
 scale = Vector2(1, 2)
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/hurt player"
+event_guid = "{50ec4876-0234-4977-a0f6-ce4aa89bba0b}"

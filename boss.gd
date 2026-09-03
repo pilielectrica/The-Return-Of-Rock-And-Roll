@@ -33,6 +33,7 @@ var collision = get_slide_collision(0)
 signal no_life
 var attack_sound_played = false
 @export var music_manager : Node2D
+var finishing_dash := false
 func _ready() -> void:
 	life_bar.max_value = life
 	life_bar.value = life
@@ -144,15 +145,25 @@ func _physics_process(delta: float) -> void:
 			attack = false
 
 func finish_dash_attack():
-		global_position = start_position
-		calculation = false
-		attack = false
-		anim_boss.play("idle")
-		dog_power.dog_power()
-		game_manager.increase_bullets_speed()
-		speed += speed_increasement
-		hurt = false
-		attack_sound_played = false
+	if finishing_dash:
+		return
+
+	finishing_dash = true
+
+	global_position = start_position
+	calculation = false
+	attack = false
+	anim_boss.play("idle")
+
+	dog_power.dog_power()
+
+	game_manager.increase_bullets_speed()
+	speed += speed_increasement
+	hurt = false
+	attack_sound_played = false
+
+	await get_tree().create_timer(0.2).timeout
+	finishing_dash = false
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.take_damage(10)

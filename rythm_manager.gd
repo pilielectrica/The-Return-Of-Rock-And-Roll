@@ -420,5 +420,6 @@ func _on_fmod_event_emitter_2d_timeline_beat(
 	)
 func song_is_over():
 	if song_time >= song_duration :
+		SaveManager.load_level_3_complete()
 		song_over.emit()
 		
