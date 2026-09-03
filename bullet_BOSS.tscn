@@ -103,7 +103,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -164,7 +164,7 @@ shape = SubResource("CircleShape2D_ud1ga")
 position = Vector2(8, 2)
 scale = Vector2(2.35156, 2.14844)
 sprite_frames = SubResource("SpriteFrames_28fn7")
-animation = &"move"
+animation = &"hit"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

@@ -81,6 +81,8 @@ func go_to_level_2():
 	SaveManager.save_level_1_complete()
 func _game_over_screen():
 	game_over_screen.visible = true
+	get_tree().paused = true
+	game_over_screen.play_again_button.grab_focus()
 	print ("entro en la funcion game over screen")
 	print("escena actual: ", get_tree().current_scene.name)
 	if get_tree().current_scene.name == "level_1":

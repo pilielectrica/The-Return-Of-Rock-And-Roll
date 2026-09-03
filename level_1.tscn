@@ -28263,6 +28263,7 @@ position = Vector2(-27, -107)
 scale = Vector2(2, 2)
 
 [node name="Game Over Canva" parent="." instance=ExtResource("113_t1xbe")]
+process_mode = 3
 visible = false
 
 [node name="eFECT" type="AnimatedSprite2D" parent="."]
@@ -28284,6 +28285,7 @@ autoplay = true
 "fmod_parameters/Game Part/id" = -8608266125366862087
 "fmod_parameters/Game Part" = 0
 "fmod_parameters/Game Part/variant_type" = 2
+process_mode = 3
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Music Manager"]
 bank_paths = ["res://Desktop/Master.strings.bank", "res://Desktop/Master.bank", "res://Desktop/Music.bank", "res://Desktop/SFX_LV_1.bank"]

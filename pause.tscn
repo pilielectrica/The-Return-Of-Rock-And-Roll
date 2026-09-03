@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://rc56yoj4tlux"]
+[gd_scene load_steps=5 format=3 uid="uid://rc56yoj4tlux"]
 
 [ext_resource type="Script" uid="uid://cgnjpbd3jc2u5" path="res://pause.gd" id="1_45vjg"]
 [ext_resource type="FontFile" uid="uid://c86iifatc2eil" path="res://minecraft/Minecraft.ttf" id="2_aq7p1"]
 [ext_resource type="Script" uid="uid://bekdmkndjjixg" path="res://menu_button.gd" id="3_6eyaj"]
+[ext_resource type="Script" uid="uid://ogrfcahbjcaj" path="res://back_button.gd" id="4_8u653"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -29,6 +30,32 @@ theme_override_font_sizes/bold_italics_font_size = 8
 text = "Paused"
 tab_size = 2
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel"]
+modulate = Color(0.0177324, 0.0177324, 0.0177324, 1)
+layout_mode = 0
+offset_left = 11.349
+offset_top = 20.9302
+offset_right = 72.884
+offset_bottom = 64.8752
+scale = Vector2(0.115, 0.2)
+theme_override_fonts/normal_font = ExtResource("2_aq7p1")
+theme_override_font_sizes/bold_italics_font_size = 8
+text = "SFX"
+tab_size = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel"]
+modulate = Color(0.0177324, 0.0177324, 0.0177324, 1)
+layout_mode = 0
+offset_left = 10.8733
+offset_top = 25.7038
+offset_right = 72.4083
+offset_bottom = 69.6488
+scale = Vector2(0.115, 0.2)
+theme_override_fonts/normal_font = ExtResource("2_aq7p1")
+theme_override_font_sizes/bold_italics_font_size = 8
+text = "Music"
+tab_size = 2
+
 [node name="Menu Button" type="Button" parent="Panel"]
 modulate = Color(0.316956, 0.358408, 0.876417, 1)
 layout_mode = 0
@@ -37,9 +64,50 @@ offset_top = 34.8837
 offset_right = 195.363
 offset_bottom = 70.8837
 scale = Vector2(0.045, 0.085)
+focus_neighbor_left = NodePath("../Back Button")
+focus_neighbor_top = NodePath("../Music Volume")
 theme_override_fonts/font = ExtResource("2_aq7p1")
 theme_override_font_sizes/font_size = 28
 text = "Menu"
 script = ExtResource("3_6eyaj")
 
+[node name="Back Button" type="Button" parent="Panel"]
+modulate = Color(0.316956, 0.358408, 0.876417, 1)
+layout_mode = 0
+offset_left = 15.4264
+offset_top = 34.8837
+offset_right = 179.427
+offset_bottom = 70.8837
+scale = Vector2(0.045, 0.085)
+focus_neighbor_top = NodePath("../Music Volume")
+focus_neighbor_right = NodePath("../Menu Button")
+theme_override_fonts/font = ExtResource("2_aq7p1")
+theme_override_font_sizes/font_size = 28
+text = "	Back"
+script = ExtResource("4_8u653")
+
+[node name="Sfx Volume" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 15.8002
+offset_top = 22.093
+offset_right = 78.4502
+offset_bottom = 38.093
+scale = Vector2(0.125, 0.125)
+focus_neighbor_bottom = NodePath("../Music Volume")
+value = 100.0
+
+[node name="Music Volume" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 15.8682
+offset_top = 25.765
+offset_right = 78.5182
+offset_bottom = 41.765
+scale = Vector2(0.125, 0.125)
+focus_neighbor_top = NodePath("../Sfx Volume")
+value = 100.0
+
 [connection signal="pressed" from="Panel/Menu Button" to="Panel/Menu Button" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/Back Button" to="Panel/Back Button" method="_on_pressed"]
+[connection signal="value_changed" from="Panel/Sfx Volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="value_changed" from="Panel/Music Volume" to="." method="_on_music_volume_value_changed"]

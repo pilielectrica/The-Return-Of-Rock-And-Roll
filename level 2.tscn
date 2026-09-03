@@ -29950,6 +29950,7 @@ script = ExtResource("38_1d6ee")
 boss = NodePath("../BOSS")
 
 [node name="Node2D" parent="." instance=ExtResource("39_etocp")]
+process_mode = 3
 visible = false
 
 [node name="MUSIC MANAGER" type="Node2D" parent="."]

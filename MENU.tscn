@@ -69,8 +69,11 @@ offset_top = 559.0
 offset_right = 601.0
 offset_bottom = 693.0
 scale = Vector2(0.475, 0.475)
+focus_neighbor_right = NodePath("../level 2 button")
+focus_neighbor_bottom = NodePath("../Back button")
 texture_normal = ExtResource("5_4mkge")
 texture_hover = ExtResource("6_buaci")
+texture_focused = ExtResource("6_buaci")
 script = ExtResource("7_g1gem")
 
 [node name="level 2 button" type="TextureButton" parent="Levels Buttons"]
@@ -79,8 +82,12 @@ offset_top = 566.0
 offset_right = 889.0
 offset_bottom = 713.0
 scale = Vector2(0.39, 0.39)
+focus_neighbor_left = NodePath("../level 1 button")
+focus_neighbor_right = NodePath("../level 3 button2")
+focus_neighbor_bottom = NodePath("../Back button")
 texture_normal = ExtResource("8_ykus6")
 texture_hover = ExtResource("9_vpg8e")
+texture_focused = ExtResource("9_vpg8e")
 script = ExtResource("10_ykus6")
 
 [node name="level 3 button2" type="TextureButton" parent="Levels Buttons"]
@@ -89,19 +96,25 @@ offset_top = 574.0
 offset_right = 1094.0
 offset_bottom = 690.0
 scale = Vector2(0.39, 0.39)
+focus_neighbor_left = NodePath("../level 2 button")
+focus_neighbor_right = NodePath("../Back button")
+focus_neighbor_bottom = NodePath("../Back button")
 texture_normal = ExtResource("10_va5hy")
 texture_hover = ExtResource("12_2dhp5")
+texture_focused = ExtResource("12_2dhp5")
 script = ExtResource("12_va5hy")
 
-[node name="Back button" type="Button" parent="Levels Buttons" node_paths=PackedStringArray("play_exit_buttons")]
+[node name="Back button" type="Button" parent="Levels Buttons" node_paths=PackedStringArray("play_exit_buttons", "play_button")]
 offset_left = 1052.0
 offset_top = 596.0
 offset_right = 1060.0
 offset_bottom = 604.0
+focus_neighbor_top = NodePath("../level 1 button")
 theme_override_fonts/font = ExtResource("14_2dhp5")
 text = "BACK"
 script = ExtResource("15_ar72c")
 play_exit_buttons = NodePath("../../Play_Exit")
+play_button = NodePath("../../Play_Exit/Play Button")
 
 [node name="Play_Exit" type="Node2D" parent="."]
 
@@ -111,20 +124,25 @@ offset_top = 557.0
 offset_right = 1150.0
 offset_bottom = 802.0
 scale = Vector2(0.225, 0.225)
+focus_neighbor_left = NodePath("../Play Button")
 texture_normal = ExtResource("5_ua2e5")
 texture_hover = ExtResource("13_g1gem")
+texture_focused = ExtResource("13_g1gem")
 script = ExtResource("12_vlt20")
 
-[node name="Play Button" type="TextureButton" parent="Play_Exit" node_paths=PackedStringArray("level_buttons")]
+[node name="Play Button" type="TextureButton" parent="Play_Exit" node_paths=PackedStringArray("level_buttons", "level_1_button")]
 offset_left = 263.0
 offset_top = 562.0
 offset_right = 799.0
 offset_bottom = 810.0
 scale = Vector2(0.225, 0.225)
+focus_neighbor_right = NodePath("../Exit Button")
 texture_normal = ExtResource("6_1x7fg")
 texture_hover = ExtResource("9_cm65u")
+texture_focused = ExtResource("9_cm65u")
 script = ExtResource("8_54ced")
 level_buttons = NodePath("../../Levels Buttons")
+level_1_button = NodePath("../../Levels Buttons/level 1 button")
 
 [connection signal="pressed" from="Levels Buttons/level 1 button" to="Levels Buttons/level 1 button" method="_on_pressed"]
 [connection signal="pressed" from="Levels Buttons/level 2 button" to="Levels Buttons/level 2 button" method="_on_pressed"]

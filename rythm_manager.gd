@@ -144,6 +144,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if get_tree().paused:
+		return
+
 	if fmod_playing:
 		song_time += delta
 
@@ -152,25 +155,22 @@ func _process(delta: float) -> void:
 	check_input()
 	check_misses()
 	song_is_over()
-
 # ============================================
 # INPUT
 # ============================================
 
 func check_input() -> void:
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("move_left"):
 		try_hit_note(RhythmNote.Direction.LEFT)
 
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("move_down"):
 		try_hit_note(RhythmNote.Direction.DOWN)
 
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("move_up"):
 		try_hit_note(RhythmNote.Direction.UP)
 
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("move_right"):
 		try_hit_note(RhythmNote.Direction.RIGHT)
-
-
 func try_hit_note(direction: RhythmNote.Direction) -> void:
 	var closest_note: RhythmNote = null
 	var closest_difference: float = INF
@@ -421,3 +421,4 @@ func _on_fmod_event_emitter_2d_timeline_beat(
 func song_is_over():
 	if song_time >= song_duration :
 		song_over.emit()
+		

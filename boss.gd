@@ -80,6 +80,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			escudo_active = false
 			await get_tree().create_timer(4.0).timeout
 			no_life.emit()
+			SaveManager.save_level_2_complete()
 		print("BALA IMPACTÓ: ", area.name)
 		print(
 	"BALA IMPACTÓ: ",

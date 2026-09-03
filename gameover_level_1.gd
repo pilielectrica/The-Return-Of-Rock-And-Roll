@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var play_again_button = $Play_Again_Button
+@onready var play_again_button = $Node2D/Play_Again_Button
 
 func _on_play_again_button_pressed() -> void:
 		Global.next_scene = "res://level_1.tscn"

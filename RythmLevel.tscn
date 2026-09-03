@@ -30,6 +30,7 @@ font_color = Color(0.640953, 0.136131, 0.21079, 1)
 [node name="Node2D" parent="." instance=ExtResource("1_ydtbd")]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
+process_mode = 3
 
 [node name="Node2D" type="Node2D" parent="CanvasGroup"]
 
@@ -80,9 +81,9 @@ bank_paths = ["res://Desktop/Music.bank", "res://Desktop/Master.strings.bank", "
 script = ExtResource("12_pxq1i")
 
 [node name="Score_Text" type="Label" parent="Rythm Manager/Score_Manager"]
-offset_left = 1054.0
+offset_left = 1020.0
 offset_top = 59.0
-offset_right = 1094.0
+offset_right = 1128.0
 offset_bottom = 111.0
 label_settings = SubResource("LabelSettings_ydtbd")
 
@@ -133,6 +134,7 @@ offset_left = 987.0
 offset_top = 602.0
 offset_right = 1151.0
 offset_bottom = 638.0
+focus_neighbor_left = NodePath("../Play_Again_Button")
 theme_override_fonts/font = ExtResource("9_2lomv")
 theme_override_font_sizes/font_size = 28
 text = "Menu"
@@ -143,6 +145,7 @@ offset_left = 484.0
 offset_top = 558.0
 offset_right = 648.0
 offset_bottom = 594.0
+focus_neighbor_right = NodePath("../Menu Button2")
 theme_override_fonts/font = ExtResource("9_2lomv")
 theme_override_font_sizes/font_size = 28
 text = "Play Again?"
