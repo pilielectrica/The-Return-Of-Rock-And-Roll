@@ -6,8 +6,10 @@ extends CanvasLayer
 var music_bus
 var sfx_bus
 func _ready():
+	var screen_size := get_viewport().get_visible_rect().size
+	var design_size := Vector2(1152, 648)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	$Panel.position = (screen_size - design_size) / 2.0
 	music_bus = FmodServer.get_bus("bus:/Music")
 	sfx_bus = FmodServer.get_bus("bus:/SFX")
 	var scene_name := get_tree().current_scene.name
@@ -22,9 +24,9 @@ func _input(event):
 func toggle_pause():
 	var pause := !get_tree().paused
 
-	if player != null and player.game_over_:
-		return
-
+	if player != null:
+		if "game_over_" in player and player.game_over_:
+			return
 	get_tree().paused = pause
 	$Panel.visible = pause
 

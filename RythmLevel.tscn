@@ -56,11 +56,12 @@ texture = ExtResource("5_5vjy6")
 
 [node name="Notes" type="Node2D" parent="CanvasGroup"]
 
-[node name="Rythm Manager" type="Node2D" parent="." node_paths=PackedStringArray("notes_container", "perfect_sprite", "great_sprite", "good_sprite", "miss_sprite")]
+[node name="Rythm Manager" type="Node2D" parent="." node_paths=PackedStringArray("notes_container", "canvas", "perfect_sprite", "great_sprite", "good_sprite", "miss_sprite")]
 script = ExtResource("1_gs50x")
 note_scene = ExtResource("2_ejrrd")
 notes_container = NodePath("../CanvasGroup/Notes")
 song_duration = 87.0
+canvas = NodePath("../CanvasGroup")
 perfect_sprite = NodePath("../Feedback/Sprite2D")
 great_sprite = NodePath("../Feedback/Sprite2D2")
 good_sprite = NodePath("../Feedback/Sprite2D3")
@@ -153,6 +154,12 @@ script = ExtResource("8_q10xw")
 
 [node name="Pause" parent="." node_paths=PackedStringArray("music") instance=ExtResource("19_q10xw")]
 music = NodePath("../Rythm Manager/FmodEventEmitter2D")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="timeline_beat" from="Rythm Manager/FmodEventEmitter2D" to="Rythm Manager" method="_on_fmod_event_emitter_2d_timeline_beat"]
 [connection signal="pressed" from="The Credits/Menu Button2" to="The Credits/Menu Button2" method="_on_pressed"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4liv6rlam7"]
+[gd_scene load_steps=24 format=3 uid="uid://d4liv6rlam7"]
 
+[ext_resource type="Script" uid="uid://dl8laxincsrb1" path="res://resize.gd" id="1_af4fq"]
 [ext_resource type="Texture2D" uid="uid://c1kh5xpujv4nw" path="res://player_full_animation - copia.png" id="1_kctv7"]
 [ext_resource type="Shader" uid="uid://dxiq288w8h0pp" path="res://player.tres" id="1_w3x71"]
 [ext_resource type="Texture2D" uid="uid://chkw2j6k6hlok" path="res://momia/mummy-01.png" id="2_2nw6q"]
@@ -98,6 +99,7 @@ shader = ExtResource("2_w3x71")
 shader = ExtResource("3_w3x71")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_af4fq")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 

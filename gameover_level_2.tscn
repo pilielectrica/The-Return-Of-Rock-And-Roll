@@ -112,7 +112,9 @@ material = SubResource("CanvasItemMaterial_g1o2j")
 offset_right = 1172.0
 offset_bottom = 680.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D2"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pn7gr")
 position = Vector2(565, 483)
@@ -120,14 +122,14 @@ rotation = 1.5708
 scale = Vector2(3.62, 3.62)
 sprite_frames = SubResource("SpriteFrames_b7a41")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D2"]
 material = SubResource("ShaderMaterial_af4fq")
 position = Vector2(572, 178)
 scale = Vector2(12.0183, 11.5913)
 sprite_frames = SubResource("SpriteFrames_xmx0r")
 autoplay = "default"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D2"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_w3x71")
 position = Vector2(200, 360)
@@ -136,7 +138,7 @@ sprite_frames = SubResource("SpriteFrames_mdlxv")
 autoplay = "default"
 frame_progress = 0.576725
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Node2D2"]
 material = SubResource("ShaderMaterial_g1o2j")
 position = Vector2(933, 364)
 scale = Vector2(12.0183, 11.5913)
@@ -144,35 +146,35 @@ sprite_frames = SubResource("SpriteFrames_mdlxv")
 autoplay = "default"
 flip_h = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
 z_index = -1
 material = SubResource("ShaderMaterial_2nw6q")
 position = Vector2(565.75, 379)
 scale = Vector2(1.61865, 1.67917)
 texture = ExtResource("7_jd1ll")
 
-[node name="Play_Again_Button" type="Button" parent="Node2D"]
+[node name="Play_Again_Button" type="Button" parent="Node2D2"]
 offset_left = 484.0
 offset_top = 558.0
 offset_right = 648.0
 offset_bottom = 594.0
-focus_neighbor_right = NodePath("../../Menu Button")
+focus_neighbor_right = NodePath("../Menu Button")
 theme_override_fonts/font = ExtResource("8_ps1j2")
 theme_override_font_sizes/font_size = 28
 text = "Play Again?"
 
-[node name="Menu Button" type="Button" parent="."]
+[node name="Menu Button" type="Button" parent="Node2D2"]
 modulate = Color(0.316956, 0.358408, 0.876417, 1)
 offset_left = 987.0
 offset_top = 602.0
 offset_right = 1151.0
 offset_bottom = 638.0
-focus_neighbor_left = NodePath("../Node2D/Play_Again_Button")
+focus_neighbor_left = NodePath("../Play_Again_Button")
 theme_override_fonts/font = ExtResource("8_ps1j2")
 theme_override_font_sizes/font_size = 28
 text = "Menu"
 script = ExtResource("9_rcdas")
 
-[connection signal="pressed" from="Node2D/Play_Again_Button" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="Node2D/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="Menu Button" to="Menu Button" method="_on_pressed"]
+[connection signal="pressed" from="Node2D2/Play_Again_Button" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Node2D2/Play_Again_Button" to="Node2D" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Node2D2/Menu Button" to="Node2D2/Menu Button" method="_on_pressed"]

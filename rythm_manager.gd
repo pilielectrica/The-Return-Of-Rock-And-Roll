@@ -25,7 +25,7 @@ var pending_notes: Array = []
 
 var second_half := false
 
-
+@export var canvas : CanvasGroup
 # -------------------------
 # FEEDBACK
 # -------------------------
@@ -130,6 +130,11 @@ var patterns_second_half = [
 
 
 func _ready() -> void:
+	
+	var screen_size := get_viewport().get_visible_rect().size
+	var design_size := Vector2(1280, 720)
+
+	canvas.position = (screen_size - design_size) / 2.0
 	seconds_per_beat = 60.0 / bpm
 
 	randomize()

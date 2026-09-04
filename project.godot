@@ -40,6 +40,10 @@ Global="*res://Global.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 SaveManager="*res://save_manager.gd"
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
@@ -139,3 +143,4 @@ dash={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.0142752, 0.0142752, 0.0142752, 1)

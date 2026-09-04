@@ -11,7 +11,10 @@ var minimum_time_finished := false
 
 func _ready():
 	scene_path = Global.next_scene
+	var screen_size := get_viewport().get_visible_rect().size
+	var design_size := Vector2(1152, 648)
 
+	position = (screen_size - design_size) / 2.0
 	if scene_path == "":
 		push_error("No hay escena asignada para cargar")
 		return
